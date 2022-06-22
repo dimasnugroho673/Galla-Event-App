@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Find event near"
     label.font = UIFont(name: "Poppins-Regular", size: 14)
-    label.textColor = UIColor.systemGray3
+    label.textColor = UIColor.systemGray2
 
     return label
   }()
@@ -44,6 +44,31 @@ class HomeViewController: UIViewController {
     label.textColor = UIColor(named: "color-black")
 
     return label
+  }()
+
+  lazy var myLocationHeader: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Bandung, ID"
+    label.font = UIFont(name: "Poppins-SemiBold", size: 20)
+    label.textColor = UIColor(named: "color-black")
+
+    let image = UIImageView()
+    let config = UIImage.SymbolWeight.bold
+    image.translatesAutoresizingMaskIntoConstraints = false
+    image.image = UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration.init(weight: config))
+    image.tintColor = UIColor(named: "color-black")
+
+    view.addSubview(label)
+    view.addSubview(image)
+
+    image.centerYAnchor.constraint(equalTo: label.centerYAnchor, constant: 0).isActive = true
+    image.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 5).isActive = true
+
+    return view
   }()
 
   lazy var profileImage: UIImageView = {
@@ -68,7 +93,7 @@ class HomeViewController: UIViewController {
     view.addSubview(scrollView)
     scrollView.addSubview(containerView)
 
-    let myLoationStack = UIStackView(arrangedSubviews: [nearEventLabel, myLocationLabel])
+    let myLoationStack = UIStackView(arrangedSubviews: [nearEventLabel, myLocationHeader])
     myLoationStack.translatesAutoresizingMaskIntoConstraints = false
     myLoationStack.axis = .vertical
     myLoationStack.spacing = 3
