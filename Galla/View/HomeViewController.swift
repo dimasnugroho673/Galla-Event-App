@@ -46,6 +46,19 @@ class HomeViewController: UIViewController {
     return label
   }()
 
+  lazy var profileImage: UIImageView = {
+    let img = UIImageView()
+    img.translatesAutoresizingMaskIntoConstraints = false
+    img.widthAnchor.constraint(equalToConstant: 48).isActive = true
+    img.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    img.image = UIImage(named: "dummy-profile")
+    img.backgroundColor = UIColor.systemGray3
+    img.layer.cornerRadius = 48 / 2
+    img.clipsToBounds = true
+
+    return img
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -58,9 +71,10 @@ class HomeViewController: UIViewController {
     let myLoationStack = UIStackView(arrangedSubviews: [nearEventLabel, myLocationLabel])
     myLoationStack.translatesAutoresizingMaskIntoConstraints = false
     myLoationStack.axis = .vertical
-    myLoationStack.spacing = 5
+    myLoationStack.spacing = 3
 
     containerView.addSubview(myLoationStack)
+    containerView.addSubview(profileImage)
 
     NSLayoutConstraint.activate([
       scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
@@ -76,8 +90,10 @@ class HomeViewController: UIViewController {
       containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
 
       myLoationStack.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-      myLoationStack.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15)
+      myLoationStack.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15),
 
+      profileImage.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+      profileImage.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15)
     ])
   }
 
