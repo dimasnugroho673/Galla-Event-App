@@ -14,6 +14,16 @@ class HeaderBackgroundAuth: UIView {
   var imageBackground: UIImage
   var width: CGFloat
 
+//  lazy var containerImageView: UIView = {
+//    let container = UIView()
+//    container.translatesAutoresizingMaskIntoConstraints = false
+//    container.backgroundColor = UIColor.black
+//    container.heightAnchor.constraint(equalToConstant: 323).isActive = true
+//    container.widthAnchor.constraint(equalToConstant: width).isActive = true
+//
+//    return container
+//  }()
+
   lazy var imageView: UIImageView = {
     let img = UIImageView()
     img.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +42,7 @@ class HeaderBackgroundAuth: UIView {
     img.backgroundColor = UIColor(hexString: "2C1F19").withAlphaComponent(0.86)
     img.heightAnchor.constraint(equalToConstant: 323).isActive = true
     img.widthAnchor.constraint(equalToConstant: width).isActive = true
+    img.clipsToBounds = true
 
     return img
   }()
@@ -73,19 +84,27 @@ class HeaderBackgroundAuth: UIView {
 
   func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
+    heightAnchor.constraint(equalToConstant: 323).isActive = true
+    widthAnchor.constraint(equalToConstant: width).isActive = true
+
     addSubview(imageView)
     addSubview(darkenLayerView)
     darkenLayerView.addSubview(titleLabel)
     darkenLayerView.addSubview(subtitleLabel)
 
+    imageView.isHidden = false
+    darkenLayerView.isHidden = false
+
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
       imageView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
       imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+      imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
 
       darkenLayerView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
       darkenLayerView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
       darkenLayerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
+      darkenLayerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
 
       titleLabel.topAnchor.constraint(equalTo: darkenLayerView.topAnchor, constant: 166),
       titleLabel.leftAnchor.constraint(equalTo: darkenLayerView.leftAnchor, constant: 23),
