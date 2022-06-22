@@ -9,18 +9,28 @@ import UIKit
 
 class RootViewController: UITabBarController {
 
+  let authViewModel: AuthViewModel = AuthViewModel()
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let home = templateTabBar(with: "Home", image: UIImage(named: "icon-home"), selectedImage: UIImage(named: "icon-home-active"), viewController: HomeViewController())
-    let explore = templateTabBar(with: "Explore", image: UIImage(named: "icon-search"), selectedImage: UIImage(named: "icon-search-active"), viewController: EmptyViewController())
-    let favorite = templateTabBar(with: "Favorite", image: UIImage(named: "icon-favorite"), selectedImage: UIImage(named: "icon-favorite-active"), viewController: EmptyViewController())
-    let ticket = templateTabBar(with: "Ticket", image: UIImage(named: "icon-ticket"), selectedImage: UIImage(named: "icon-ticket-active"), viewController: EmptyViewController())
-    let profile = templateTabBar(with: "Profile", image: UIImage(named: "icon-people"), selectedImage: UIImage(named: "icon-people-active"), viewController: EmptyViewController())
+    checkIsLogin()
+  }
 
-    setViewControllers([home, explore, favorite, ticket, profile], animated: false)
-
-    configureUI()
+  private func checkIsLogin() {
+    if authViewModel.isLogin() {
+      // fetch data
+      configureUI()
+      configureTabBar()
+    } else {
+      // present login view harus menggunakan dispatch queue main async!!!
+      DispatchQueue.main.async {
+        let vc = LoginViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+      }
+    }
   }
 
   private func configureUI() {
@@ -34,20 +44,17 @@ class RootViewController: UITabBarController {
       UITabBar.appearance().backgroundImage = UIImage()
       UITabBar.appearance().shadowImage = UIImage()
     }
-
-
   }
 
-//  override func viewWillLayoutSubviews() {
-//    super.viewWillLayoutSubviews()
-//
-//    let newTabBarHeight = tabBar.frame.size.height + 40
-//    var newFrame = tabBar.frame
-//    newFrame.size.height = newTabBarHeight
-//    newFrame.origin.y = view.frame.size.height - newTabBarHeight
-//
-//    tabBar.frame = newFrame
-//  }
+  private func configureTabBar() {
+      let home = templateTabBar(with: "Home", image: UIImage(named: "icon-home"), selectedImage: UIImage(named: "icon-home-active"), viewController: HomeViewController())
+      let explore = templateTabBar(with: "Explore", image: UIImage(named: "icon-search"), selectedImage: UIImage(named: "icon-search-active"), viewController: EmptyViewController())
+      let favorite = templateTabBar(with: "Favorite", image: UIImage(named: "icon-favorite"), selectedImage: UIImage(named: "icon-favorite-active"), viewController: EmptyViewController())
+      let ticket = templateTabBar(with: "Ticket", image: UIImage(named: "icon-ticket"), selectedImage: UIImage(named: "icon-ticket-active"), viewController: EmptyViewController())
+      let profile = templateTabBar(with: "Profile", image: UIImage(named: "icon-people"), selectedImage: UIImage(named: "icon-people-active"), viewController: EmptyViewController())
+
+      setViewControllers([home, explore, favorite, ticket, profile], animated: false)
+  }
 
   private func templateTabBar(with title: String, image: UIImage?, selectedImage: UIImage?, viewController: UIViewController) -> UINavigationController {
     let nav = UINavigationController(rootViewController: viewController)
@@ -57,9 +64,6 @@ class RootViewController: UITabBarController {
     nav.tabBarItem.selectedImage = selectedImage
 
 //    nav.tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-
-
-
     return nav
   }
 
