@@ -9,21 +9,78 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  lazy var scrollView: UIScrollView = {
+    let sv = UIScrollView(frame: .zero)
+    sv.translatesAutoresizingMaskIntoConstraints = false
+    sv.bounces = true
+    sv.backgroundColor = UIColor(named: "color-background")
 
-        // Do any additional setup after loading the view.
-    }
-    
+    return sv
+  }()
 
-    /*
-    // MARK: - Navigation
+  lazy var containerView: UIView = {
+    let sv = UIView()
+    sv.translatesAutoresizingMaskIntoConstraints = false
+    sv.backgroundColor = UIColor(named: "color-background")
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    return sv
+  }()
+
+  lazy var nearEventLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Find event near"
+    label.font = UIFont(name: "Poppins-Regular", size: 14)
+    label.textColor = UIColor.systemGray3
+
+    return label
+  }()
+
+  lazy var myLocationLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Bandung, ID"
+    label.font = UIFont(name: "Poppins-SemiBold", size: 20)
+    label.textColor = UIColor(named: "color-black")
+
+    return label
+  }()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    title = "Home"
+    navigationController?.navigationBar.isHidden = true
+
+    view.addSubview(scrollView)
+    scrollView.addSubview(containerView)
+
+    let myLoationStack = UIStackView(arrangedSubviews: [nearEventLabel, myLocationLabel])
+    myLoationStack.translatesAutoresizingMaskIntoConstraints = false
+    myLoationStack.axis = .vertical
+    myLoationStack.spacing = 5
+
+    containerView.addSubview(myLoationStack)
+
+    NSLayoutConstraint.activate([
+      scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+      scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
+      scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+
+      containerView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
+      containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
+      containerView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 0),
+      containerView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0),
+      containerView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
+      containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+
+      myLoationStack.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+      myLoationStack.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15)
+
+    ])
+  }
+
+
 
 }

@@ -38,6 +38,17 @@ class RootViewController: UITabBarController {
 
   }
 
+//  override func viewWillLayoutSubviews() {
+//    super.viewWillLayoutSubviews()
+//
+//    let newTabBarHeight = tabBar.frame.size.height + 40
+//    var newFrame = tabBar.frame
+//    newFrame.size.height = newTabBarHeight
+//    newFrame.origin.y = view.frame.size.height - newTabBarHeight
+//
+//    tabBar.frame = newFrame
+//  }
+
   private func templateTabBar(with title: String, image: UIImage?, selectedImage: UIImage?, viewController: UIViewController) -> UINavigationController {
     let nav = UINavigationController(rootViewController: viewController)
 
@@ -45,8 +56,11 @@ class RootViewController: UITabBarController {
     nav.tabBarItem.image = image
     nav.tabBarItem.selectedImage = selectedImage
 
+//    nav.tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+
+
+
     return nav
   }
 
 }
-

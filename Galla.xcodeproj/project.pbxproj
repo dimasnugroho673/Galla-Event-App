@@ -14,6 +14,10 @@
 		405C359A2862F955006A859F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 405C35982862F955006A859F /* LaunchScreen.storyboard */; };
 		405C35A42862FF79006A859F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35A32862FF79006A859F /* HomeViewController.swift */; };
 		405C35A62862FF84006A859F /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35A52862FF84006A859F /* EmptyViewController.swift */; };
+		405C35AD28630820006A859F /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 405C35A928630820006A859F /* Poppins-SemiBold.ttf */; };
+		405C35AE28630820006A859F /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 405C35AA28630820006A859F /* Poppins-Bold.ttf */; };
+		405C35AF28630820006A859F /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 405C35AB28630820006A859F /* Poppins-Regular.ttf */; };
+		405C35B028630820006A859F /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 405C35AC28630820006A859F /* Poppins-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		405C359B2862F955006A859F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		405C35A32862FF79006A859F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		405C35A52862FF84006A859F /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		405C35A928630820006A859F /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		405C35AA28630820006A859F /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		405C35AB28630820006A859F /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		405C35AC28630820006A859F /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +66,9 @@
 		405C358C2862F953006A859F /* Galla */ = {
 			isa = PBXGroup;
 			children = (
+				405C35A7286307EB006A859F /* Supporting Files */,
 				405C35A22862FB2E006A859F /* View */,
 				405C35A12862FB23006A859F /* App */,
-				405C35962862F955006A859F /* Assets.xcassets */,
-				405C35982862F955006A859F /* LaunchScreen.storyboard */,
 				405C359B2862F955006A859F /* Info.plist */,
 			);
 			path = Galla;
@@ -79,11 +86,32 @@
 		405C35A22862FB2E006A859F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				405C35982862F955006A859F /* LaunchScreen.storyboard */,
 				405C35912862F953006A859F /* RootViewController.swift */,
 				405C35A32862FF79006A859F /* HomeViewController.swift */,
 				405C35A52862FF84006A859F /* EmptyViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		405C35A7286307EB006A859F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				405C35A8286307F9006A859F /* Fonts */,
+				405C35962862F955006A859F /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		405C35A8286307F9006A859F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				405C35AA28630820006A859F /* Poppins-Bold.ttf */,
+				405C35AC28630820006A859F /* Poppins-Medium.ttf */,
+				405C35AB28630820006A859F /* Poppins-Regular.ttf */,
+				405C35A928630820006A859F /* Poppins-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,8 +172,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405C35AD28630820006A859F /* Poppins-SemiBold.ttf in Resources */,
 				405C359A2862F955006A859F /* LaunchScreen.storyboard in Resources */,
 				405C35972862F955006A859F /* Assets.xcassets in Resources */,
+				405C35B028630820006A859F /* Poppins-Medium.ttf in Resources */,
+				405C35AE28630820006A859F /* Poppins-Bold.ttf in Resources */,
+				405C35AF28630820006A859F /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
