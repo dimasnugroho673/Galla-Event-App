@@ -24,6 +24,7 @@
 		405C35BA2863518F006A859F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35B92863518F006A859F /* Extensions.swift */; };
 		405C35BD2863521C006A859F /* HeaderBackgroundAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35BC2863521C006A859F /* HeaderBackgroundAuth.swift */; };
 		405C35BF2863600C006A859F /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35BE2863600C006A859F /* CTAButton.swift */; };
+		405C35C22863660F006A859F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35C12863660F006A859F /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		405C35B92863518F006A859F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		405C35BC2863521C006A859F /* HeaderBackgroundAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBackgroundAuth.swift; sourceTree = "<group>"; };
 		405C35BE2863600C006A859F /* CTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
+		405C35C12863660F006A859F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +102,12 @@
 		405C35A22862FB2E006A859F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				405C35C0286365FF006A859F /* Auth */,
 				405C35BB286351F9006A859F /* Components */,
 				405C35982862F955006A859F /* LaunchScreen.storyboard */,
 				405C35912862F953006A859F /* RootViewController.swift */,
 				405C35A32862FF79006A859F /* HomeViewController.swift */,
 				405C35A52862FF84006A859F /* EmptyViewController.swift */,
-				405C35B128634027006A859F /* LoginViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,6 +156,15 @@
 				405C35BE2863600C006A859F /* CTAButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		405C35C0286365FF006A859F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				405C35B128634027006A859F /* LoginViewController.swift */,
+				405C35C12863660F006A859F /* RegisterViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +244,7 @@
 				405C35B228634027006A859F /* LoginViewController.swift in Sources */,
 				405C35BF2863600C006A859F /* CTAButton.swift in Sources */,
 				405C35BA2863518F006A859F /* Extensions.swift in Sources */,
+				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,
 				405C35922862F953006A859F /* RootViewController.swift in Sources */,
 				405C358E2862F953006A859F /* AppDelegate.swift in Sources */,
 				405C35B52863407E006A859F /* AuthViewModel.swift in Sources */,

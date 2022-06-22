@@ -63,6 +63,7 @@ class LoginViewController: UIViewController {
   lazy var dontHaveAccountButton: UIButton = {
     let button = Utilities().attributedButton("Don't have an account?", " Create account now")
     button.translatesAutoresizingMaskIntoConstraints = false
+    button.addTarget(self, action: #selector(handleCreateAccount), for: .touchUpInside)
 
     return button
   }()
@@ -113,6 +114,11 @@ class LoginViewController: UIViewController {
       dontHaveAccountButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 15),
       dontHaveAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
     ])
+  }
+
+  @objc func handleCreateAccount() {
+    let vc = RegisterViewController()
+    navigationController?.pushViewController(vc, animated: true)
   }
 
 }

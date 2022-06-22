@@ -21,6 +21,7 @@ class HeaderBackgroundAuth: UIView {
     img.image = self.imageBackground
     img.heightAnchor.constraint(equalToConstant: 323).isActive = true
     img.widthAnchor.constraint(equalToConstant: width).isActive = true
+    img.clipsToBounds = true
 
     return img
   }()
