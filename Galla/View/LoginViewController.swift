@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
     tf.font = UIFont(name: "Poppins-Regular", size: 14)
     tf.textColor = UIColor(hexString: "535353")
     tf.setLeftPaddingPoints(10)
-    tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.2).cgColor
+    tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.1).cgColor
     tf.layer.borderWidth = 0.8
 
     return tf
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
     tf.textColor = UIColor(hexString: "535353")
     tf.setLeftPaddingPoints(10)
     tf.isSecureTextEntry = true
-    tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.2).cgColor
+    tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.1).cgColor
     tf.layer.borderWidth = 0.8
 
     return tf
