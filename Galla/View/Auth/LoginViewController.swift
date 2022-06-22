@@ -105,13 +105,6 @@ class LoginViewController: UIViewController {
       scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
       scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
 
-//      containerView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
-//      containerView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0),
-//      containerView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 0),
-//      containerView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0),
-//      containerView.heightAnchor.constraint(equalTo: scrollView.heightAnchor),
-//      containerView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-
       header.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
       header.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 0),
       header.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0),

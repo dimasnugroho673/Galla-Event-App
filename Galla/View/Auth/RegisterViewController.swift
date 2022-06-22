@@ -9,6 +9,15 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+  lazy var scrollView: UIScrollView = {
+    let sv = UIScrollView(frame: .zero)
+    sv.translatesAutoresizingMaskIntoConstraints = false
+    sv.bounces = true
+    sv.backgroundColor = UIColor(named: "color-background")
+
+    return sv
+  }()
+
   lazy var fullnameLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -133,57 +142,65 @@ class RegisterViewController: UIViewController {
     let header = HeaderBackgroundAuth(title: "Sign up.", subtitle: "to find funny events.", imageBackground: UIImage(named: "img-sign-up")!, width: view.frame.size.width)
     let registerButton = CTAButton(title: "Create account")
 
-    view.addSubview(header)
-    view.addSubview(fullnameLabel)
-    view.addSubview(fullnameTextField)
-    view.addSubview(emailLabel)
-    view.addSubview(emailTextField)
-    view.addSubview(passwordLabel)
-    view.addSubview(passwordTextField)
-    view.addSubview(confirmPasswordLabel)
-    view.addSubview(confirmPasswordTextField)
-    view.addSubview(registerButton)
-    view.addSubview(haveAccountButton)
+    view.addSubview(scrollView)
+    scrollView.contentInsetAdjustmentBehavior = .never
+    scrollView.addSubview(header)
+    scrollView.addSubview(fullnameLabel)
+    scrollView.addSubview(fullnameTextField)
+    scrollView.addSubview(emailLabel)
+    scrollView.addSubview(emailTextField)
+    scrollView.addSubview(passwordLabel)
+    scrollView.addSubview(passwordTextField)
+    scrollView.addSubview(confirmPasswordLabel)
+    scrollView.addSubview(confirmPasswordTextField)
+    scrollView.addSubview(registerButton)
+    scrollView.addSubview(haveAccountButton)
 
     NSLayoutConstraint.activate([
-      header.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-      header.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
-      header.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+      scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+      scrollView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
+      scrollView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
 
-      fullnameLabel.topAnchor.constraint(equalTo: header.darkenLayerView.bottomAnchor, constant: 25),
-      fullnameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
+      header.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0),
+      header.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 0),
+      header.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0),
+
+      fullnameLabel.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 25),
+      fullnameLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
 
       fullnameTextField.topAnchor.constraint(equalTo: fullnameLabel.bottomAnchor, constant: 4.5),
-      fullnameTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
-      fullnameTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -23),
+      fullnameTextField.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
+      fullnameTextField.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -23),
 
       emailLabel.topAnchor.constraint(equalTo: fullnameTextField.bottomAnchor, constant: 15),
-      emailLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
+      emailLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
 
       emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 4.5),
-      emailTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
-      emailTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -23),
+      emailTextField.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
+      emailTextField.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -23),
 
       passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15),
-      passwordLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
+      passwordLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
 
       passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 4.5),
-      passwordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
-      passwordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -23),
+      passwordTextField.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
+      passwordTextField.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -23),
 
       confirmPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 15),
-      confirmPasswordLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
+      confirmPasswordLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
 
       confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor, constant: 4.5),
-      confirmPasswordTextField.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
-      confirmPasswordTextField.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -23),
+      confirmPasswordTextField.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
+      confirmPasswordTextField.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -23),
 
       registerButton.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor, constant: 29),
-      registerButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 23),
-      registerButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -23),
+      registerButton.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 23),
+      registerButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: -23),
 
       haveAccountButton.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 15),
-      haveAccountButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+      haveAccountButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor, constant: 0),
+      haveAccountButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -40),
     ])
   }
 
