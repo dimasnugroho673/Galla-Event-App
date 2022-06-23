@@ -137,10 +137,11 @@ class RegisterViewController: UIViewController {
 
   func configureUI() {
     navigationController?.navigationBar.isHidden = true
-    view.backgroundColor = UIColor(named: "color-background")
+    navigationController?.navigationBar.barStyle = .black
 
     let header = HeaderBackgroundAuth(title: "Sign up.", subtitle: "to find funny events.", imageBackground: UIImage(named: "img-sign-up")!, width: view.frame.size.width)
     let registerButton = CTAButton(title: "Create account")
+    registerButton.addTarget(self, action: #selector(handleRegisterButtonTap), for: .touchUpInside)
 
     view.addSubview(scrollView)
     scrollView.contentInsetAdjustmentBehavior = .never
@@ -206,6 +207,10 @@ class RegisterViewController: UIViewController {
 
   @objc func handleGoToSignIn() {
     navigationController?.popViewController(animated: true)
+  }
+
+  @objc func handleRegisterButtonTap() {
+    dismiss(animated: true, completion: nil)
   }
 
 }

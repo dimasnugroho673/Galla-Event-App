@@ -17,20 +17,29 @@ class RootViewController: UITabBarController {
     checkIsLogin()
   }
 
-  private func checkIsLogin() {
-    if authViewModel.isLogin() {
-      // fetch data
-      configureUI()
-      configureTabBar()
-    } else {
-      // present login view harus menggunakan dispatch queue main async!!!
-      DispatchQueue.main.async {
-        let vc = LoginViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
+  func configureUIandTabBar() {
+    self.configureUI()
+    self.configureTabBar()
+  }
+
+  func checkIsLogin() {
+    authViewModel.isLoggedIn.bind { result in
+      if result {
+        // fetch data
+        self.configureUI()
+        self.configureTabBar()
+      } else {
+        // present login view harus menggunakan dispatch queue main async!!!
+        DispatchQueue.main.async {
+          let vc = LoginViewController()
+          let nav = UINavigationController(rootViewController: vc)
+          nav.modalPresentationStyle = .fullScreen
+          self.present(nav, animated: true, completion: nil)
+        }
       }
     }
+
+
   }
 
   private func configureUI() {

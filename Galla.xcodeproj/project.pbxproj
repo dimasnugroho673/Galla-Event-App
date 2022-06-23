@@ -25,6 +25,7 @@
 		405C35BD2863521C006A859F /* HeaderBackgroundAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35BC2863521C006A859F /* HeaderBackgroundAuth.swift */; };
 		405C35BF2863600C006A859F /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35BE2863600C006A859F /* CTAButton.swift */; };
 		405C35C22863660F006A859F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35C12863660F006A859F /* RegisterViewController.swift */; };
+		405C35C4286405AE006A859F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35C3286405AD006A859F /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		405C35BC2863521C006A859F /* HeaderBackgroundAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBackgroundAuth.swift; sourceTree = "<group>"; };
 		405C35BE2863600C006A859F /* CTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
 		405C35C12863660F006A859F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		405C35C3286405AD006A859F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				405C35B728635121006A859F /* Utilities.swift */,
 				405C35B92863518F006A859F /* Extensions.swift */,
+				405C35C3286405AD006A859F /* Observable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				405C35C4286405AE006A859F /* Observable.swift in Sources */,
 				405C35B228634027006A859F /* LoginViewController.swift in Sources */,
 				405C35BF2863600C006A859F /* CTAButton.swift in Sources */,
 				405C35BA2863518F006A859F /* Extensions.swift in Sources */,

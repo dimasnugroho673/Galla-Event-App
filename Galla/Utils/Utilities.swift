@@ -21,4 +21,11 @@ class Utilities {
 
     return button
   }
+
+  func showAlert(title: String, message: String) -> UIAlertController {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+    alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default))
+
+    return alert
+  }
 }

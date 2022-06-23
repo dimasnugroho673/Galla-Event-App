@@ -9,6 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+  let authViewModel: AuthViewModel = AuthViewModel()
+
   lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)
     sv.translatesAutoresizingMaskIntoConstraints = false
@@ -85,9 +87,11 @@ class LoginViewController: UIViewController {
 
   func configureUI() {
     navigationController?.navigationBar.isHidden = true
+    navigationController?.navigationBar.barStyle = .black
 
     let header = HeaderBackgroundAuth(title: "Sign in.", subtitle: "to join all event.", imageBackground: UIImage(named: "img-sign-in")!, width: view.frame.size.width)
     let loginButton = CTAButton(title: "Sign in")
+    loginButton.addTarget(self, action: #selector(handleSignInButtonTap), for: .touchUpInside)
 
     view.addSubview(scrollView)
     scrollView.contentInsetAdjustmentBehavior = .never
@@ -136,6 +140,38 @@ class LoginViewController: UIViewController {
   @objc func handleCreateAccount() {
     let vc = RegisterViewController()
     navigationController?.pushViewController(vc, animated: true)
+  }
+
+  @objc func handleSignInButtonTap() {
+    guard let email = emailTextField.text else {
+      return
+    }
+
+    guard let password = passwordTextField.text else {
+      return
+    }
+
+    authViewModel.attemptLogin(email: email, password: password)
+
+    authViewModel.attempLoginStatus.bind { result in
+      switch result {
+      case .success(_):
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+        guard let tab = window.rootViewController as? RootViewController else { return }
+
+        tab.configureUIandTabBar()
+
+        return self.dismiss(animated: true, completion: nil)
+      case .failure(let error):
+        self.present(Utilities().showAlert(title: "Authentication Failed", message: error.errorDescription ?? ""), animated: true)
+      case .none:
+        print("")
+      }
+    }
+  }
+
+  func dismiss() {
+
   }
 
 }
