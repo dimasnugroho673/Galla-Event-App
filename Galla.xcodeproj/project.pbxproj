@@ -26,6 +26,18 @@
 		405C35BF2863600C006A859F /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35BE2863600C006A859F /* CTAButton.swift */; };
 		405C35C22863660F006A859F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35C12863660F006A859F /* RegisterViewController.swift */; };
 		405C35C4286405AE006A859F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35C3286405AD006A859F /* Observable.swift */; };
+		407C9D7C2865A05900F3CB27 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D7B2865A05900F3CB27 /* UserUseCase.swift */; };
+		407C9D7F2865A1EC00F3CB27 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D7E2865A1EC00F3CB27 /* Error.swift */; };
+		407C9D812865A2FC00F3CB27 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D802865A2FC00F3CB27 /* UserRepository.swift */; };
+		407C9D852865A4FE00F3CB27 /* UserRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D842865A4FE00F3CB27 /* UserRepositoryImplementation.swift */; };
+		407C9D892865A5A000F3CB27 /* UserRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D882865A5A000F3CB27 /* UserRemoteDataSource.swift */; };
+		407C9D8B2865AA3200F3CB27 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D8A2865AA3200F3CB27 /* Constants.swift */; };
+		407C9D8D2865C5E000F3CB27 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D8C2865C5E000F3CB27 /* UserService.swift */; };
+		407C9D8F2865C81B00F3CB27 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D8E2865C81B00F3CB27 /* Injection.swift */; };
+		407C9D91286605B500F3CB27 /* CustomResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D90286605B500F3CB27 /* CustomResponseHandler.swift */; };
+		407C9D93286631DB00F3CB27 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D92286631DB00F3CB27 /* Spinner.swift */; };
+		40B18A2C28659BF700F7DE74 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2B28659BF700F7DE74 /* BaseResponse.swift */; };
+		40B18A2F28659E6A00F7DE74 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2E28659E6A00F7DE74 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +62,18 @@
 		405C35BE2863600C006A859F /* CTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
 		405C35C12863660F006A859F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		405C35C3286405AD006A859F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		407C9D7B2865A05900F3CB27 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		407C9D7E2865A1EC00F3CB27 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		407C9D802865A2FC00F3CB27 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		407C9D842865A4FE00F3CB27 /* UserRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImplementation.swift; sourceTree = "<group>"; };
+		407C9D882865A5A000F3CB27 /* UserRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemoteDataSource.swift; sourceTree = "<group>"; };
+		407C9D8A2865AA3200F3CB27 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		407C9D8C2865C5E000F3CB27 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		407C9D8E2865C81B00F3CB27 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
+		407C9D90286605B500F3CB27 /* CustomResponseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomResponseHandler.swift; sourceTree = "<group>"; };
+		407C9D92286631DB00F3CB27 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		40B18A2B28659BF700F7DE74 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		40B18A2E28659E6A00F7DE74 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +106,11 @@
 		405C358C2862F953006A859F /* Galla */ = {
 			isa = PBXGroup;
 			children = (
+				405C35C72864D2FC006A859F /* Data */,
+				405C35C62864D2E9006A859F /* Domain */,
+				405C35C52864D2E1006A859F /* Presentation */,
 				405C35B628635112006A859F /* Utils */,
-				405C35B32863406C006A859F /* ViewModel */,
 				405C35A7286307EB006A859F /* Supporting Files */,
-				405C35A22862FB2E006A859F /* View */,
 				405C35A12862FB23006A859F /* App */,
 				405C359B2862F955006A859F /* Info.plist */,
 			);
@@ -148,6 +173,10 @@
 				405C35B728635121006A859F /* Utilities.swift */,
 				405C35B92863518F006A859F /* Extensions.swift */,
 				405C35C3286405AD006A859F /* Observable.swift */,
+				407C9D7E2865A1EC00F3CB27 /* Error.swift */,
+				407C9D8A2865AA3200F3CB27 /* Constants.swift */,
+				407C9D8E2865C81B00F3CB27 /* Injection.swift */,
+				407C9D90286605B500F3CB27 /* CustomResponseHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -157,6 +186,7 @@
 			children = (
 				405C35BC2863521C006A859F /* HeaderBackgroundAuth.swift */,
 				405C35BE2863600C006A859F /* CTAButton.swift */,
+				407C9D92286631DB00F3CB27 /* Spinner.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -168,6 +198,92 @@
 				405C35C12863660F006A859F /* RegisterViewController.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		405C35C52864D2E1006A859F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				405C35B32863406C006A859F /* ViewModel */,
+				405C35A22862FB2E006A859F /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		405C35C62864D2E9006A859F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				405C35CA2864D369006A859F /* UseCase */,
+				405C35C92864D35A006A859F /* RepositoryProtocol */,
+				405C35C82864D352006A859F /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		405C35C72864D2FC006A859F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				407C9D832865A4C500F3CB27 /* DataSource */,
+				407C9D822865A4BE00F3CB27 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		405C35C82864D352006A859F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				40B18A2B28659BF700F7DE74 /* BaseResponse.swift */,
+				40B18A2E28659E6A00F7DE74 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		405C35C92864D35A006A859F /* RepositoryProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				407C9D802865A2FC00F3CB27 /* UserRepository.swift */,
+			);
+			path = RepositoryProtocol;
+			sourceTree = "<group>";
+		};
+		405C35CA2864D369006A859F /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				407C9D7B2865A05900F3CB27 /* UserUseCase.swift */,
+				407C9D8C2865C5E000F3CB27 /* UserService.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		407C9D822865A4BE00F3CB27 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				407C9D842865A4FE00F3CB27 /* UserRepositoryImplementation.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		407C9D832865A4C500F3CB27 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				407C9D872865A55500F3CB27 /* RemoteDataSource */,
+				407C9D862865A54E00F3CB27 /* LocalDataSource */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		407C9D862865A54E00F3CB27 /* LocalDataSource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LocalDataSource;
+			sourceTree = "<group>";
+		};
+		407C9D872865A55500F3CB27 /* RemoteDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				407C9D882865A5A000F3CB27 /* UserRemoteDataSource.swift */,
+			);
+			path = RemoteDataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,17 +362,29 @@
 			files = (
 				405C35C4286405AE006A859F /* Observable.swift in Sources */,
 				405C35B228634027006A859F /* LoginViewController.swift in Sources */,
+				407C9D812865A2FC00F3CB27 /* UserRepository.swift in Sources */,
 				405C35BF2863600C006A859F /* CTAButton.swift in Sources */,
 				405C35BA2863518F006A859F /* Extensions.swift in Sources */,
+				407C9D8F2865C81B00F3CB27 /* Injection.swift in Sources */,
+				407C9D91286605B500F3CB27 /* CustomResponseHandler.swift in Sources */,
+				407C9D7C2865A05900F3CB27 /* UserUseCase.swift in Sources */,
+				407C9D8D2865C5E000F3CB27 /* UserService.swift in Sources */,
 				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,
 				405C35922862F953006A859F /* RootViewController.swift in Sources */,
 				405C358E2862F953006A859F /* AppDelegate.swift in Sources */,
 				405C35B52863407E006A859F /* AuthViewModel.swift in Sources */,
+				407C9D7F2865A1EC00F3CB27 /* Error.swift in Sources */,
+				407C9D8B2865AA3200F3CB27 /* Constants.swift in Sources */,
+				40B18A2F28659E6A00F7DE74 /* User.swift in Sources */,
 				405C35A62862FF84006A859F /* EmptyViewController.swift in Sources */,
+				407C9D852865A4FE00F3CB27 /* UserRepositoryImplementation.swift in Sources */,
 				405C35902862F953006A859F /* SceneDelegate.swift in Sources */,
+				407C9D93286631DB00F3CB27 /* Spinner.swift in Sources */,
 				405C35B828635121006A859F /* Utilities.swift in Sources */,
+				40B18A2C28659BF700F7DE74 /* BaseResponse.swift in Sources */,
 				405C35BD2863521C006A859F /* HeaderBackgroundAuth.swift in Sources */,
 				405C35A42862FF79006A859F /* HomeViewController.swift in Sources */,
+				407C9D892865A5A000F3CB27 /* UserRemoteDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

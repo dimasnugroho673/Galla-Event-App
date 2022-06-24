@@ -28,4 +28,29 @@ class Utilities {
 
     return alert
   }
+
+  func showSpinner(containerView: UIView, isAnimating: Bool) -> UIActivityIndicatorView {
+    let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+    spinner.style = .large
+    spinner.color = .white
+    spinner.center = containerView.center
+    spinner.backgroundColor = .black
+    spinner.layer.cornerRadius = 12
+//    spinner.hidesWhenStopped = true
+    
+//    if isAnimating {
+//      spinner.startAnimating()
+//    } else {
+////      spinner.stopAnimating()
+//    }
+
+    containerView.addSubview(spinner)
+
+    return spinner
+  }
+
+  static func validateEmail(candidate: String) -> Bool {
+    let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
+    return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
+  }
 }

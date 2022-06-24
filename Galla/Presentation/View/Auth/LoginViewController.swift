@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-  let authViewModel: AuthViewModel = AuthViewModel()
+  let authViewModel: AuthViewModel = AuthViewModel(userService: Injection().provideHome())
 
   lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)
@@ -51,6 +51,8 @@ class LoginViewController: UIViewController {
     tf.setLeftPaddingPoints(10)
     tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.1).cgColor
     tf.layer.borderWidth = 0.8
+    tf.autocapitalizationType = .none
+    tf.keyboardType = .emailAddress
 
     return tf
   }()
@@ -83,6 +85,32 @@ class LoginViewController: UIViewController {
     super.viewDidLoad()
 
     configureUI()
+    configureBinding()
+  }
+
+  func configureBinding() {
+    authViewModel.attempLoginStatus.bind { result in
+      switch result {
+      case .success(let data):
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+        guard let tab = window.rootViewController as? RootViewController else { return }
+
+        tab.configureUIandTabBar()
+
+        data ? self.dismiss(animated: true, completion: nil) : nil
+      case .failure(let error):
+        self.present(Utilities().showAlert(title: "Authentication Failed", message: error.errorDescription ?? ""), animated: true)
+      case .none:
+        print("")
+      }
+    }
+    authViewModel.isLoading.bind { result in
+      if result {
+        self.showSpinner()
+      } else {
+        self.removeSpinner()
+      }
+    }
   }
 
   func configureUI() {
@@ -152,22 +180,6 @@ class LoginViewController: UIViewController {
     }
 
     authViewModel.attemptLogin(email: email, password: password)
-
-    authViewModel.attempLoginStatus.bind { result in
-      switch result {
-      case .success(_):
-        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
-        guard let tab = window.rootViewController as? RootViewController else { return }
-
-        tab.configureUIandTabBar()
-
-        return self.dismiss(animated: true, completion: nil)
-      case .failure(let error):
-        self.present(Utilities().showAlert(title: "Authentication Failed", message: error.errorDescription ?? ""), animated: true)
-      case .none:
-        print("")
-      }
-    }
   }
 
   func dismiss() {
