@@ -34,6 +34,7 @@ class UserService: UserUseCase {
     return userRepository.register(with: credentials) { result in
       switch result {
       case .success(let data):
+        self.saveUserData(with: data.data)
         completion(.success(data))
       case .failure(let error):
         completion(.failure(error))
@@ -54,6 +55,7 @@ class UserService: UserUseCase {
     return userRepository.login(email: email, password: password) { result in
       switch result {
       case .success(let data):
+        self.saveUserData(with: data.data)
         completion(.success(data))
       case .failure(let error):
         completion(.failure(error))
@@ -76,9 +78,9 @@ class UserService: UserUseCase {
 //    <#code#>
 //  }
 
-//  func saveUserData(with data: User) {
-//    <#code#>
-//  }
+  func saveUserData(with data: User) {
+    return userRepository.saveUserData(with: data)
+  }
 
 
 }

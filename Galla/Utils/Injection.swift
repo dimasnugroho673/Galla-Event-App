@@ -10,8 +10,9 @@ import Foundation
 class Injection {
 
   func provideHome() -> UserService {
-    let dataSource = UserRemoteDataSource()
-    let repository = UserRepositoryImplementation(dataSource: dataSource)
+    let remoteDataSource = UserRemoteDataSource()
+    let localDataSource = UserLocalDataSource()
+    let repository = UserRepositoryImplementation(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
 
     return UserService(userRepository: repository)
   }

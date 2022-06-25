@@ -7,14 +7,16 @@
 
 class UserRepositoryImplementation: UserRepository {
 
-  private let dataSource: UserRemoteDataSource
+  private let remoteDataSource: UserRemoteDataSource
+  private let localDataSource: UserLocalDataSource
 
-  init(dataSource: UserRemoteDataSource) {
-    self.dataSource = dataSource
+  init(remoteDataSource: UserRemoteDataSource, localDataSource: UserLocalDataSource) {
+    self.remoteDataSource = remoteDataSource
+    self.localDataSource = localDataSource
   }
 
   func register(with credentials: AuthCredential, completion: @escaping (Result<BaseResponse<User>, ResponseError>) -> ()) {
-    return dataSource.register(with: credentials) { result in
+    return remoteDataSource.register(with: credentials) { result in
       switch result {
       case .success(let data):
         completion(.success(data))
@@ -25,7 +27,7 @@ class UserRepositoryImplementation: UserRepository {
   }
 
   func login(email: String, password: String, completion: @escaping (Result<BaseResponse<User>, ResponseError>) -> ()) {
-    return dataSource.login(withEmail: email, withPassword: password) { result in
+    return remoteDataSource.login(withEmail: email, withPassword: password) { result in
       switch result {
       case .success(let data):
         completion(.success(data))
@@ -36,7 +38,7 @@ class UserRepositoryImplementation: UserRepository {
   }
 
   func logout(completion: @escaping (Result<Bool, ResponseError>) -> ()) {
-    return dataSource.logout { result in
+    return remoteDataSource.logout { result in
       switch result {
       case .success(let data):
         completion(.success(data))
@@ -56,5 +58,9 @@ class UserRepositoryImplementation: UserRepository {
 //      }
 //    }
 //  }
+
+  func saveUserData(with data: User) {
+    return localDataSource.saveUserData(data)
+  }
 
 }
