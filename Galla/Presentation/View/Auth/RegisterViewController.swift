@@ -9,6 +9,8 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+  let userViewModel: UserViewModel = UserViewModel(userService: Injection().provideHome())
+
   lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)
     sv.translatesAutoresizingMaskIntoConstraints = false
@@ -69,6 +71,8 @@ class RegisterViewController: UIViewController {
     tf.setLeftPaddingPoints(10)
     tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.1).cgColor
     tf.layer.borderWidth = 0.8
+    tf.autocapitalizationType = .words
+    tf.autocorrectionType = .no
 
     return tf
   }()
@@ -84,6 +88,9 @@ class RegisterViewController: UIViewController {
     tf.setLeftPaddingPoints(10)
     tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.1).cgColor
     tf.layer.borderWidth = 0.8
+    tf.autocapitalizationType = .none
+    tf.keyboardType = .emailAddress
+    tf.autocorrectionType = .no
 
     return tf
   }()
@@ -100,6 +107,7 @@ class RegisterViewController: UIViewController {
     tf.isSecureTextEntry = true
     tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.1).cgColor
     tf.layer.borderWidth = 0.8
+    tf.autocorrectionType = .no
 
     return tf
   }()
@@ -116,6 +124,7 @@ class RegisterViewController: UIViewController {
     tf.isSecureTextEntry = true
     tf.layer.borderColor = UIColor(hexString: "535353").withAlphaComponent(0.1).cgColor
     tf.layer.borderWidth = 0.8
+    tf.autocorrectionType = .no
 
     return tf
   }()
@@ -133,6 +142,7 @@ class RegisterViewController: UIViewController {
     super.viewDidLoad()
 
     configureUI()
+    configureBinding()
   }
 
   func configureUI() {
@@ -205,12 +215,44 @@ class RegisterViewController: UIViewController {
     ])
   }
 
+  func configureBinding() {
+    userViewModel.attemptRegisterStatus.bind { result in
+      switch result {
+      case .success(let data):
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+        guard let tab = window.rootViewController as? RootViewController else { return }
+
+        tab.configureUIandTabBar()
+
+        data ? self.dismiss(animated: true, completion: nil) : nil
+      case .failure(let error):
+        self.present(Utilities().showAlert(title: "Register Failed", message: error.errorDescription ?? ""), animated: true)
+      case .none:
+        return
+      }
+    }
+
+    userViewModel.isLoading.bind { result in
+      if result {
+        self.showSpinner()
+      } else {
+        self.removeSpinner()
+      }
+    }
+  }
+
   @objc func handleGoToSignIn() {
     navigationController?.popViewController(animated: true)
   }
 
   @objc func handleRegisterButtonTap() {
-    dismiss(animated: true, completion: nil)
+
+    guard let fullname = fullnameTextField.text else { return }
+    guard let email = emailTextField.text else { return }
+    guard let password = passwordTextField.text else { return }
+    guard let confirmPassword = confirmPasswordTextField.text else { return }
+
+    userViewModel.attemptRegister(credentials: AuthCredential(name: fullname, email: email, password: password, confirmPassword: confirmPassword))
   }
 
 }

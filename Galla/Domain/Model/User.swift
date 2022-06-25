@@ -11,6 +11,7 @@ struct AuthCredential {
   let name: String
   let email: String
   let password: String
+  let confirmPassword: String
 }
 
 struct User: Codable {

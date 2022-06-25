@@ -14,6 +14,23 @@ class UserService: UserUseCase {
   }
 
   func register(with credentials: AuthCredential, completion: @escaping (Result<BaseResponse<User>, ResponseError>) -> ()) {
+
+    if credentials.name == "" || credentials.email == "" || credentials.password == "" || credentials.confirmPassword == "" {
+      return completion(.failure(ResponseError.credentialsCannotEmpty))
+    }
+
+    if !Utilities.validateEmail(candidate: credentials.email) {
+      return completion(.failure(ResponseError.customError("Email address not valid format")))
+    }
+
+    if credentials.password.count <= 6 {
+      return completion(.failure(ResponseError.customError("Password must be at least 6 characters")))
+    }
+
+    if credentials.password != credentials.confirmPassword {
+      return completion(.failure(ResponseError.customError("Password and confirm password must be same")))
+    }
+
     return userRepository.register(with: credentials) { result in
       switch result {
       case .success(let data):
@@ -32,10 +49,6 @@ class UserService: UserUseCase {
 
     if !Utilities.validateEmail(candidate: email) {
       return completion(.failure(ResponseError.customError("Email address not valid format")))
-    }
-
-    if password.count <= 6 {
-      return completion(.failure(ResponseError.customError("Password minimal 6 character")))
     }
 
     return userRepository.login(email: email, password: password) { result in
@@ -60,6 +73,10 @@ class UserService: UserUseCase {
   }
 
 //  func fetchUserData(with metaCredential: MetaCredential, completion: @escaping (Result<BaseResponse<User>, ResponseError>) -> ()) {
+//    <#code#>
+//  }
+
+//  func saveUserData(with data: User) {
 //    <#code#>
 //  }
 

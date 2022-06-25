@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-  let authViewModel: AuthViewModel = AuthViewModel(userService: Injection().provideHome())
+  let userViewModel: UserViewModel = UserViewModel(userService: Injection().provideHome())
 
   lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)
@@ -89,7 +89,7 @@ class LoginViewController: UIViewController {
   }
 
   func configureBinding() {
-    authViewModel.attempLoginStatus.bind { result in
+    userViewModel.attemptLoginStatus.bind { result in
       switch result {
       case .success(let data):
         guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
@@ -104,7 +104,8 @@ class LoginViewController: UIViewController {
         print("")
       }
     }
-    authViewModel.isLoading.bind { result in
+
+    userViewModel.isLoading.bind { result in
       if result {
         self.showSpinner()
       } else {
@@ -179,7 +180,7 @@ class LoginViewController: UIViewController {
       return
     }
 
-    authViewModel.attemptLogin(email: email, password: password)
+    userViewModel.attemptLogin(email: email, password: password)
   }
 
   func dismiss() {

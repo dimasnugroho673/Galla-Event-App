@@ -12,3 +12,7 @@ struct BaseResponse<T: Codable>: Codable {
   let data: T
   let meta: MetaCredential?
 }
+
+struct ValidationResponse<T: Any>: Codable {
+  let T: [String]
+}

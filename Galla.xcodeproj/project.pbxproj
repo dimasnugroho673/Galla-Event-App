@@ -19,7 +19,7 @@
 		405C35AF28630820006A859F /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 405C35AB28630820006A859F /* Poppins-Regular.ttf */; };
 		405C35B028630820006A859F /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 405C35AC28630820006A859F /* Poppins-Medium.ttf */; };
 		405C35B228634027006A859F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35B128634027006A859F /* LoginViewController.swift */; };
-		405C35B52863407E006A859F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35B42863407E006A859F /* AuthViewModel.swift */; };
+		405C35B52863407E006A859F /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35B42863407E006A859F /* UserViewModel.swift */; };
 		405C35B828635121006A859F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35B728635121006A859F /* Utilities.swift */; };
 		405C35BA2863518F006A859F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35B92863518F006A859F /* Extensions.swift */; };
 		405C35BD2863521C006A859F /* HeaderBackgroundAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35BC2863521C006A859F /* HeaderBackgroundAuth.swift */; };
@@ -55,7 +55,7 @@
 		405C35AB28630820006A859F /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		405C35AC28630820006A859F /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		405C35B128634027006A859F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		405C35B42863407E006A859F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		405C35B42863407E006A859F /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		405C35B728635121006A859F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		405C35B92863518F006A859F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		405C35BC2863521C006A859F /* HeaderBackgroundAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderBackgroundAuth.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		405C35B32863406C006A859F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				405C35B42863407E006A859F /* AuthViewModel.swift */,
+				405C35B42863407E006A859F /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -372,7 +372,7 @@
 				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,
 				405C35922862F953006A859F /* RootViewController.swift in Sources */,
 				405C358E2862F953006A859F /* AppDelegate.swift in Sources */,
-				405C35B52863407E006A859F /* AuthViewModel.swift in Sources */,
+				405C35B52863407E006A859F /* UserViewModel.swift in Sources */,
 				407C9D7F2865A1EC00F3CB27 /* Error.swift in Sources */,
 				407C9D8B2865AA3200F3CB27 /* Constants.swift in Sources */,
 				40B18A2F28659E6A00F7DE74 /* User.swift in Sources */,
