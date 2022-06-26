@@ -74,9 +74,16 @@ class UserService: UserUseCase {
     }
   }
 
-//  func fetchUserData(with metaCredential: MetaCredential, completion: @escaping (Result<BaseResponse<User>, ResponseError>) -> ()) {
-//    <#code#>
-//  }
+  func fetchUserData(with metaCredential: MetaCredential, completion: @escaping (Result<BaseResponse<User>, ResponseError>) -> ()) {
+    return userRepository.fetchUserData(with: metaCredential) { result in
+      switch result {
+      case .success(let data):
+        completion(.success(data))
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+  }
 
   func saveUserData(with data: User) {
     return userRepository.saveUserData(with: data)

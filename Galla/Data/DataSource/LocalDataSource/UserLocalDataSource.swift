@@ -9,19 +9,23 @@ import Foundation
 
 class UserLocalDataSource {
 
-  func getUserData(completion: @escaping(User) -> ()) {
+  func getUserData() -> User {
+    var user: User?
     do {
       let retriveData = UserDefaults.standard.data(forKey: "LocalUserData")!
 
       let decode = try JSONDecoder().decode(User.self, from: retriveData)
 
-      print(decode)
-      DispatchQueue.main.async {
-        completion(decode)
-      }
+      user = decode
+//      print(decode)
+//      DispatchQueue.main.async {
+//        completion(decode)
+//      }
     } catch {
       print("DEBUG: Error while retrive user data: persistent data not configure")
     }
+
+    return user!
   }
 
   func saveUserData(_ data: User) {

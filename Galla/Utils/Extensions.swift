@@ -26,3 +26,16 @@ extension UIColor {
     self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
   }
 }
+
+extension UITextField {
+  func setLeftPaddingPoints(_ amount:CGFloat){
+    let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+    self.leftView = paddingView
+    self.leftViewMode = .always
+  }
+  func setRightPaddingPoints(_ amount:CGFloat) {
+    let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+    self.rightView = paddingView
+    self.rightViewMode = .always
+  }
+}
