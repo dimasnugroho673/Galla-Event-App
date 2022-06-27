@@ -107,16 +107,24 @@ class HomeViewController: UIViewController {
   }()
 
   lazy var collectionView: UICollectionView = {
-    let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout {
+    let layout = UICollectionViewCompositionalLayout {
       sectionIndex, _  in
       return HomeViewController.createSectionLayout(section: sectionIndex)
-    })
+    }
+    layout.configuration.scrollDirection = .horizontal
+
+    let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
     cv.translatesAutoresizingMaskIntoConstraints = false
     cv.register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.identifier)
+    cv.register(PopularEventCell.self, forCellWithReuseIdentifier: PopularEventCell.identifier)
     cv.register(TitleHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier)
     cv.delegate = self
     cv.dataSource = self
     cv.backgroundColor = .clear
+    cv.alwaysBounceVertical = false
+    cv.scrollsToTop = false
+    // untuk disable scroll vertical
+    cv.isScrollEnabled = false
 
     return cv
   }()
@@ -175,10 +183,10 @@ class HomeViewController: UIViewController {
       searchPlaceholderStack.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor, constant: 0),
       searchPlaceholderStack.leftAnchor.constraint(equalTo: searchTextField.leftAnchor, constant: 13),
 
-      collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
+      collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 5),
       collectionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0),
       collectionView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 0),
-      collectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0)
+      collectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20)
     ])
   }
 
@@ -191,24 +199,60 @@ extension HomeViewController: UICollectionViewDelegate {
 }
 
 extension HomeViewController: UICollectionViewDataSource {
+
+  // jumlah section
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return 2
+  }
+
+  // jumlah item per section
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 3
+    switch section {
+      case 0:
+        return 3
+      case 1:
+        return 3
+      default:
+        return 0
+    }
   }
 
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
-    header.titleSection.text = "Upcoming Events"
+    switch indexPath.section {
+      case 0:
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
+        header.titleSection.text = "Upcoming Events"
+        header.actionButton.isHidden = true
 
-    return header
+        return header
+      case 1:
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
+        header.titleSection.text = "Popular Now"
+
+        return header
+      default:
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
+        header.titleSection.text = "None"
+
+        return header
+    }
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//    if indexPath.section == 0 {
-//    case 0:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath)
+    switch indexPath.section {
+      case 0:
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath)
 
-      return cell
-//    }
+        return cell
+      case 1:
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  PopularEventCell.identifier, for: indexPath)
+
+        return cell
+      default:
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath)
+
+        return cell
+    }
   }
 }
 
@@ -216,7 +260,7 @@ extension HomeViewController {
   static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
     let supplementaryHeader = [
       NSCollectionLayoutBoundarySupplementaryItem(
-        layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(48)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
       ]
 
     switch section {
@@ -235,6 +279,21 @@ extension HomeViewController {
         layoutSection.boundarySupplementaryItems = supplementaryHeader
 
         return layoutSection
+    case 1:
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+
+      let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+      layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
+
+      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .absolute(290), heightDimension: .absolute(228))
+
+      let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
+
+      let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+      layoutSection.orthogonalScrollingBehavior = .continuous
+      layoutSection.boundarySupplementaryItems = supplementaryHeader
+
+      return layoutSection
     default:
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
 
