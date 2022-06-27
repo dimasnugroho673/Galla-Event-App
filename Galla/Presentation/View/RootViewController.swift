@@ -23,6 +23,8 @@ class RootViewController: UITabBarController {
   }
 
   func checkIsLogin() {
+    authViewModel.isLogin()
+
     authViewModel.isLoggedIn.bind { result in
       if result {
         // fetch data

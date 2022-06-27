@@ -69,4 +69,8 @@ class UserRepositoryImplementation: UserRepository {
     return localDataSource.saveUserData(data)
   }
 
+  func currentUser() -> User {
+    return localDataSource.getUserData()
+  }
+
 }

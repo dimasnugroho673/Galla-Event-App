@@ -11,4 +11,5 @@ protocol UserRepository {
   func logout(completion: @escaping(Result<Bool, ResponseError>) -> ())
   func fetchUserData(with metaCredential: MetaCredential, completion: @escaping(Result<BaseResponse<User>, ResponseError>) -> ())
   func saveUserData(with data: User)
+  func currentUser() -> User
 }

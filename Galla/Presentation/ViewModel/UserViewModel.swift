@@ -50,8 +50,10 @@ class UserViewModel {
     self.userService = userService
   }
 
-  func isLogin() -> Observable<Bool> {
-    return isLoggedIn
+  func isLogin() {
+    if userService.currentUser().uid != "" {
+      isLoggedIn.value = true
+    }
   }
 
   func attemptLogin(email: String, password: String) {

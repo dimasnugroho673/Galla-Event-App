@@ -90,4 +90,9 @@ class UserService: UserUseCase {
   }
 
 
+  func currentUser() -> User {
+    return userRepository.currentUser()
+  }
+
+
 }

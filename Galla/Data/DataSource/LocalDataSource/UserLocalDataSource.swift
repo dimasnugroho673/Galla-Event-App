@@ -12,15 +12,19 @@ class UserLocalDataSource {
   func getUserData() -> User {
     var user: User?
     do {
-      let retriveData = UserDefaults.standard.data(forKey: "LocalUserData")!
+      let retriveData = UserDefaults.standard.data(forKey: "LocalUserData")
 
-      let decode = try JSONDecoder().decode(User.self, from: retriveData)
+      if (retriveData != nil) {
+        let decode = try JSONDecoder().decode(User.self, from: retriveData!)
 
-      user = decode
-//      print(decode)
-//      DispatchQueue.main.async {
-//        completion(decode)
-//      }
+        user = decode
+  //      print(decode)
+  //      DispatchQueue.main.async {
+  //        completion(decode)
+  //      }
+      } else {
+        user = User(uid: "", name: "", email: "", joined: "")
+      }
     } catch {
       print("DEBUG: Error while retrive user data: persistent data not configure")
     }
