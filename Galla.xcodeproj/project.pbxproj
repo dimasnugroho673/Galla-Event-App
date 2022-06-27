@@ -38,6 +38,7 @@
 		407C9D93286631DB00F3CB27 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D92286631DB00F3CB27 /* Spinner.swift */; };
 		407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D942866CACF00F3CB27 /* UserLocalDataSource.swift */; };
 		407C9D9D28677DD500F3CB27 /* GallaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D9C28677DD500F3CB27 /* GallaTests.swift */; };
+		40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA995286945EB00E3346B /* UpcomingEventCell.swift */; };
 		40B18A2C28659BF700F7DE74 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2B28659BF700F7DE74 /* BaseResponse.swift */; };
 		40B18A2F28659E6A00F7DE74 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2E28659E6A00F7DE74 /* User.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 		407C9D942866CACF00F3CB27 /* UserLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataSource.swift; sourceTree = "<group>"; };
 		407C9D9A28677DD400F3CB27 /* GallaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GallaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		407C9D9C28677DD500F3CB27 /* GallaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaTests.swift; sourceTree = "<group>"; };
+		40ABA995286945EB00E3346B /* UpcomingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 		40B18A2B28659BF700F7DE74 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		40B18A2E28659E6A00F7DE74 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,9 +155,9 @@
 		405C35A22862FB2E006A859F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				40ABA99728694FAE00E3346B /* Storyboard */,
 				405C35C0286365FF006A859F /* Auth */,
 				405C35BB286351F9006A859F /* Components */,
-				405C35982862F955006A859F /* LaunchScreen.storyboard */,
 				405C35912862F953006A859F /* RootViewController.swift */,
 				405C35A32862FF79006A859F /* HomeViewController.swift */,
 				405C35A52862FF84006A859F /* EmptyViewController.swift */,
@@ -211,6 +213,7 @@
 				405C35BC2863521C006A859F /* HeaderBackgroundAuth.swift */,
 				405C35BE2863600C006A859F /* CTAButton.swift */,
 				407C9D92286631DB00F3CB27 /* Spinner.swift */,
+				40ABA995286945EB00E3346B /* UpcomingEventCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -317,6 +320,14 @@
 				407C9D9C28677DD500F3CB27 /* GallaTests.swift */,
 			);
 			path = GallaTests;
+			sourceTree = "<group>";
+		};
+		40ABA99728694FAE00E3346B /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				405C35982862F955006A859F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +441,7 @@
 				405C35BA2863518F006A859F /* Extensions.swift in Sources */,
 				407C9D8F2865C81B00F3CB27 /* Injection.swift in Sources */,
 				407C9D91286605B500F3CB27 /* CustomResponseHandler.swift in Sources */,
+				40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */,
 				407C9D7C2865A05900F3CB27 /* UserUseCase.swift in Sources */,
 				407C9D8D2865C5E000F3CB27 /* UserService.swift in Sources */,
 				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,

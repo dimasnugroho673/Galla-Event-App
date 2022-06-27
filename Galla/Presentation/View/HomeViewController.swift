@@ -107,8 +107,14 @@ class HomeViewController: UIViewController {
   }()
 
   lazy var collectionView: UICollectionView = {
-    let cv = UICollectionView()
+    let cv = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout {
+      sectionIndex, _  in
+      return HomeViewController.createSectionLayout(section: sectionIndex)
+    })
     cv.translatesAutoresizingMaskIntoConstraints = false
+    cv.register(UpcomingEventCell.self, forCellWithReuseIdentifier: UpcomingEventCell.identifier)
+    cv.delegate = self
+    cv.dataSource = self
 
     return cv
   }()
@@ -121,6 +127,7 @@ class HomeViewController: UIViewController {
 
     view.addSubview(scrollView)
     scrollView.addSubview(containerView)
+    scrollView.addSubview(collectionView)
 
     let myLoationStack = UIStackView(arrangedSubviews: [nearEventLabel, myLocationHeader])
     myLoationStack.translatesAutoresizingMaskIntoConstraints = false
@@ -171,9 +178,59 @@ class HomeViewController: UIViewController {
   @objc func handleTextInputChange() {
     placeholderSearchLabel.isHidden = !searchTextField.text!.isEmpty
   }
+}
 
-
+extension HomeViewController: UICollectionViewDelegate {
 
 }
 
+extension HomeViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 1
+  }
 
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//    if indexPath.section == 0 {
+//    case 0:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath) as! UICollectionViewCell
+
+      return cell
+//    }
+  }
+}
+
+extension HomeViewController {
+  static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
+
+    switch section {
+      case 0:
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+
+        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+
+        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(180))
+
+        let layoutGroup = NSCollectionLayoutGroup(layoutSize: layoutGroupSize)
+
+        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+        layoutSection.orthogonalScrollingBehavior = .continuous
+
+        return layoutSection
+    default:
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+
+      let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+      layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+
+      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .estimated(180))
+
+      let layoutGroup = NSCollectionLayoutGroup(layoutSize: layoutGroupSize)
+
+      let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+      layoutSection.orthogonalScrollingBehavior = .continuous
+
+      return layoutSection
+    }
+  }
+}
