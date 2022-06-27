@@ -63,6 +63,13 @@ class UpcomingEventCell: UICollectionViewCell {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = .white
     layer.cornerRadius = 12
+    layer.shadowColor = UIColor(hexString: "F4F4F4").cgColor
+    layer.shadowOpacity = 1
+    layer.shadowRadius = 30
+    layer.shadowOffset = CGSize(width: 10, height: 10)
+
+    layer.shouldRasterize = true
+    layer.rasterizationScale = UIScreen.main.scale
 
     let locationStack = UIStackView(arrangedSubviews: [locationIconImage, locationLabel])
     locationStack.translatesAutoresizingMaskIntoConstraints = false
