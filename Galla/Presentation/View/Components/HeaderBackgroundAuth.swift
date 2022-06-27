@@ -82,7 +82,7 @@ class HeaderBackgroundAuth: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configureUI() {
+  private func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
     heightAnchor.constraint(equalToConstant: 323).isActive = true
     widthAnchor.constraint(equalToConstant: width).isActive = true

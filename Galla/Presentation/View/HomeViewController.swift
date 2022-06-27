@@ -132,6 +132,10 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    configureUI()
+  }
+
+  private func configureUI() {
     title = "Home"
     navigationController?.navigationBar.isHidden = true
 

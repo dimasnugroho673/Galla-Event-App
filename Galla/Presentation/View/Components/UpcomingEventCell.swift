@@ -93,6 +93,10 @@ class UpcomingEventCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
+    configureUI()
+  }
+
+  private func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = .white
     layer.cornerRadius = 12
@@ -151,7 +155,6 @@ class UpcomingEventCell: UICollectionViewCell {
       joinButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -12),
       joinButton.heightAnchor.constraint(equalToConstant: 33)
     ])
-
   }
 
   required init?(coder: NSCoder) {

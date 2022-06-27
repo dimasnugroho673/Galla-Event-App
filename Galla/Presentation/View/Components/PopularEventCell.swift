@@ -69,6 +69,11 @@ class PopularEventCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
+    configureUI()
+
+  }
+
+  private func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = .white
     layer.cornerRadius = 12
@@ -101,7 +106,6 @@ class PopularEventCell: UICollectionViewCell {
       dateLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
       eventNameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
     ])
-
   }
 
   required init?(coder: NSCoder) {

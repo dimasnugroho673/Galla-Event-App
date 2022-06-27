@@ -16,6 +16,10 @@ class CTAButton: UIButton {
 
     super.init(frame: .zero)
 
+    configureUI()
+  }
+
+  private func configureUI() {
     setTitle(title, for: .normal)
     translatesAutoresizingMaskIntoConstraints = false
     heightAnchor.constraint(equalToConstant: 45).isActive = true
