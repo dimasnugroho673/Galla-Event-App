@@ -85,11 +85,11 @@ class UpcomingEventCell: UICollectionViewCell {
 
       locationStack.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: 13),
       locationStack.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
-      locationStack.rightAnchor.constraint(equalTo: rightAnchor, constant: 12),
+      locationStack.rightAnchor.constraint(equalTo: rightAnchor, constant: -12),
 
       eventNameLabel.topAnchor.constraint(equalTo: locationStack.bottomAnchor, constant: 5),
       eventNameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
-      eventNameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: 12),
+      eventNameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -12),
 
       joinButton.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 20),
       joinButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),

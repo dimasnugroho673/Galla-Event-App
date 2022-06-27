@@ -216,7 +216,7 @@ extension HomeViewController {
   static func createSectionLayout(section: Int) -> NSCollectionLayoutSection {
     let supplementaryHeader = [
       NSCollectionLayoutBoundarySupplementaryItem(
-        layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(48)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
       ]
 
     switch section {
@@ -224,7 +224,7 @@ extension HomeViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
 
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
 
         let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(262))
 
