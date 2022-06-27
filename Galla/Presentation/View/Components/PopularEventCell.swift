@@ -17,6 +17,7 @@ class PopularEventCell: UICollectionViewCell {
     iv.heightAnchor.constraint(equalToConstant: 150).isActive = true
     iv.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
     iv.image = UIImage(named: "dummy-poster")
+    iv.contentMode = .scaleAspectFill
     iv.layer.cornerRadius = 12
     iv.clipsToBounds = true
 

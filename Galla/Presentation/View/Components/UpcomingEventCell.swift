@@ -17,6 +17,7 @@ class UpcomingEventCell: UICollectionViewCell {
     iv.heightAnchor.constraint(equalToConstant: 106).isActive = true
     iv.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
     iv.image = UIImage(named: "img-sign-in")
+    iv.contentMode = .scaleAspectFill
     iv.layer.cornerRadius = 12
     iv.clipsToBounds = true
 
