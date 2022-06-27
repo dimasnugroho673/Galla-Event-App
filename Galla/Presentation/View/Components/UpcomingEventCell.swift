@@ -16,11 +16,44 @@ class UpcomingEventCell: UICollectionViewCell {
     iv.translatesAutoresizingMaskIntoConstraints = false
     iv.heightAnchor.constraint(equalToConstant: 106).isActive = true
     iv.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
-    iv.image = UIImage(named: "dummy-poster")
+    iv.image = UIImage(named: "img-sign-in")
     iv.layer.cornerRadius = 12
     iv.clipsToBounds = true
 
     return iv
+  }()
+
+  lazy var dateEventLabelBlurView: UIVisualEffectView = {
+    let blur = UIBlurEffect(style: UIBlurEffect.Style.regular)
+    let blurView = UIVisualEffectView(effect: blur)
+    blurView.translatesAutoresizingMaskIntoConstraints = false
+    blurView.widthAnchor.constraint(equalToConstant: 34).isActive = true
+    blurView.heightAnchor.constraint(equalToConstant: 34).isActive = true
+    blurView.layer.cornerRadius = 8
+    blurView.clipsToBounds = true
+
+    return blurView
+  }()
+
+  lazy var dateLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "9"
+    label.font = UIFont(name: "Poppins-SemiBold", size: 14)
+    label.textColor = .white
+    label.textAlignment = .center
+
+    return label
+  }()
+
+  lazy var monthLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "Sept"
+    label.font = UIFont(name: "Poppins", size: 8)
+    label.textColor = .white
+
+    return label
   }()
 
   lazy var locationIconImage: UIImageView = {
@@ -76,7 +109,15 @@ class UpcomingEventCell: UICollectionViewCell {
     locationStack.axis = .horizontal
     locationStack.spacing = 5
 
+    let dateStack = UIStackView(arrangedSubviews: [dateLabel, monthLabel])
+    dateStack.translatesAutoresizingMaskIntoConstraints = false
+    dateStack.axis = .vertical
+    dateStack.spacing = 0
+    dateStack.distribution = .fillProportionally
+
     addSubview(posterImageView)
+    posterImageView.addSubview(dateEventLabelBlurView)
+    dateEventLabelBlurView.contentView.addSubview(dateStack)
     addSubview(eventNameLabel)
     addSubview(locationStack)
     addSubview(joinButton)
@@ -89,6 +130,13 @@ class UpcomingEventCell: UICollectionViewCell {
       posterImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
       posterImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
       posterImageView.rightAnchor.constraint(equalTo: rightAnchor, constant: -12),
+
+      dateEventLabelBlurView.topAnchor.constraint(equalTo: posterImageView.topAnchor, constant: 10),
+      dateEventLabelBlurView.leftAnchor.constraint(equalTo: posterImageView.leftAnchor, constant: 10),
+
+      dateStack.centerXAnchor.constraint(equalTo: dateEventLabelBlurView.centerXAnchor),
+      dateStack.topAnchor.constraint(equalTo: dateEventLabelBlurView.topAnchor, constant: 2),
+      dateStack.bottomAnchor.constraint(equalTo: dateEventLabelBlurView.bottomAnchor, constant: -2),
 
       locationStack.topAnchor.constraint(equalTo: posterImageView.bottomAnchor, constant: 13),
       locationStack.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
