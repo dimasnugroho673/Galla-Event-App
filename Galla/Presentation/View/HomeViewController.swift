@@ -175,7 +175,7 @@ class HomeViewController: UIViewController {
       searchPlaceholderStack.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor, constant: 0),
       searchPlaceholderStack.leftAnchor.constraint(equalTo: searchTextField.leftAnchor, constant: 13),
 
-      collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 30),
+      collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10),
       collectionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 0),
       collectionView.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 0),
       collectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0)
