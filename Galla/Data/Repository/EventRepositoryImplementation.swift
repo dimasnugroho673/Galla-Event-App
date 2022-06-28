@@ -35,4 +35,14 @@ class EventRepositoryImplementation: EventRepository {
     }
   }
 
+  func fetchDetailEvent(uid: String, completion: @escaping (Result<BaseResponse<DetailEvent>, ResponseError>) -> ()) {
+    return remoteDataSource.fetchDetailEvent(uid: uid) { result in
+      switch result {
+        case .success(let data):
+          return completion(.success(data))
+        case .failure(let error):
+          return completion(.failure(error))
+      }
+    }
+  }
 }

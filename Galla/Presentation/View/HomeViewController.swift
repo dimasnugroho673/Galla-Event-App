@@ -215,6 +215,24 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    switch indexPath.section {
+    case 0:
+      let data = eventViewModel.upcomingEvents.value[indexPath.row]
+
+      let vc = DetailEventViewController(uid: data.uid, data: data)
+      vc.hidesBottomBarWhenPushed = true
+      navigationController?.pushViewController(vc, animated: true)
+    case 1:
+      let data = eventViewModel.popularEvents.value[indexPath.row]
+
+      let vc = DetailEventViewController(uid: data.uid, data: data)
+      vc.hidesBottomBarWhenPushed = true
+      navigationController?.pushViewController(vc, animated: true)
+    default:
+      return
+    }
+  }
 }
 
 extension HomeViewController: UICollectionViewDataSource {

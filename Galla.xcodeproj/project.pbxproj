@@ -51,6 +51,7 @@
 		40F2D60C286ABBC900F57DAC /* EventRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D60B286ABBC900F57DAC /* EventRepositoryImplementation.swift */; };
 		40F2D60E286ABBEA00F57DAC /* EventRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D60D286ABBEA00F57DAC /* EventRemoteDataSource.swift */; };
 		40F2D611286AEA7900F57DAC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 40F2D610286AEA7900F57DAC /* SDWebImage */; };
+		40F2D613286B294600F57DAC /* DetailEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D612286B294600F57DAC /* DetailEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		40F2D609286ABBA900F57DAC /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		40F2D60B286ABBC900F57DAC /* EventRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepositoryImplementation.swift; sourceTree = "<group>"; };
 		40F2D60D286ABBEA00F57DAC /* EventRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRemoteDataSource.swift; sourceTree = "<group>"; };
+		40F2D612286B294600F57DAC /* DetailEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				405C35912862F953006A859F /* RootViewController.swift */,
 				405C35A32862FF79006A859F /* HomeViewController.swift */,
 				405C35A52862FF84006A859F /* EmptyViewController.swift */,
+				40F2D612286B294600F57DAC /* DetailEventViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				407C9D8B2865AA3200F3CB27 /* Constants.swift in Sources */,
 				407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */,
 				40B18A2F28659E6A00F7DE74 /* User.swift in Sources */,
+				40F2D613286B294600F57DAC /* DetailEventViewController.swift in Sources */,
 				405C35A62862FF84006A859F /* EmptyViewController.swift in Sources */,
 				407C9D852865A4FE00F3CB27 /* UserRepositoryImplementation.swift in Sources */,
 				40F2D608286ABB4D00F57DAC /* EventUseCase.swift in Sources */,

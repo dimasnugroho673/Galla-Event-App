@@ -23,4 +23,11 @@ class Injection {
 
     return EventService(eventRepository: repository)
   }
+
+  func provideDetail() -> EventService {
+    let remoteDataSource = EventRemoteDataSource()
+    let repository = EventRepositoryImplementation(remoteDataSource: remoteDataSource)
+
+    return EventService(eventRepository: repository)
+  }
 }

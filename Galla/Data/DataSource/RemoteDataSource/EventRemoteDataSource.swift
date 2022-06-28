@@ -72,4 +72,37 @@ final class EventRemoteDataSource {
 
     task.resume()
   }
+
+
+  func fetchDetailEvent(uid: String, completion: @escaping (Result<BaseResponse<DetailEvent>, ResponseError>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/event/\(uid)") else { return }
+
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+      if let error = error {
+        print("DEBUG: Error while fetch Upcoming Event: \(error.localizedDescription)")
+        return
+      }
+
+      if let data = data {
+        do {
+          let result = try JSONDecoder().decode(BaseResponse<DetailEvent>.self, from: data)
+
+          DispatchQueue.main.async {
+            completion(.success(result))
+          }
+
+          return
+
+        } catch {
+          DispatchQueue.main.async {
+            completion(.failure(ResponseError.errorFetchingData))
+          }
+          print("DEBUG: Error while fetch Upcoming Event: \(error.localizedDescription)")
+        }
+      }
+
+    }
+
+    task.resume()
+  }
 }

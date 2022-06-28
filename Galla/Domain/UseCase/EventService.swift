@@ -37,5 +37,16 @@ class EventService: EventUseCase {
     }
   }
 
+  func fetchDetailEvent(uid: String, completion: @escaping (Result<BaseResponse<DetailEvent>, ResponseError>) -> ()) {
+    return eventRepository.fetchDetailEvent(uid: uid) { result in
+      switch result {
+        case .success(let data):
+          return completion(.success(data))
+        case .failure(let error):
+          return completion(.failure(error))
+      }
+    }
+  }
+
   
 }
