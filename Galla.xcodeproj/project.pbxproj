@@ -50,6 +50,7 @@
 		40F2D60A286ABBA900F57DAC /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D609286ABBA900F57DAC /* EventService.swift */; };
 		40F2D60C286ABBC900F57DAC /* EventRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D60B286ABBC900F57DAC /* EventRepositoryImplementation.swift */; };
 		40F2D60E286ABBEA00F57DAC /* EventRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D60D286ABBEA00F57DAC /* EventRemoteDataSource.swift */; };
+		40F2D611286AEA7900F57DAC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 40F2D610286AEA7900F57DAC /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F2D611286AEA7900F57DAC /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +375,9 @@
 			dependencies = (
 			);
 			name = Galla;
+			packageProductDependencies = (
+				40F2D610286AEA7900F57DAC /* SDWebImage */,
+			);
 			productName = Galla;
 			productReference = 405C358A2862F953006A859F /* Galla.app */;
 			productType = "com.apple.product-type.application";
@@ -423,6 +428,9 @@
 				Base,
 			);
 			mainGroup = 405C35812862F953006A859F;
+			packageReferences = (
+				40F2D60F286AEA7900F57DAC /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 405C358B2862F953006A859F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -765,6 +773,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		40F2D60F286AEA7900F57DAC /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		40F2D610286AEA7900F57DAC /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40F2D60F286AEA7900F57DAC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 405C35822862F953006A859F /* Project object */;
 }

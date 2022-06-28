@@ -53,4 +53,17 @@ class Utilities {
     let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
     return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
   }
+
+  static func formatterDate(dateInString: String, inFormat: String, toFormat format: String) -> String? {
+    let inputDateFormatter = DateFormatter()
+    inputDateFormatter.dateFormat = inFormat
+
+    if let date = inputDateFormatter.date(from: dateInString) {
+      let outputDateFormatter = DateFormatter()
+      outputDateFormatter.dateFormat = format
+
+      return outputDateFormatter.string(from: date)
+    }
+    return nil
+  }
 }

@@ -51,8 +51,6 @@ class PopularEventCell: UICollectionViewCell {
     label.text = "Dancing in The Moon"
     label.font = UIFont(name: "Poppins-SemiBold", size: 16)
     label.textColor = UIColor(named: "color-black")
-    label.lineBreakMode = .byWordWrapping
-    label.numberOfLines = 0
 
     return label
   }()

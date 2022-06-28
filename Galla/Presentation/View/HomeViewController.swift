@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeViewController: UIViewController {
 
@@ -226,52 +227,63 @@ extension HomeViewController: UICollectionViewDataSource {
   // jumlah item per section
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     switch section {
-      case 0:
-        return eventViewModel.upcomingEvents.value.count
-      case 1:
-        return eventViewModel.popularEvents.value.count
-      default:
-        return 0
+    case 0:
+      return eventViewModel.upcomingEvents.value.count
+    case 1:
+      return eventViewModel.popularEvents.value.count
+    default:
+      return 0
     }
   }
 
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     switch indexPath.section {
-      case 0:
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
-        header.titleSection.text = "Upcoming Events"
-        header.actionButton.isHidden = true
+    case 0:
+      let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
+      header.titleSection.text = "Upcoming Events"
+      header.actionButton.isHidden = true
 
-        return header
-      case 1:
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
-        header.titleSection.text = "Popular Now"
+      return header
+    case 1:
+      let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
+      header.titleSection.text = "Popular Now"
 
-        return header
-      default:
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
-        header.titleSection.text = "None"
+      return header
+    default:
+      let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as! TitleHeaderCollectionReusableView
+      header.titleSection.text = "None"
 
-        return header
+      return header
     }
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     switch indexPath.section {
-      case 0:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath) as! UpcomingEventCell
-        cell.eventNameLabel.text = eventViewModel.popularEvents.value[indexPath.row].name
-        cell.locationLabel.text = eventViewModel.locationEventCustom(location: eventViewModel.popularEvents.value[indexPath.row].location.regency.name, country: eventViewModel.popularEvents.value[indexPath.row].location.country)
+    case 0:
+      let data = eventViewModel.upcomingEvents.value[indexPath.row]
 
-        return cell
-      case 1:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  PopularEventCell.identifier, for: indexPath)
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath) as! UpcomingEventCell
+      cell.eventNameLabel.text = data.name
+      cell.locationLabel.text = eventViewModel.locationEventCustom(location: data.location.regency.name, country: data.location.country)
+      cell.posterImageView.sd_setImage(with: URL(string: data.poster)!, placeholderImage: UIImage(named: "dummy-poster"))
+      cell.dateLabel.text = Utilities.formatterDate(dateInString: data.dateStart, inFormat: "yyyy-MM-dd HH:mm:ss", toFormat: "dd")
+      cell.monthLabel.text = Utilities.formatterDate(dateInString: data.dateStart, inFormat: "yyyy-MM-dd HH:mm:ss", toFormat: "MMM")
 
-        return cell
-      default:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath)
+      return cell
+    case 1:
+      let data = eventViewModel.popularEvents.value[indexPath.row]
 
-        return cell
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier:  PopularEventCell.identifier, for: indexPath) as! PopularEventCell
+      cell.eventNameLabel.text = data.name
+      cell.posterImageView.sd_setImage(with: URL(string: data.poster)!, placeholderImage: UIImage(named: "dummy-poster"))
+      cell.freeLabel.isHidden = data.ticketPrice != "0" ? true : false
+      cell.dateLabel.text = Utilities.formatterDate(dateInString: data.dateStart, inFormat: "yyyy-MM-dd HH:mm:ss", toFormat: "dd MMMM yyyy • HH:mm")
+
+      return cell
+    default:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath)
+
+      return cell
     }
   }
 }
@@ -281,24 +293,24 @@ extension HomeViewController {
     let supplementaryHeader = [
       NSCollectionLayoutBoundarySupplementaryItem(
         layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-      ]
+    ]
 
     switch section {
-      case 0:
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+    case 0:
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
 
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
+      let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
+      layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
 
-        let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(262))
+      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(262))
 
-        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
+      let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
 
-        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        layoutSection.orthogonalScrollingBehavior = .continuous
-        layoutSection.boundarySupplementaryItems = supplementaryHeader
+      let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
+      layoutSection.orthogonalScrollingBehavior = .continuous
+      layoutSection.boundarySupplementaryItems = supplementaryHeader
 
-        return layoutSection
+      return layoutSection
     case 1:
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
 

@@ -53,6 +53,7 @@ class UpcomingEventCell: UICollectionViewCell {
     label.text = "Sept"
     label.font = UIFont(name: "Poppins", size: 8)
     label.textColor = .white
+    label.textAlignment = .center
 
     return label
   }()
@@ -151,7 +152,7 @@ class UpcomingEventCell: UICollectionViewCell {
       eventNameLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
       eventNameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -12),
 
-      joinButton.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 20),
+      joinButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
       joinButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
       joinButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -12),
       joinButton.heightAnchor.constraint(equalToConstant: 33)
