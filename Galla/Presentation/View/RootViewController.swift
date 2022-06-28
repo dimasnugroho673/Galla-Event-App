@@ -9,7 +9,7 @@ import UIKit
 
 class RootViewController: UITabBarController {
 
-  let authViewModel: UserViewModel = UserViewModel(userService: Injection().provideHome())
+  let authViewModel: UserViewModel = UserViewModel(userService: Injection().provideAuth())
 
   override func viewDidLoad() {
     super.viewDidLoad()

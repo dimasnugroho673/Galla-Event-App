@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+  let eventViewModel: EventViewModel = EventViewModel(eventService: Injection().provideHome())
+
   lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)
     sv.translatesAutoresizingMaskIntoConstraints = false
@@ -133,6 +135,14 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
 
     configureUI()
+    configureBinding()
+
+    eventViewModel.fetchPopularEvent(location: "", isFinished: false)
+    eventViewModel.fetchUpcomingEvent(location: "")
+
+    eventViewModel.upcomingEvents.bind { _ in
+      self.collectionView.reloadData()
+    }
   }
 
   private func configureUI() {
@@ -194,6 +204,10 @@ class HomeViewController: UIViewController {
     ])
   }
 
+  private func configureBinding() {
+
+  }
+
   @objc func handleTextInputChange() {
     placeholderSearchLabel.isHidden = !searchTextField.text!.isEmpty
   }
@@ -213,9 +227,9 @@ extension HomeViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     switch section {
       case 0:
-        return 3
+        return eventViewModel.upcomingEvents.value.count
       case 1:
-        return 3
+        return eventViewModel.popularEvents.value.count
       default:
         return 0
     }
@@ -245,7 +259,9 @@ extension HomeViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     switch indexPath.section {
       case 0:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath) as! UpcomingEventCell
+        cell.eventNameLabel.text = eventViewModel.popularEvents.value[indexPath.row].name
+        cell.locationLabel.text = eventViewModel.locationEventCustom(location: eventViewModel.popularEvents.value[indexPath.row].location.regency.name, country: eventViewModel.popularEvents.value[indexPath.row].location.country)
 
         return cell
       case 1:
