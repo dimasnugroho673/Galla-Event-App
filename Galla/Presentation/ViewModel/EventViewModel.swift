@@ -30,7 +30,7 @@ class EventViewModel {
   }
 
   func fetchUpcomingEvent(location: String) {
-    eventService.fetchUpcomingEvent(location: "Bintan") { result in
+    eventService.fetchUpcomingEvent(location: "tanjung pinang") { result in
       switch result {
       case .success(let data):
         self.upcomingEvents.value = data.data
@@ -41,11 +41,11 @@ class EventViewModel {
   }
 
   func fetchPopularEvent(location: String, isFinished: Bool) {
-    eventService.fetchPopularEvent(location: "Bintan", isFinished: false) { result in
+    eventService.fetchPopularEvent(location: "bintan", isFinished: false) { result in
       switch result {
       case .success(let data):
         self.popularEvents.value = data.data
-//        print(self.popularEvents.value)
+        print(self.popularEvents.value)
       case .failure(let error):
         self.errorMessage.value = error.errorDescription ?? ""
       }

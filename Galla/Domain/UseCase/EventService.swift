@@ -9,14 +9,17 @@ import Foundation
 
 class EventService: EventUseCase {
 
-  private let eventRepository: EventRepository
+  private let eventRepository: EventRepositoryImplementation
 
-  init(eventRepository: EventRepository) {
+  init(eventRepository: EventRepositoryImplementation) {
     self.eventRepository = eventRepository
   }
 
   func fetchPopularEvent(location: String, isFinished: Bool, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
-    return eventRepository.fetchPopularEvent(location: location, isFinished: isFinished) { result in
+
+    let newLoc = location.replacingOccurrences(of: " ", with: "+")
+
+    return eventRepository.fetchPopularEvent(location: newLoc, isFinished: isFinished) { result in
       switch result {
         case .success(let data):
           return completion(.success(data))
@@ -27,7 +30,10 @@ class EventService: EventUseCase {
   }
 
   func fetchUpcomingEvent(location: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
-    return eventRepository.fetchUpcomingEvent(location: location) { result in
+
+    let newLoc = location.replacingOccurrences(of: " ", with: "+")
+
+    return eventRepository.fetchUpcomingEvent(location: newLoc) { result in
       switch result {
         case .success(let data):
           return completion(.success(data))
