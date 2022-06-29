@@ -60,7 +60,7 @@ class PopularEventCell: UICollectionViewCell {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "9 Agustus 2022 • 17:00"
     label.font = UIFont(name: "Poppins-Regular", size: 12)
-    label.textColor = .systemGray3
+    label.textColor = .systemGray
 
     return label
   }()

@@ -136,7 +136,7 @@ class DetailEventViewController: UIViewController {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "9 Agustus 2022 • 17:00"
     label.font = UIFont(name: "Poppins-Regular", size: 12)
-    label.textColor = .systemGray3
+    label.textColor = .systemGray
 
     return label
   }()
@@ -156,7 +156,7 @@ class DetailEventViewController: UIViewController {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Bandung, ID"
     label.font = UIFont(name: "Poppins-Regular", size: 12)
-    label.textColor = .systemGray3
+    label.textColor = .systemGray
 
     return label
   }()
@@ -277,6 +277,8 @@ class DetailEventViewController: UIViewController {
 
       posterImageView.sd_setImage(with: URL(string: data.poster)!)
       eventNameLabel.text = data.name
+      dateLabel.text = Utilities.formatterDate(dateInString: data.dateStart, inFormat: "yyyy-MM-dd HH:mm:ss", toFormat: "dd MMMM yyyy • HH:mm")
+      locationLabel.text = eventViewModel.locationEventCustom(location: data.location.regency.name, country: data.location.country)
   }
 
   func configureBinding() {

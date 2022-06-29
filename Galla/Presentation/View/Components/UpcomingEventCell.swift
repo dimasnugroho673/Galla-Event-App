@@ -73,7 +73,7 @@ class UpcomingEventCell: UICollectionViewCell {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Bandung, ID"
     label.font = UIFont(name: "Poppins-Regular", size: 12)
-    label.textColor = .systemGray3
+    label.textColor = .systemGray
 
     return label
   }()
