@@ -26,6 +26,7 @@ class TitleHeaderCollectionReusableView: UICollectionReusableView {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle("See All", for: .normal)
     button.setTitleColor(UIColor(hexString: "8F929B"), for: .normal)
+    button.setTitleColor(UIColor.systemGray3, for: .selected)
     button.titleLabel?.font = UIFont(name: "Poppins-Medium", size: 16)
 
     return button
