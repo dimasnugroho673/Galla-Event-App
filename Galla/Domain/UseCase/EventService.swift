@@ -54,5 +54,10 @@ class EventService: EventUseCase {
     }
   }
 
-  
+  func joinEvent(uid: String, completion: @escaping (BaseResponse<String>) -> ()) {
+    return eventRepository.joinEvent(uid: uid) { result in
+      completion(result)
+    }
+  }
+
 }

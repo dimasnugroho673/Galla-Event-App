@@ -5,6 +5,8 @@
 //  Created by Dimas Putro on 24/06/22.
 //
 
+import Foundation
+
 class UserService: UserUseCase {
 
   private let userRepository: UserRepositoryImplementation
@@ -35,6 +37,10 @@ class UserService: UserUseCase {
       switch result {
       case .success(let data):
         self.saveUserData(with: data.data)
+
+        // sementara set user tokennya di userdefault, kedepannya akan menggunakan KeyChain
+        UserDefaults.standard.set(data.meta?.token, forKey: "UserToken")
+        
         completion(.success(data))
       case .failure(let error):
         completion(.failure(error))
@@ -56,6 +62,10 @@ class UserService: UserUseCase {
       switch result {
       case .success(let data):
         self.saveUserData(with: data.data)
+
+        // sementara set user tokennya di userdefault, kedepannya akan menggunakan KeyChain
+        UserDefaults.standard.set(data.meta?.token, forKey: "UserToken")
+
         completion(.success(data))
       case .failure(let error):
         completion(.failure(error))

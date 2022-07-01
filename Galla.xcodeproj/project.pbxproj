@@ -52,6 +52,11 @@
 		40F2D60E286ABBEA00F57DAC /* EventRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D60D286ABBEA00F57DAC /* EventRemoteDataSource.swift */; };
 		40F2D611286AEA7900F57DAC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 40F2D610286AEA7900F57DAC /* SDWebImage */; };
 		40F2D613286B294600F57DAC /* DetailEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D612286B294600F57DAC /* DetailEventViewController.swift */; };
+		40F2D615286C68B500F57DAC /* JoinedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D614286C68B500F57DAC /* JoinedViewController.swift */; };
+		40F2D61C286C694C00F57DAC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D61B286C694C00F57DAC /* PreviewViewController.swift */; };
+		40F2D61E286C696800F57DAC /* PreviewUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D61D286C696800F57DAC /* PreviewUIView.swift */; };
+		40F2D620286C91DA00F57DAC /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D61F286C91DA00F57DAC /* TicketViewController.swift */; };
+		40F2D665286EE38D00F57DAC /* MapEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D664286EE38C00F57DAC /* MapEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +117,11 @@
 		40F2D60B286ABBC900F57DAC /* EventRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepositoryImplementation.swift; sourceTree = "<group>"; };
 		40F2D60D286ABBEA00F57DAC /* EventRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRemoteDataSource.swift; sourceTree = "<group>"; };
 		40F2D612286B294600F57DAC /* DetailEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEventViewController.swift; sourceTree = "<group>"; };
+		40F2D614286C68B500F57DAC /* JoinedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedViewController.swift; sourceTree = "<group>"; };
+		40F2D61B286C694C00F57DAC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		40F2D61D286C696800F57DAC /* PreviewUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewUIView.swift; sourceTree = "<group>"; };
+		40F2D61F286C91DA00F57DAC /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
+		40F2D664286EE38C00F57DAC /* MapEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +194,9 @@
 				405C35A32862FF79006A859F /* HomeViewController.swift */,
 				405C35A52862FF84006A859F /* EmptyViewController.swift */,
 				40F2D612286B294600F57DAC /* DetailEventViewController.swift */,
+				40F2D614286C68B500F57DAC /* JoinedViewController.swift */,
+				40F2D61F286C91DA00F57DAC /* TicketViewController.swift */,
+				40F2D664286EE38C00F57DAC /* MapEventViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,6 +233,7 @@
 		405C35B628635112006A859F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				40F2D616286C68BD00F57DAC /* PreviewHelpers */,
 				405C35B728635121006A859F /* Utilities.swift */,
 				405C35B92863518F006A859F /* Extensions.swift */,
 				405C35C3286405AD006A859F /* Observable.swift */,
@@ -362,6 +376,15 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		40F2D616286C68BD00F57DAC /* PreviewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				40F2D61B286C694C00F57DAC /* PreviewViewController.swift */,
+				40F2D61D286C696800F57DAC /* PreviewUIView.swift */,
+			);
+			path = PreviewHelpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -483,10 +506,12 @@
 				407C9D8F2865C81B00F3CB27 /* Injection.swift in Sources */,
 				407C9D91286605B500F3CB27 /* CustomResponseHandler.swift in Sources */,
 				40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */,
+				40F2D61C286C694C00F57DAC /* PreviewViewController.swift in Sources */,
 				40ABA99C2869F48300E3346B /* PopularEventCell.swift in Sources */,
 				407C9D7C2865A05900F3CB27 /* UserUseCase.swift in Sources */,
 				40ABA99A28695C9900E3346B /* TitleHeaderCollectionReusableView.swift in Sources */,
 				407C9D8D2865C5E000F3CB27 /* UserService.swift in Sources */,
+				40F2D620286C91DA00F57DAC /* TicketViewController.swift in Sources */,
 				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,
 				405C35922862F953006A859F /* RootViewController.swift in Sources */,
 				405C358E2862F953006A859F /* AppDelegate.swift in Sources */,
@@ -496,6 +521,7 @@
 				407C9D8B2865AA3200F3CB27 /* Constants.swift in Sources */,
 				407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */,
 				40B18A2F28659E6A00F7DE74 /* User.swift in Sources */,
+				40F2D61E286C696800F57DAC /* PreviewUIView.swift in Sources */,
 				40F2D613286B294600F57DAC /* DetailEventViewController.swift in Sources */,
 				405C35A62862FF84006A859F /* EmptyViewController.swift in Sources */,
 				407C9D852865A4FE00F3CB27 /* UserRepositoryImplementation.swift in Sources */,
@@ -503,11 +529,13 @@
 				405C35902862F953006A859F /* SceneDelegate.swift in Sources */,
 				407C9D93286631DB00F3CB27 /* Spinner.swift in Sources */,
 				405C35B828635121006A859F /* Utilities.swift in Sources */,
+				40F2D615286C68B500F57DAC /* JoinedViewController.swift in Sources */,
 				40B18A2C28659BF700F7DE74 /* BaseResponse.swift in Sources */,
 				405C35BD2863521C006A859F /* HeaderBackgroundAuth.swift in Sources */,
 				40F2D60C286ABBC900F57DAC /* EventRepositoryImplementation.swift in Sources */,
 				405C35A42862FF79006A859F /* HomeViewController.swift in Sources */,
 				407C9D892865A5A000F3CB27 /* UserRemoteDataSource.swift in Sources */,
+				40F2D665286EE38D00F57DAC /* MapEventViewController.swift in Sources */,
 				40F2D60E286ABBEA00F57DAC /* EventRemoteDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

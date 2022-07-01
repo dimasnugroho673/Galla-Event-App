@@ -8,6 +8,9 @@
 import Foundation
 
 final class EventRemoteDataSource {
+
+  private let userToken: String = UserDefaults.standard.string(forKey: "UserToken") ?? ""
+
   func fetchPopularEvent(location: String, isFinished: Bool, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
     guard let url = URL(string: "\(Constants.API_ENDPOINT)/events/popular?location=\(location)&is_finished=\(isFinished)") else { return }
 
@@ -104,5 +107,40 @@ final class EventRemoteDataSource {
     }
 
     task.resume()
+  }
+
+  func joinEvent(uid: String, completion: @escaping(BaseResponse<String>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/event/\(uid)/join") else { return }
+
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+    request.httpMethod = "POST"
+
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+      if let error = error {
+        print("DEBUG: Error while Join Event: \(error.localizedDescription)")
+        return
+      }
+
+      if let data = data {
+        do {
+          let result = try JSONDecoder().decode(BaseResponse<String>.self, from: data)
+
+          print("DEBUG: \(result)")
+          DispatchQueue.main.async {
+            completion(result)
+          }
+
+          return
+
+        } catch {
+          print("DEBUG: Error while Join Event: \(error.localizedDescription)")
+        }
+      }
+    }
+
+    task.resume()
+
   }
 }

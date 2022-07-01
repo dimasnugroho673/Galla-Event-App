@@ -45,4 +45,11 @@ class EventRepositoryImplementation: EventRepository {
       }
     }
   }
+
+  func joinEvent(uid: String, completion: @escaping (BaseResponse<String>) -> ()) {
+    return remoteDataSource.joinEvent(uid: uid) { result in
+      completion(result)
+    }
+  }
+
 }

@@ -11,6 +11,10 @@ class CTAButton: UIButton {
 
   var title: String
 
+  override var buttonType: UIButton.ButtonType {
+    return .system
+  }
+
   init(title: String) {
     self.title = title
 
@@ -20,13 +24,15 @@ class CTAButton: UIButton {
   }
 
   private func configureUI() {
-    setTitle(title, for: .normal)
     translatesAutoresizingMaskIntoConstraints = false
+
+    setTitle(title, for: .normal)
+    setTitleColor(UIColor.white, for: .normal)
+    setTitleColor(UIColor(named: "color-primary"), for: .selected)
     heightAnchor.constraint(equalToConstant: 45).isActive = true
     backgroundColor = UIColor(named: "color-primary")
     layer.cornerRadius = 8
     titleLabel?.font = UIFont(name: "Poppins-Bold", size: 16)
-    titleLabel?.textColor = UIColor.white
   }
 
   required init?(coder: NSCoder) {

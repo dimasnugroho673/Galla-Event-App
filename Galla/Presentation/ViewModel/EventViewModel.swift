@@ -14,7 +14,8 @@ class EventViewModel {
 
   var upcomingEvents: Observable<[Event]> = Observable([Event]())
   var popularEvents: Observable<[Event]> = Observable([Event]())
-  var detailEvent: Observable<DetailEvent> = Observable(DetailEvent(uid: "", name: "", description: "", dateStart: "", dateEnd: "", poster: "", ticketPrice: "", quota: 0, quotaRemaining: 0, createdAt: "", updatedAt: "", location: Location(uid: "", country: "", venue: "", fullAddress: "", latitude: "", longitude: "", province: Region(id: 0, name: ""), regency: Region(id: 0, name: "")), viewer: 0, organizer: Organizer(uid: "", name: "", organizerDescription: "", image: "", isVerified: true, createdAt: "", updatedAt: "")))
+  var detailEvent: Observable<DetailEvent> = Observable(DetailEvent(uid: "", name: "", description: "", dateStart: "", dateEnd: "", poster: "", ticketPrice: "", quota: 0, quotaRemaining: 0, createdAt: "", updatedAt: "", location: Location(uid: "", country: "", venue: "", fullAddress: "", latitude: "", longitude: "", province: Region(id: 0, name: ""), regency: Region(id: 0, name: "")), viewer: 0, organizer: Organizer(uid: "", name: "", organizerDescription: "", image: "", isVerified: false, organizerSector: "", createdAt: "", updatedAt: "")))
+  var joinEventStatus: Observable<Bool> = Observable(false)
 
   init(eventService: EventService) {
     self.eventService = eventService
@@ -61,6 +62,14 @@ class EventViewModel {
       case .failure(let error):
         self.errorMessage.value = error.errorDescription ?? ""
       }
+    }
+  }
+
+  func attemptJoinEvent(uid: String) {
+    isLoading.value = true
+    eventService.joinEvent(uid: uid) { result in
+      self.joinEventStatus.value = result.status
+      self.isLoading.value = false
     }
   }
 }

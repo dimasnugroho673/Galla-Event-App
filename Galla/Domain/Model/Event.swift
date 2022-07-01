@@ -81,6 +81,7 @@ struct Organizer: Codable {
   let uid, name, organizerDescription: String
   let image: String
   let isVerified: Bool
+  let organizerSector: String
   let createdAt, updatedAt: String
 
   enum CodingKeys: String, CodingKey {
@@ -88,6 +89,7 @@ struct Organizer: Codable {
     case organizerDescription = "description"
     case image
     case isVerified = "is_verified"
+    case organizerSector = "organizer_sector"
     case createdAt = "created_at"
     case updatedAt = "updated_at"
   }
