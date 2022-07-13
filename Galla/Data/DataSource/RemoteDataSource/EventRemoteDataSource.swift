@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class EventRemoteDataSource {
+final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
 
   private let userToken: String = UserDefaults.standard.string(forKey: "UserToken") ?? ""
 

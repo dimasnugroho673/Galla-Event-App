@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400E6BF6287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E6BF5287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift */; };
+		400E6BF8287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E6BF7287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift */; };
+		400E6BFB287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E6BFA287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift */; };
 		405C358E2862F953006A859F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C358D2862F953006A859F /* AppDelegate.swift */; };
 		405C35902862F953006A859F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C358F2862F953006A859F /* SceneDelegate.swift */; };
 		405C35922862F953006A859F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35912862F953006A859F /* RootViewController.swift */; };
@@ -70,6 +73,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		400E6BF5287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		400E6BF7287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		400E6BFA287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
 		405C358A2862F953006A859F /* Galla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Galla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		405C358D2862F953006A859F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		405C358F2862F953006A859F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +149,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		400E6BF4287E85DB006C2AFF /* RemoteDataSourceProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				400E6BF5287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift */,
+				400E6BF7287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift */,
+			);
+			path = RemoteDataSourceProtocol;
+			sourceTree = "<group>";
+		};
+		400E6BF9287E869C006C2AFF /* LocalDataSourceProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				400E6BFA287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift */,
+			);
+			path = LocalDataSourceProtocol;
+			sourceTree = "<group>";
+		};
 		405C35812862F953006A859F = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +360,8 @@
 		407C9D832865A4C500F3CB27 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				400E6BF9287E869C006C2AFF /* LocalDataSourceProtocol */,
+				400E6BF4287E85DB006C2AFF /* RemoteDataSourceProtocol */,
 				407C9D872865A55500F3CB27 /* RemoteDataSource */,
 				407C9D862865A54E00F3CB27 /* LocalDataSource */,
 			);
@@ -495,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				400E6BF6287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift in Sources */,
 				405C35C4286405AE006A859F /* Observable.swift in Sources */,
 				405C35B228634027006A859F /* LoginViewController.swift in Sources */,
 				40F2D60A286ABBA900F57DAC /* EventService.swift in Sources */,
@@ -507,6 +533,7 @@
 				407C9D91286605B500F3CB27 /* CustomResponseHandler.swift in Sources */,
 				40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */,
 				40F2D61C286C694C00F57DAC /* PreviewViewController.swift in Sources */,
+				400E6BF8287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift in Sources */,
 				40ABA99C2869F48300E3346B /* PopularEventCell.swift in Sources */,
 				407C9D7C2865A05900F3CB27 /* UserUseCase.swift in Sources */,
 				40ABA99A28695C9900E3346B /* TitleHeaderCollectionReusableView.swift in Sources */,
@@ -536,6 +563,7 @@
 				405C35A42862FF79006A859F /* HomeViewController.swift in Sources */,
 				407C9D892865A5A000F3CB27 /* UserRemoteDataSource.swift in Sources */,
 				40F2D665286EE38D00F57DAC /* MapEventViewController.swift in Sources */,
+				400E6BFB287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift in Sources */,
 				40F2D60E286ABBEA00F57DAC /* EventRemoteDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

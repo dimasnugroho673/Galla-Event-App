@@ -9,10 +9,10 @@ import Foundation
 
 class UserRepositoryImplementation: UserRepository {
 
-  private let remoteDataSource: UserRemoteDataSource
-  private let localDataSource: UserLocalDataSource
+  private let remoteDataSource: UserRemoteDataSourceProtocol
+  private let localDataSource: UserLocalDataSourceProtocol
 
-  init(remoteDataSource: UserRemoteDataSource, localDataSource: UserLocalDataSource) {
+  init(remoteDataSource: UserRemoteDataSourceProtocol, localDataSource: UserLocalDataSourceProtocol) {
     self.remoteDataSource = remoteDataSource
     self.localDataSource = localDataSource
   }

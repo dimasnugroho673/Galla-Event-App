@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserLocalDataSource {
+final class UserLocalDataSource: UserLocalDataSourceProtocol {
 
   func getUserData() -> User {
     var user: User?

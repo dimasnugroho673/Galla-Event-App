@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserRemoteDataSource {
+final class UserRemoteDataSource: UserRemoteDataSourceProtocol {
   func register(with credentials: AuthCredential, completion: @escaping (Result<BaseResponse<User>, ResponseError>) -> ()) {
     guard let url = URL(string: "\(Constants.API_ENDPOINT)/register") else { return }
 

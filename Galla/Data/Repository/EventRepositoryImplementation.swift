@@ -7,9 +7,9 @@
 
 class EventRepositoryImplementation: EventRepository {
 
-  private let remoteDataSource: EventRemoteDataSource
+  private let remoteDataSource: EventRemoteDataSourceProtocol
 
-  init(remoteDataSource: EventRemoteDataSource) {
+  init(remoteDataSource: EventRemoteDataSourceProtocol) {
     self.remoteDataSource = remoteDataSource
   }
 
