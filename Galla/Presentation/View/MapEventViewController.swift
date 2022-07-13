@@ -57,8 +57,9 @@ class MapEventViewController: UIViewController {
     super.viewDidLoad()
 
     configureUI()
+
+    // this can multiple annotation
     annotationGenerator(coordinate: self.coordinate, title: event.name, subtitle: "Event Location")
-//    annotationGenerator(coordinate: CLLocationCoordinate2D(latitude: 0.928738, longitude: 104.443349), title: "KFC Kaca Puri", subtitle: "Fried Chicken")
   }
 
   private func configureUI() {
@@ -108,8 +109,14 @@ extension MapEventViewController: MKMapViewDelegate {
 
     annotationView?.image = UIImage(named: "icon-location-pin")
 
-//    let tap = UIGestureRecognizer(target: self, action: #selector(handleAnnotationTap))
+    let tap = UITapGestureRecognizer(target: self, action: #selector(handleAnnotationTap(_:)))
+    annotationView?.addGestureRecognizer(tap)
+    annotationView?.isUserInteractionEnabled = true
 
     return annotationView
+  }
+
+  @objc func handleAnnotationTap(_ sender: MKAnnotationView) {
+    print("tapped....")
   }
 }
