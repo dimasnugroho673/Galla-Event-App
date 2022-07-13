@@ -10,19 +10,11 @@ jobs:
   build:
     name: Build and Test default scheme using any available iPhone simulator
     runs-on: macos-latest
-    strategy:
-          matrix:
-            destination: ['platform=iOS Simulator,OS=latest,name=iPhone 12 Pro']
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
-      - name: Build
-        run: |
-          xcodebuild clean build -project Galla.xcodeproj -scheme Galla -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-        env: 
-         destination: ${{ matrix.destination }}
-      - name: Test
-        run: |
-          xcodebuild clean test -project Galla.xcodeproj -scheme Galla -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
-        env: 
-         destination: ${{ matrix.destination }}
+        - uses: actions/checkout@v3
+        - name: check version
+          run: xcodebuild -scheme Galla -showdestinations
+        - name: run clean build
+          run: xcodebuild clean build -scheme Galla -destination "platform=iOS Simulator,name=iPhone 12 Pro,OS=latest" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        - name: run test
+          run: xcodebuild test -scheme Galla -destination "platform=iOS Simulator,name=iPhone 12 Pro,OS=latest" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
