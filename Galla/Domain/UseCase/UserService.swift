@@ -9,9 +9,9 @@ import Foundation
 
 class UserService: UserUseCase {
 
-  private let userRepository: UserRepositoryImplementation
+  private let userRepository: UserRepository
 
-  init(userRepository: UserRepositoryImplementation){
+  init(userRepository: UserRepository){
     self.userRepository = userRepository
   }
 

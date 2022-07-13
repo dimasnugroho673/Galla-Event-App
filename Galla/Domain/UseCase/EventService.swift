@@ -9,9 +9,9 @@ import Foundation
 
 class EventService: EventUseCase {
 
-  private let eventRepository: EventRepositoryImplementation
+  private let eventRepository: EventRepository
 
-  init(eventRepository: EventRepositoryImplementation) {
+  init(eventRepository: EventRepository) {
     self.eventRepository = eventRepository
   }
 
