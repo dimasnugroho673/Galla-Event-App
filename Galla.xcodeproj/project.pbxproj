@@ -41,6 +41,7 @@
 		407C9D93286631DB00F3CB27 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D92286631DB00F3CB27 /* Spinner.swift */; };
 		407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D942866CACF00F3CB27 /* UserLocalDataSource.swift */; };
 		407C9D9D28677DD500F3CB27 /* GallaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D9C28677DD500F3CB27 /* GallaTests.swift */; };
+		4090E87B287FDB010028CE75 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4090E87A287FDB010028CE75 /* SDWebImage */; };
 		40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA995286945EB00E3346B /* UpcomingEventCell.swift */; };
 		40ABA99A28695C9900E3346B /* TitleHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */; };
 		40ABA99C2869F48300E3346B /* PopularEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA99B2869F48300E3346B /* PopularEventCell.swift */; };
@@ -53,7 +54,6 @@
 		40F2D60A286ABBA900F57DAC /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D609286ABBA900F57DAC /* EventService.swift */; };
 		40F2D60C286ABBC900F57DAC /* EventRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D60B286ABBC900F57DAC /* EventRepositoryImplementation.swift */; };
 		40F2D60E286ABBEA00F57DAC /* EventRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D60D286ABBEA00F57DAC /* EventRemoteDataSource.swift */; };
-		40F2D611286AEA7900F57DAC /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 40F2D610286AEA7900F57DAC /* SDWebImage */; };
 		40F2D613286B294600F57DAC /* DetailEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D612286B294600F57DAC /* DetailEventViewController.swift */; };
 		40F2D615286C68B500F57DAC /* JoinedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D614286C68B500F57DAC /* JoinedViewController.swift */; };
 		40F2D61C286C694C00F57DAC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D61B286C694C00F57DAC /* PreviewViewController.swift */; };
@@ -135,7 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40F2D611286AEA7900F57DAC /* SDWebImage in Frameworks */,
+				4090E87B287FDB010028CE75 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +427,7 @@
 			);
 			name = Galla;
 			packageProductDependencies = (
-				40F2D610286AEA7900F57DAC /* SDWebImage */,
+				4090E87A287FDB010028CE75 /* SDWebImage */,
 			);
 			productName = Galla;
 			productReference = 405C358A2862F953006A859F /* Galla.app */;
@@ -480,7 +480,7 @@
 			);
 			mainGroup = 405C35812862F953006A859F;
 			packageReferences = (
-				40F2D60F286AEA7900F57DAC /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				4090E879287FDB010028CE75 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 405C358B2862F953006A859F /* Products */;
 			projectDirPath = "";
@@ -835,7 +835,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		40F2D60F286AEA7900F57DAC /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		4090E879287FDB010028CE75 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
 			requirement = {
@@ -846,9 +846,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		40F2D610286AEA7900F57DAC /* SDWebImage */ = {
+		4090E87A287FDB010028CE75 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 40F2D60F286AEA7900F57DAC /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = 4090E879287FDB010028CE75 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
