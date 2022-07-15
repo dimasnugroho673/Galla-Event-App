@@ -1,12 +1,12 @@
 workflows:  
-  galla-workflow: # workflow ID
-    name: iOS debug # workflow name
+  galla-workflow:
+    name: iOS debug
     environment:
       xcode: latest
       cocoapods: default
       vars:
-          XCODE_PROJECT: "Galla.xcodeproj" # Isikan nama project Anda.
-          XCODE_SCHEME: "Galla" # Isikan nama scheme project Anda.
+          XCODE_PROJECT: "Galla.xcodeproj"
+          XCODE_SCHEME: "Galla"
     scripts:
       - name: Run tests
         script: |
@@ -26,4 +26,4 @@ workflows:
     publishing:
       email:
         recipients:
-          - dimasnugroho673@gmail.com # Isikan email untuk notifikasi status building.
+          - dimasnugroho673@gmail.com
