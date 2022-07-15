@@ -2,7 +2,7 @@ workflows:
   galla-workflow:
     name: iOS debug
     environment:
-      xcode: '13.4.1'
+      xcode: latest
       cocoapods: default
       vars:
           XCODE_PROJECT: "Galla.xcodeproj"
