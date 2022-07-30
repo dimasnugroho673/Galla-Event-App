@@ -179,16 +179,68 @@ class DetailEventViewController: UIViewController {
     return label
   }()
 
-//  lazy var viewLocationButton: UIButton = {
-//    let button = UIButton(type: .system)
-//    button.setTitle("View Location", for: .normal)
-//    button.titleLabel?.textColor = .red
-//    button.addTarget(self, action: #selector(handleViewLocationTap), for: .touchUpInside)
-//
-//    return button
-//  }()
+  //  lazy var viewLocationButton: UIButton = {
+  //    let button = UIButton(type: .system)
+  //    button.setTitle("View Location", for: .normal)
+  //    button.titleLabel?.textColor = .red
+  //    button.addTarget(self, action: #selector(handleViewLocationTap), for: .touchUpInside)
+  //
+  //    return button
+  //  }()
 
-  lazy var viewLocationButton: CTAButton = CTAButton(title: "View Location")
+  //  lazy var viewLocationButton: CTAButton = CTAButton(title: "View Location")
+
+  lazy var viewLocationView: UIView = {
+    let uv = UIView()
+    uv.translatesAutoresizingMaskIntoConstraints = false
+    uv.heightAnchor.constraint(equalToConstant: 52).isActive = true
+    uv.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+    uv.backgroundColor = .white
+    uv.layer.cornerRadius = 12
+    uv.layer.shadowColor = UIColor(hexString: "F4F4F4").cgColor
+    uv.layer.shadowOpacity = 1
+    uv.layer.shadowRadius = 30
+    uv.layer.shadowOffset = CGSize(width: 10, height: 10)
+
+    let mapImage = UIImageView()
+    mapImage.translatesAutoresizingMaskIntoConstraints = false
+    mapImage.image = UIImage(systemName: "mappin.circle.fill")
+    mapImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
+    mapImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
+    mapImage.contentMode = .scaleAspectFill
+    mapImage.tintColor = .systemRed
+
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.text = "View Location"
+    label.font = UIFont(name: "Poppins-Bold", size: 14)
+    label.textColor = UIColor(named: "color-black")
+
+    let chevron = UIImageView()
+    chevron.translatesAutoresizingMaskIntoConstraints = false
+    chevron.image = UIImage(systemName: "chevron.forward", withConfiguration: UIImage.SymbolConfiguration(weight: UIImage.SymbolWeight.bold))
+    chevron.heightAnchor.constraint(equalToConstant: 18).isActive = true
+    chevron.tintColor = .systemGray
+
+    uv.addSubview(mapImage)
+    uv.addSubview(label)
+    uv.addSubview(chevron)
+
+    NSLayoutConstraint.activate([
+      mapImage.leftAnchor.constraint(equalTo: uv.leftAnchor, constant: 15),
+      mapImage.centerYAnchor.constraint(equalTo: uv.centerYAnchor),
+
+      label.leftAnchor.constraint(equalTo: mapImage.rightAnchor, constant: 10),
+      label.centerYAnchor.constraint(equalTo: uv.centerYAnchor),
+
+      chevron.rightAnchor.constraint(equalTo: uv.rightAnchor, constant: -15),
+      chevron.centerYAnchor.constraint(equalTo: uv.centerYAnchor)
+    ])
+
+    uv.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleViewLocationTap)))
+
+    return uv
+  }()
 
   lazy var organizerBgView: UIView = {
     let view = UIView()
@@ -312,7 +364,8 @@ class DetailEventViewController: UIViewController {
     containerView.addSubview(dateLabel)
     containerView.addSubview(locationStack)
     containerView.addSubview(descriptionLabel)
-//    containerView.addSubview(viewLocationButton)
+    //    containerView.addSubview(viewLocationButton)
+    containerView.addSubview(viewLocationView)
     containerView.addSubview(organizerBgView)
     organizerBgView.addSubview(organizerImage)
     organizerBgView.addSubview(organizerNameStack)
@@ -366,14 +419,18 @@ class DetailEventViewController: UIViewController {
       descriptionLabel.topAnchor.constraint(equalTo: locationStack.bottomAnchor, constant: 10),
       descriptionLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15),
       descriptionLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15),
-//      descriptionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(125)),
+      //      descriptionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(125)),
 
-//      viewLocationButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-//      viewLocationButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15),
-//      viewLocationButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15),
-//      organizerBgView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(100)),
+      //      viewLocationButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+      //      viewLocationButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15),
+      //      viewLocationButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15),
+      //      organizerBgView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(100)),
 
-      organizerBgView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+      viewLocationView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 25),
+      viewLocationView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15),
+      viewLocationView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15),
+
+      organizerBgView.topAnchor.constraint(equalTo: viewLocationView.bottomAnchor, constant: 20),
       organizerBgView.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 15),
       organizerBgView.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -15),
       organizerBgView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -(100)),
@@ -392,11 +449,11 @@ class DetailEventViewController: UIViewController {
       joinButton.rightAnchor.constraint(equalTo: bottomStickyView.rightAnchor, constant: -15),
     ])
 
-      posterImageView.sd_setImage(with: URL(string: data.poster)!)
-      eventNameLabel.text = data.name
-      dateLabel.text = Utilities.formatterDate(dateInString: data.dateStart, inFormat: "yyyy-MM-dd HH:mm:ss", toFormat: "dd MMMM yyyy • HH:mm")
-      locationLabel.text = eventViewModel.locationEventCustom(location: data.location.regency.name, country: data.location.country)
-      freeLabel.isHidden = data.ticketPrice != "0" ? true : false
+    posterImageView.sd_setImage(with: URL(string: data.poster)!)
+    eventNameLabel.text = data.name
+    dateLabel.text = Utilities.formatterDate(dateInString: data.dateStart, inFormat: "yyyy-MM-dd HH:mm:ss", toFormat: "dd MMMM yyyy • HH:mm")
+    locationLabel.text = eventViewModel.locationEventCustom(location: data.location.regency.name, country: data.location.country)
+    freeLabel.isHidden = data.ticketPrice != "0" ? true : false
   }
 
   func configureBinding() {
@@ -427,20 +484,18 @@ class DetailEventViewController: UIViewController {
   func fetchDetail() {
     eventViewModel.fetchDetailEvent(uid: self.uid)
   }
-
+  
   @objc func handleBackButtonNav() {
     navigationController?.popViewController(animated: true)
   }
 
   @objc func handleJoinButtonTap() {
-//    eventViewModel.attemptJoinEvent(uid: uid)
+    eventViewModel.attemptJoinEvent(uid: uid)
+  }
 
+  @objc func handleViewLocationTap() {
     let vc = MapEventViewController(event: eventViewModel.detailEvent.value)
     navigationController?.pushViewController(vc, animated: true)
   }
-
-//  @objc func handleViewLocationTap() {
-//
-//  }
 
 }
