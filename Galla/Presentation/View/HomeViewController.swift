@@ -39,9 +39,37 @@ class HomeViewController: UIViewController {
     return label
   }()
 
-  lazy var myLocationHeader: UIView = {
-    let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
+//  lazy var myLocationHeader: UIView = {
+//    let view = UIView()
+//    view.translatesAutoresizingMaskIntoConstraints = false
+//
+//    let label = UILabel()
+//    label.translatesAutoresizingMaskIntoConstraints = false
+//    label.text = "Bandung, ID"
+//    label.font = UIFont(name: "Poppins-SemiBold", size: 20)
+//    label.textColor = UIColor(named: "color-black")
+//
+//    let image = UIImageView()
+//    let config = UIImage.SymbolWeight.bold
+//    image.translatesAutoresizingMaskIntoConstraints = false
+//    image.image = UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration.init(weight: config))
+//    image.tintColor = UIColor(named: "color-black")
+//
+//    view.addSubview(label)
+//    view.addSubview(image)
+//
+//    image.centerYAnchor.constraint(equalTo: label.centerYAnchor, constant: 0).isActive = true
+//    image.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 5).isActive = true
+//
+//    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleLocationHeaderTap)))
+//    view.isUserInteractionEnabled = true
+//
+//    return view
+//  }()
+
+  lazy var myLocationHeader: UIButton = {
+    let btn = UIButton(type: .system)
+    btn.translatesAutoresizingMaskIntoConstraints = false
 
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,13 +83,17 @@ class HomeViewController: UIViewController {
     image.image = UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration.init(weight: config))
     image.tintColor = UIColor(named: "color-black")
 
-    view.addSubview(label)
-    view.addSubview(image)
+    btn.addSubview(label)
+    btn.addSubview(image)
 
     image.centerYAnchor.constraint(equalTo: label.centerYAnchor, constant: 0).isActive = true
     image.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 5).isActive = true
 
-    return view
+    btn.widthAnchor.constraint(equalToConstant: 150).isActive = true
+
+    btn.addTarget(self, action: #selector(handleLocationHeaderTap), for: .touchUpInside)
+
+    return btn
   }()
 
   lazy var profileImage: UIImageView = {
@@ -211,6 +243,11 @@ class HomeViewController: UIViewController {
 
   @objc func handleTextInputChange() {
     placeholderSearchLabel.isHidden = !searchTextField.text!.isEmpty
+  }
+
+  @objc func handleLocationHeaderTap() {
+    let vc = SearchLocationViewController()
+    navigationController?.present(vc, animated: true)
   }
 }
 

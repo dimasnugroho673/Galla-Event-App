@@ -41,6 +41,7 @@
 		407C9D93286631DB00F3CB27 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D92286631DB00F3CB27 /* Spinner.swift */; };
 		407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D942866CACF00F3CB27 /* UserLocalDataSource.swift */; };
 		407C9D9D28677DD500F3CB27 /* GallaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D9C28677DD500F3CB27 /* GallaTests.swift */; };
+		4089E02D28A386B200E54182 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E02C28A386B200E54182 /* SearchLocationViewController.swift */; };
 		4090E87B287FDB010028CE75 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4090E87A287FDB010028CE75 /* SDWebImage */; };
 		40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA995286945EB00E3346B /* UpcomingEventCell.swift */; };
 		40ABA99A28695C9900E3346B /* TitleHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */; };
@@ -110,6 +111,7 @@
 		407C9D942866CACF00F3CB27 /* UserLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataSource.swift; sourceTree = "<group>"; };
 		407C9D9A28677DD400F3CB27 /* GallaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GallaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		407C9D9C28677DD500F3CB27 /* GallaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaTests.swift; sourceTree = "<group>"; };
+		4089E02C28A386B200E54182 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		40ABA995286945EB00E3346B /* UpcomingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 		40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		40ABA99B2869F48300E3346B /* PopularEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularEventCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				40F2D614286C68B500F57DAC /* JoinedViewController.swift */,
 				40F2D61F286C91DA00F57DAC /* TicketViewController.swift */,
 				40F2D664286EE38C00F57DAC /* MapEventViewController.swift */,
+				4089E02C28A386B200E54182 /* SearchLocationViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */,
 				40B18A2F28659E6A00F7DE74 /* User.swift in Sources */,
 				40F2D61E286C696800F57DAC /* PreviewUIView.swift in Sources */,
+				4089E02D28A386B200E54182 /* SearchLocationViewController.swift in Sources */,
 				40F2D613286B294600F57DAC /* DetailEventViewController.swift in Sources */,
 				405C35A62862FF84006A859F /* EmptyViewController.swift in Sources */,
 				407C9D852865A4FE00F3CB27 /* UserRepositoryImplementation.swift in Sources */,
