@@ -29,11 +29,11 @@ class EventService: EventUseCase {
     }
   }
 
-  func fetchUpcomingEvent(location: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+  func fetchUpcomingEvent(location: String, locationType: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
 
     let newLoc = location.replacingOccurrences(of: " ", with: "+")
 
-    return eventRepository.fetchUpcomingEvent(location: newLoc) { result in
+    return eventRepository.fetchUpcomingEvent(location: newLoc, locationType: locationType) { result in
       switch result {
         case .success(let data):
           return completion(.success(data))

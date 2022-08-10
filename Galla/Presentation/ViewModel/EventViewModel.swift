@@ -31,7 +31,7 @@ class EventViewModel {
   }
 
   func fetchUpcomingEvent(location: String) {
-    eventService.fetchUpcomingEvent(location: "tanjung pinang") { result in
+    eventService.fetchUpcomingEvent(location: "tanjung pinang", locationType: "regency") { result in
       switch result {
       case .success(let data):
         self.upcomingEvents.value = data.data

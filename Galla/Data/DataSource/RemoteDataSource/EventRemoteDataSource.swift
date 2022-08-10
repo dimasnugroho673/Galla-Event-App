@@ -44,8 +44,8 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
     task.resume()
   }
 
-  func fetchUpcomingEvent(location: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
-    guard let url = URL(string: "\(Constants.API_ENDPOINT)/events/upcoming?location=\(location)") else { return }
+  func fetchUpcomingEvent(location: String, locationType: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/events/upcoming?location=\(location)&location_type=\(locationType)") else { return }
 
     let task = URLSession.shared.dataTask(with: url) { data, response, error in
       if let error = error {

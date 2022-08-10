@@ -312,6 +312,30 @@ class DetailEventViewController: UIViewController {
 
   lazy var joinButton: UIButton = CTAButton(title: "Join Event")
 
+  lazy var favoriteImage: UIButton = {
+    let button = UIButton(type: .system)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(UIImage(systemName: "heart")?.withTintColor(.systemGray3, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.light)), for: .normal)
+    button.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 45).isActive = true
+    button.contentHorizontalAlignment = .fill
+    button.contentVerticalAlignment = .fill
+//    button.imageEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+
+    button.addTarget(self, action: #selector(handleFavoriteButtonTap), for: .touchUpInside)
+
+    return button
+
+//    let iv = UIImageView()
+//    iv.translatesAutoresizingMaskIntoConstraints = false
+//    iv.image = UIImage(systemName: "heart", withConfiguration: UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.light))
+//    iv.tintColor = .systemGray3
+//    iv.heightAnchor.constraint(equalToConstant: 43).isActive = true
+//    iv.widthAnchor.constraint(equalToConstant: 43).isActive = true
+//
+//    return iv
+  }()
+
   init(uid: String, data: Event) {
     self.uid = uid
     self.data = data
@@ -336,7 +360,8 @@ class DetailEventViewController: UIViewController {
     scrollView.addSubview(containerView)
     view.addSubview(navBarView)
     view.addSubview(bottomStickyView)
-    bottomStickyView.addSubview(joinButton)
+//    bottomStickyView.addSubview(joinButton)
+//    bottomStickyView.addSubview(favoriteImage)
 
     joinButton.addTarget(self, action: #selector(handleJoinButtonTap), for: .touchUpInside)
 
@@ -358,13 +383,20 @@ class DetailEventViewController: UIViewController {
     organizerNameStack.axis = .horizontal
     organizerNameStack.spacing = 5
 
+    let bottomStack = UIStackView(arrangedSubviews: [joinButton, favoriteImage])
+    bottomStack.translatesAutoresizingMaskIntoConstraints = false
+    bottomStack.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    bottomStack.axis = .horizontal
+    bottomStack.spacing = 10
+
+    bottomStickyView.addSubview(bottomStack)
+
     containerView.addSubview(posterImageView)
     posterImageView.addSubview(freeLabel)
     containerView.addSubview(eventNameLabel)
     containerView.addSubview(dateLabel)
     containerView.addSubview(locationStack)
     containerView.addSubview(descriptionLabel)
-    //    containerView.addSubview(viewLocationButton)
     containerView.addSubview(viewLocationView)
     containerView.addSubview(organizerBgView)
     organizerBgView.addSubview(organizerImage)
@@ -444,9 +476,16 @@ class DetailEventViewController: UIViewController {
       organizerSectorLabel.topAnchor.constraint(equalTo: organizerNameStack.bottomAnchor, constant: 3),
       organizerSectorLabel.leftAnchor.constraint(equalTo: organizerImage.rightAnchor, constant: 10),
 
-      joinButton.topAnchor.constraint(equalTo: bottomStickyView.topAnchor, constant: 15),
-      joinButton.leftAnchor.constraint(equalTo: bottomStickyView.leftAnchor, constant: 15),
-      joinButton.rightAnchor.constraint(equalTo: bottomStickyView.rightAnchor, constant: -15),
+//      joinButton.topAnchor.constraint(equalTo: bottomStickyView.topAnchor, constant: 15),
+//      joinButton.leftAnchor.constraint(equalTo: bottomStickyView.leftAnchor, constant: 15),
+//      joinButton.rightAnchor.constraint(equalTo: bottomStickyView.rightAnchor, constant: -15),
+
+//      favoriteImage.topAnchor.constraint(equalTo: bottomStickyView.topAnchor, constant: 15),
+//      favoriteImage.rightAnchor.constraint(equalTo: bottomStickyView.rightAnchor, constant: -15)
+
+      bottomStack.topAnchor.constraint(equalTo: bottomStickyView.topAnchor, constant: 15),
+      bottomStack.leftAnchor.constraint(equalTo: bottomStickyView.leftAnchor, constant: 15),
+      bottomStack.rightAnchor.constraint(equalTo: bottomStickyView.rightAnchor, constant: -15),
     ])
 
     posterImageView.sd_setImage(with: URL(string: data.poster)!)
@@ -484,7 +523,7 @@ class DetailEventViewController: UIViewController {
   func fetchDetail() {
     eventViewModel.fetchDetailEvent(uid: self.uid)
   }
-  
+
   @objc func handleBackButtonNav() {
     navigationController?.popViewController(animated: true)
   }
@@ -496,6 +535,10 @@ class DetailEventViewController: UIViewController {
   @objc func handleViewLocationTap() {
     let vc = MapEventViewController(event: eventViewModel.detailEvent.value)
     navigationController?.pushViewController(vc, animated: true)
+  }
+
+  @objc func handleFavoriteButtonTap() {
+    favoriteImage.setImage(UIImage(systemName: "heart.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.light)), for: .normal)
   }
 
 }

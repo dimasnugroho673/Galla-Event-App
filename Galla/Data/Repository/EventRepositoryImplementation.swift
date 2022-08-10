@@ -24,8 +24,8 @@ class EventRepositoryImplementation: EventRepository {
     }
   }
 
-  func fetchUpcomingEvent(location: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
-    return remoteDataSource.fetchUpcomingEvent(location: location) { result in
+  func fetchUpcomingEvent(location: String, locationType: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+    return remoteDataSource.fetchUpcomingEvent(location: location, locationType: locationType) { result in
       switch result {
         case .success(let data):
           return completion(.success(data))
