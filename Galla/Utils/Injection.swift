@@ -30,4 +30,12 @@ class Injection {
 
     return EventService(eventRepository: repository)
   }
+
+  func provideSearch() -> LocationService {
+    let remoteDataSource = LocationRemoteDataSource()
+    let localDataSource = LocationLocalDataSource()
+    let repository = LocationRepositoryImplementation(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
+
+    return LocationService(locationRepository: repository)
+  }
 }

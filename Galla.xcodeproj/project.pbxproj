@@ -42,6 +42,19 @@
 		407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D942866CACF00F3CB27 /* UserLocalDataSource.swift */; };
 		407C9D9D28677DD500F3CB27 /* GallaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D9C28677DD500F3CB27 /* GallaTests.swift */; };
 		4089E02D28A386B200E54182 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E02C28A386B200E54182 /* SearchLocationViewController.swift */; };
+		4089E02F28A3996F00E54182 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E02E28A3996E00E54182 /* LocationViewModel.swift */; };
+		4089E03128A3998C00E54182 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E03028A3998C00E54182 /* Location.swift */; };
+		4089E03328A3A33800E54182 /* LocationLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E03228A3A33800E54182 /* LocationLocalDataSourceProtocol.swift */; };
+		4089E03528A3A3AC00E54182 /* LocationLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E03428A3A3AC00E54182 /* LocationLocalDataSource.swift */; };
+		4089E03828A6069100E54182 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4089E03728A6069100E54182 /* RxCocoa */; };
+		4089E03A28A6069100E54182 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4089E03928A6069100E54182 /* RxRelay */; };
+		4089E03C28A6069100E54182 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4089E03B28A6069100E54182 /* RxSwift */; };
+		4089E03E28A60A0B00E54182 /* LocationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E03D28A60A0B00E54182 /* LocationUseCase.swift */; };
+		4089E04128A60B1700E54182 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E04028A60B1700E54182 /* LocationService.swift */; };
+		4089E04328A60B3B00E54182 /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E04228A60B3B00E54182 /* LocationRepository.swift */; };
+		4089E04528A60C6100E54182 /* LocationRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E04428A60C6100E54182 /* LocationRepositoryImplementation.swift */; };
+		4089E04928A60D6E00E54182 /* LocationRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E04828A60D6D00E54182 /* LocationRemoteDataSourceProtocol.swift */; };
+		4089E04B28A60DEB00E54182 /* LocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E04A28A60DEB00E54182 /* LocationRemoteDataSource.swift */; };
 		4090E87B287FDB010028CE75 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4090E87A287FDB010028CE75 /* SDWebImage */; };
 		40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA995286945EB00E3346B /* UpcomingEventCell.swift */; };
 		40ABA99A28695C9900E3346B /* TitleHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */; };
@@ -112,6 +125,16 @@
 		407C9D9A28677DD400F3CB27 /* GallaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GallaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		407C9D9C28677DD500F3CB27 /* GallaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaTests.swift; sourceTree = "<group>"; };
 		4089E02C28A386B200E54182 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
+		4089E02E28A3996E00E54182 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		4089E03028A3998C00E54182 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		4089E03228A3A33800E54182 /* LocationLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		4089E03428A3A3AC00E54182 /* LocationLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLocalDataSource.swift; sourceTree = "<group>"; };
+		4089E03D28A60A0B00E54182 /* LocationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUseCase.swift; sourceTree = "<group>"; };
+		4089E04028A60B1700E54182 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		4089E04228A60B3B00E54182 /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		4089E04428A60C6100E54182 /* LocationRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryImplementation.swift; sourceTree = "<group>"; };
+		4089E04828A60D6D00E54182 /* LocationRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		4089E04A28A60DEB00E54182 /* LocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDataSource.swift; sourceTree = "<group>"; };
 		40ABA995286945EB00E3346B /* UpcomingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 		40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		40ABA99B2869F48300E3346B /* PopularEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularEventCell.swift; sourceTree = "<group>"; };
@@ -137,6 +160,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4089E03A28A6069100E54182 /* RxRelay in Frameworks */,
+				4089E03828A6069100E54182 /* RxCocoa in Frameworks */,
+				4089E03C28A6069100E54182 /* RxSwift in Frameworks */,
 				4090E87B287FDB010028CE75 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,6 +182,7 @@
 			children = (
 				400E6BF5287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift */,
 				400E6BF7287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift */,
+				4089E04828A60D6D00E54182 /* LocationRemoteDataSourceProtocol.swift */,
 			);
 			path = RemoteDataSourceProtocol;
 			sourceTree = "<group>";
@@ -164,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				400E6BFA287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift */,
+				4089E03228A3A33800E54182 /* LocationLocalDataSourceProtocol.swift */,
 			);
 			path = LocalDataSourceProtocol;
 			sourceTree = "<group>";
@@ -252,6 +280,7 @@
 			children = (
 				405C35B42863407E006A859F /* UserViewModel.swift */,
 				40F2D603286AB9C100F57DAC /* EventViewModel.swift */,
+				4089E02E28A3996E00E54182 /* LocationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -327,6 +356,7 @@
 				40B18A2B28659BF700F7DE74 /* BaseResponse.swift */,
 				40B18A2E28659E6A00F7DE74 /* User.swift */,
 				40F2D601286AB90C00F57DAC /* Event.swift */,
+				4089E03028A3998C00E54182 /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -336,6 +366,7 @@
 			children = (
 				407C9D802865A2FC00F3CB27 /* UserRepository.swift */,
 				40F2D605286AB9F900F57DAC /* EventRepository.swift */,
+				4089E04228A60B3B00E54182 /* LocationRepository.swift */,
 			);
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
@@ -347,6 +378,8 @@
 				407C9D8C2865C5E000F3CB27 /* UserService.swift */,
 				40F2D607286ABB4D00F57DAC /* EventUseCase.swift */,
 				40F2D609286ABBA900F57DAC /* EventService.swift */,
+				4089E03D28A60A0B00E54182 /* LocationUseCase.swift */,
+				4089E04028A60B1700E54182 /* LocationService.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -356,6 +389,7 @@
 			children = (
 				40F2D60B286ABBC900F57DAC /* EventRepositoryImplementation.swift */,
 				407C9D842865A4FE00F3CB27 /* UserRepositoryImplementation.swift */,
+				4089E04428A60C6100E54182 /* LocationRepositoryImplementation.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -375,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				407C9D942866CACF00F3CB27 /* UserLocalDataSource.swift */,
+				4089E03428A3A3AC00E54182 /* LocationLocalDataSource.swift */,
 			);
 			path = LocalDataSource;
 			sourceTree = "<group>";
@@ -384,6 +419,7 @@
 			children = (
 				407C9D882865A5A000F3CB27 /* UserRemoteDataSource.swift */,
 				40F2D60D286ABBEA00F57DAC /* EventRemoteDataSource.swift */,
+				4089E04A28A60DEB00E54182 /* LocationRemoteDataSource.swift */,
 			);
 			path = RemoteDataSource;
 			sourceTree = "<group>";
@@ -431,6 +467,9 @@
 			name = Galla;
 			packageProductDependencies = (
 				4090E87A287FDB010028CE75 /* SDWebImage */,
+				4089E03728A6069100E54182 /* RxCocoa */,
+				4089E03928A6069100E54182 /* RxRelay */,
+				4089E03B28A6069100E54182 /* RxSwift */,
 			);
 			productName = Galla;
 			productReference = 405C358A2862F953006A859F /* Galla.app */;
@@ -484,6 +523,7 @@
 			mainGroup = 405C35812862F953006A859F;
 			packageReferences = (
 				4090E879287FDB010028CE75 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				4089E03628A6069100E54182 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 405C358B2862F953006A859F /* Products */;
 			projectDirPath = "";
@@ -524,12 +564,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				400E6BF6287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift in Sources */,
+				4089E03E28A60A0B00E54182 /* LocationUseCase.swift in Sources */,
 				405C35C4286405AE006A859F /* Observable.swift in Sources */,
 				405C35B228634027006A859F /* LoginViewController.swift in Sources */,
 				40F2D60A286ABBA900F57DAC /* EventService.swift in Sources */,
 				40F2D604286AB9C100F57DAC /* EventViewModel.swift in Sources */,
 				407C9D812865A2FC00F3CB27 /* UserRepository.swift in Sources */,
 				405C35BF2863600C006A859F /* CTAButton.swift in Sources */,
+				4089E03528A3A3AC00E54182 /* LocationLocalDataSource.swift in Sources */,
 				40F2D602286AB90C00F57DAC /* Event.swift in Sources */,
 				405C35BA2863518F006A859F /* Extensions.swift in Sources */,
 				407C9D8F2865C81B00F3CB27 /* Injection.swift in Sources */,
@@ -543,6 +585,8 @@
 				407C9D8D2865C5E000F3CB27 /* UserService.swift in Sources */,
 				40F2D620286C91DA00F57DAC /* TicketViewController.swift in Sources */,
 				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,
+				4089E04128A60B1700E54182 /* LocationService.swift in Sources */,
+				4089E04928A60D6E00E54182 /* LocationRemoteDataSourceProtocol.swift in Sources */,
 				405C35922862F953006A859F /* RootViewController.swift in Sources */,
 				405C358E2862F953006A859F /* AppDelegate.swift in Sources */,
 				405C35B52863407E006A859F /* UserViewModel.swift in Sources */,
@@ -550,19 +594,25 @@
 				407C9D7F2865A1EC00F3CB27 /* Error.swift in Sources */,
 				407C9D8B2865AA3200F3CB27 /* Constants.swift in Sources */,
 				407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */,
+				4089E02F28A3996F00E54182 /* LocationViewModel.swift in Sources */,
 				40B18A2F28659E6A00F7DE74 /* User.swift in Sources */,
 				40F2D61E286C696800F57DAC /* PreviewUIView.swift in Sources */,
 				4089E02D28A386B200E54182 /* SearchLocationViewController.swift in Sources */,
 				40F2D613286B294600F57DAC /* DetailEventViewController.swift in Sources */,
 				405C35A62862FF84006A859F /* EmptyViewController.swift in Sources */,
 				407C9D852865A4FE00F3CB27 /* UserRepositoryImplementation.swift in Sources */,
+				4089E03128A3998C00E54182 /* Location.swift in Sources */,
 				40F2D608286ABB4D00F57DAC /* EventUseCase.swift in Sources */,
 				405C35902862F953006A859F /* SceneDelegate.swift in Sources */,
+				4089E04B28A60DEB00E54182 /* LocationRemoteDataSource.swift in Sources */,
 				407C9D93286631DB00F3CB27 /* Spinner.swift in Sources */,
+				4089E04328A60B3B00E54182 /* LocationRepository.swift in Sources */,
+				4089E04528A60C6100E54182 /* LocationRepositoryImplementation.swift in Sources */,
 				405C35B828635121006A859F /* Utilities.swift in Sources */,
 				40F2D615286C68B500F57DAC /* JoinedViewController.swift in Sources */,
 				40B18A2C28659BF700F7DE74 /* BaseResponse.swift in Sources */,
 				405C35BD2863521C006A859F /* HeaderBackgroundAuth.swift in Sources */,
+				4089E03328A3A33800E54182 /* LocationLocalDataSourceProtocol.swift in Sources */,
 				40F2D60C286ABBC900F57DAC /* EventRepositoryImplementation.swift in Sources */,
 				405C35A42862FF79006A859F /* HomeViewController.swift in Sources */,
 				407C9D892865A5A000F3CB27 /* UserRemoteDataSource.swift in Sources */,
@@ -839,6 +889,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4089E03628A6069100E54182 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		4090E879287FDB010028CE75 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -850,6 +908,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4089E03728A6069100E54182 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4089E03628A6069100E54182 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		4089E03928A6069100E54182 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4089E03628A6069100E54182 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		4089E03B28A6069100E54182 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4089E03628A6069100E54182 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		4090E87A287FDB010028CE75 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4090E879287FDB010028CE75 /* XCRemoteSwiftPackageReference "SDWebImage" */;

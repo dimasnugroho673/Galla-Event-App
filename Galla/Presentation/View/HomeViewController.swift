@@ -8,6 +8,10 @@
 import UIKit
 import SDWebImage
 
+protocol HomeViewControllerProtocol: AnyObject {
+  func changeLocation(location: LocationResult)
+}
+
 class HomeViewController: UIViewController {
 
   let eventViewModel: EventViewModel = EventViewModel(eventService: Injection().provideHome())
@@ -67,15 +71,27 @@ class HomeViewController: UIViewController {
 //    return view
 //  }()
 
-  lazy var myLocationHeader: UIButton = {
-    let btn = UIButton(type: .system)
-    btn.translatesAutoresizingMaskIntoConstraints = false
-
+  var locationLabel: UILabel = {
     let label = UILabel()
+
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Bandung, ID"
     label.font = UIFont(name: "Poppins-SemiBold", size: 20)
     label.textColor = UIColor(named: "color-black")
+
+    return label
+  }()
+
+
+  lazy var myLocationHeader: UIButton = {
+    let btn = UIButton(type: .system)
+    btn.translatesAutoresizingMaskIntoConstraints = false
+
+    let label = locationLabel
+//    label.translatesAutoresizingMaskIntoConstraints = false
+//    label.text = "Bandung, ID"
+//    label.font = UIFont(name: "Poppins-SemiBold", size: 20)
+//    label.textColor = UIColor(named: "color-black")
 
     let image = UIImageView()
     let config = UIImage.SymbolWeight.bold
@@ -247,7 +263,14 @@ class HomeViewController: UIViewController {
 
   @objc func handleLocationHeaderTap() {
     let vc = SearchLocationViewController()
+    vc.delegate = self
     navigationController?.present(vc, animated: true)
+  }
+}
+
+extension HomeViewController: HomeViewControllerProtocol {
+  func changeLocation(location: LocationResult) {
+    locationLabel.text = location.name + ", ID"
   }
 }
 

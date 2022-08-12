@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import RxSwift
 
 class SearchLocationViewController: UIViewController {
+
+  let locationViewModel: LocationViewModel = LocationViewModel(locationService: Injection().provideSearch())
+
+  weak var delegate: HomeViewControllerProtocol?
 
   lazy var navbarView: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
 
     view.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
-//    view.heightAnchor.constraint(equalToConstant: 55).isActive = true
 
     view.backgroundColor = .white
 
@@ -67,6 +71,8 @@ class SearchLocationViewController: UIViewController {
     tf.placeholder = "City, State, or Country"
     tf.textColor = UIColor.systemGray
 
+    tf.addTarget(self, action: #selector(handleTextInputChange(_:)), for: .editingChanged)
+
     return tf
   }()
 
@@ -79,6 +85,17 @@ class SearchLocationViewController: UIViewController {
     label.textColor = UIColor.systemGray
 
     return label
+  }()
+
+  lazy var locationTableView: UITableView = {
+    let tv = UITableView()
+    tv.translatesAutoresizingMaskIntoConstraints = false
+
+    tv.register(UITableViewCell.self, forCellReuseIdentifier: "LocationCell")
+    tv.delegate = self
+    tv.dataSource = self
+
+    return tv
   }()
 
   override func viewDidLoad() {
@@ -98,6 +115,9 @@ class SearchLocationViewController: UIViewController {
     searchTextField.setLeftImage(imageString: "icon-search", imageType: .named)
 
     view.addSubview(emptyDataLabel)
+    view.addSubview(locationTableView)
+
+    emptyDataLabel.isHidden = true
 
     NSLayoutConstraint.activate([
       navbarView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -116,11 +136,50 @@ class SearchLocationViewController: UIViewController {
       searchTextField.bottomAnchor.constraint(equalTo: navbarView.bottomAnchor, constant: -15),
 
       emptyDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      emptyDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+      emptyDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+
+      locationTableView.topAnchor.constraint(equalTo: navbarView.bottomAnchor),
+      locationTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+      locationTableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+      locationTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
+
+  func configureBinding() {}
 
   @objc func handleCancelTap() {
     dismiss(animated: true)
   }
+
+  @objc func handleTextInputChange(_ textField: UITextField) {
+    guard let keyword = textField.text else { return }
+
+    locationViewModel.attemptSearch(keyword)
+  }
+}
+
+extension SearchLocationViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    delegate?.changeLocation(location: locationViewModel.locations.value[indexPath.row])
+    dismiss(animated: true)
+  }
+}
+
+extension SearchLocationViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return locationViewModel.locations.value.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = locationTableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath)
+
+    let data = locationViewModel.locations.value[indexPath.row]
+
+    cell.textLabel?.text = data.name
+    cell.textLabel?.font = UIFont(name: "Poppins-Regular", size: 14)
+
+    return cell
+  }
+
+
 }
