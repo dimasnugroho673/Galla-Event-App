@@ -115,6 +115,13 @@ class SearchLocationViewController: UIViewController {
     navbarView.addSubview(searchTextField)
 
     searchTextField.setLeftImage(imageString: "icon-search", imageType: .named)
+    searchTextField.setDeleteImage(imageString: "xmark.circle.fill", imageType: .systemName)
+    searchTextField.rightView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDeleteTextField)))
+    searchTextField.rightView?.isUserInteractionEnabled = true
+
+    if ((searchTextField.text?.isEmpty) != nil) {
+      searchTextField.rightView?.isHidden = true
+    }
 
     view.addSubview(emptyDataLabel)
     view.addSubview(locationTableView)
@@ -166,7 +173,18 @@ class SearchLocationViewController: UIViewController {
   @objc func handleTextInputChange(_ textField: UITextField) {
     guard let keyword = textField.text else { return }
 
+    if keyword != "" {
+      searchTextField.rightView?.isHidden = false
+    } else {
+      searchTextField.rightView?.isHidden = true
+    }
+
     locationViewModel.attemptSearch(keyword)
+  }
+
+  @objc func handleDeleteTextField() {
+    searchTextField.text = ""
+    searchTextField.rightView?.isHidden = true
   }
 }
 

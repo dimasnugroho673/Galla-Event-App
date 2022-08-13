@@ -68,6 +68,37 @@ extension UITextField {
     self.leftView = imageViewContainer;
     self.leftViewMode = .always
   }
+
+  func setDeleteImage(imageString: String, imageType: ImageTypeTextFieldEnum) {
+//    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+    let imageViewContainer = UIView()
+    imageViewContainer.translatesAutoresizingMaskIntoConstraints = false
+
+    imageViewContainer.widthAnchor.constraint(equalToConstant: 35).isActive = true
+    imageViewContainer.heightAnchor.constraint(equalToConstant: 35).isActive = true
+
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.widthAnchor.constraint(equalToConstant: 35).isActive = true
+    imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+    imageView.tintColor = .gray
+
+    if imageType == .named {
+      imageView.image = UIImage(named: imageString)
+    } else {
+      imageView.image = UIImage(systemName: imageString)
+    }
+
+    imageViewContainer.addSubview(imageView)
+
+    imageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
+    imageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
+    imageView.centerXAnchor.constraint(equalTo: imageViewContainer.centerXAnchor).isActive = true
+    imageView.centerYAnchor.constraint(equalTo: imageViewContainer.centerYAnchor).isActive = true
+
+    self.rightView = imageViewContainer;
+    self.rightViewMode = .always
+  }
 }
 
 enum ImageTypeTextFieldEnum {
