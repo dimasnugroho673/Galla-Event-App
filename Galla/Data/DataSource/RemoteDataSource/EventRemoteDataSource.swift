@@ -11,8 +11,8 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
 
   private let userToken: String = UserDefaults.standard.string(forKey: "UserToken") ?? ""
 
-  func fetchPopularEvent(location: String, isFinished: Bool, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
-    guard let url = URL(string: "\(Constants.API_ENDPOINT)/events/popular?location=\(location)&is_finished=\(isFinished)") else { return }
+  func fetchPopularEvent(location: String, isFinished: Bool, locationType: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/events/popular?location=\(location)&is_finished=\(isFinished)&location_type=\(locationType)") else { return }
 
     let task = URLSession.shared.dataTask(with: url) { data, response, error in
       if let error = error {
@@ -21,6 +21,9 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
       }
 
       if let data = data {
+        print("DEBUG: url: \(url)")
+        print("DEBUG: \(String(data: data, encoding: .utf8))")
+
         do {
 
           let result = try JSONDecoder().decode(BaseResponse<[Event]>.self, from: data)

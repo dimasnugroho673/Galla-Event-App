@@ -15,11 +15,11 @@ class EventService: EventUseCase {
     self.eventRepository = eventRepository
   }
 
-  func fetchPopularEvent(location: String, isFinished: Bool, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+  func fetchPopularEvent(location: String, isFinished: Bool, locationType: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
 
     let newLoc = location.replacingOccurrences(of: " ", with: "+")
 
-    return eventRepository.fetchPopularEvent(location: newLoc, isFinished: isFinished) { result in
+    return eventRepository.fetchPopularEvent(location: newLoc, isFinished: isFinished, locationType: locationType) { result in
       switch result {
         case .success(let data):
           return completion(.success(data))

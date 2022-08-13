@@ -186,9 +186,12 @@ class HomeViewController: UIViewController {
     configureUI()
     configureBinding()
 
-    eventViewModel.fetchPopularEvent(location: eventViewModel.selectedLocation.value.name, isFinished: false)
-    eventViewModel.fetchUpcomingEvent(location: eventViewModel.selectedLocation.value.name)
     eventViewModel.getSelectedLocation()
+
+//    eventViewModel.fetchPopularEvent(location: eventViewModel.selectedLocation.value.name, isFinished: false, locationType: eventViewModel.selectedLocation.value.type)
+//    eventViewModel.fetchUpcomingEvent(location: eventViewModel.selectedLocation.value.name, locationType: eventViewModel.selectedLocation.value.type)
+
+
   }
 
   private func configureUI() {
@@ -251,12 +254,19 @@ class HomeViewController: UIViewController {
   }
 
   private func configureBinding() {
-    eventViewModel.upcomingEvents.bind { _ in
-      self.collectionView.reloadData()
-    }
-
     eventViewModel.selectedLocation.bind { location in
       self.locationLabel.text = "\(location.name), ID"
+
+      self.eventViewModel.fetchPopularEvent(location: location.name, isFinished: false, locationType: location.type)
+      self.eventViewModel.fetchUpcomingEvent(location: location.name, locationType: location.type)
+    }
+
+    eventViewModel.upcomingEvents.bind { _ in
+      self.collectionView.reloadSections(IndexSet.init(integer: 0))
+    }
+
+    eventViewModel.popularEvents.bind { _ in
+      self.collectionView.reloadSections(IndexSet.init(integer: 1))
     }
   }
 
@@ -275,8 +285,8 @@ extension HomeViewController: HomeViewControllerProtocol {
   func changeLocation(location: LocationResult) {
     locationLabel.text = location.name + ", ID"
 
-    eventViewModel.fetchPopularEvent(location: location.name, isFinished: false)
-    eventViewModel.fetchUpcomingEvent(location: location.name)
+    eventViewModel.fetchPopularEvent(location: location.name, isFinished: false, locationType: location.type)
+    eventViewModel.fetchUpcomingEvent(location: location.name, locationType: location.type)
   }
 }
 

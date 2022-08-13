@@ -33,8 +33,8 @@ class EventViewModel {
     return "\(locationNew), \(country.uppercased())"
   }
 
-  func fetchUpcomingEvent(location: String) {
-    eventService.fetchUpcomingEvent(location: "tanjung pinang", locationType: "regency") { result in
+  func fetchUpcomingEvent(location: String, locationType: String) {
+    eventService.fetchUpcomingEvent(location: location, locationType: locationType) { result in
       switch result {
       case .success(let data):
         self.upcomingEvents.value = data.data
@@ -44,8 +44,8 @@ class EventViewModel {
     }
   }
 
-  func fetchPopularEvent(location: String, isFinished: Bool) {
-    eventService.fetchPopularEvent(location: location, isFinished: false) { result in
+  func fetchPopularEvent(location: String, isFinished: Bool, locationType: String) {
+    eventService.fetchPopularEvent(location: location, isFinished: false, locationType: locationType) { result in
       switch result {
       case .success(let data):
         self.popularEvents.value = data.data
