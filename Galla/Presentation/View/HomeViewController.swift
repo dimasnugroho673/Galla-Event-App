@@ -186,8 +186,8 @@ class HomeViewController: UIViewController {
     configureUI()
     configureBinding()
 
-    eventViewModel.fetchPopularEvent(location: "", isFinished: false)
-    eventViewModel.fetchUpcomingEvent(location: "")
+    eventViewModel.fetchPopularEvent(location: eventViewModel.selectedLocation.value.name, isFinished: false)
+    eventViewModel.fetchUpcomingEvent(location: eventViewModel.selectedLocation.value.name)
     eventViewModel.getSelectedLocation()
   }
 
@@ -274,6 +274,9 @@ class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewControllerProtocol {
   func changeLocation(location: LocationResult) {
     locationLabel.text = location.name + ", ID"
+
+    eventViewModel.fetchPopularEvent(location: location.name, isFinished: false)
+    eventViewModel.fetchUpcomingEvent(location: location.name)
   }
 }
 

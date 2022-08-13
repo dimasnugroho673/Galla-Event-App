@@ -45,7 +45,7 @@ class EventViewModel {
   }
 
   func fetchPopularEvent(location: String, isFinished: Bool) {
-    eventService.fetchPopularEvent(location: "bintan", isFinished: false) { result in
+    eventService.fetchPopularEvent(location: location, isFinished: false) { result in
       switch result {
       case .success(let data):
         self.popularEvents.value = data.data
