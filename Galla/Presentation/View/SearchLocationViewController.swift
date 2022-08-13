@@ -191,6 +191,8 @@ class SearchLocationViewController: UIViewController {
 extension SearchLocationViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     delegate?.changeLocation(location: locationViewModel.locations.value[indexPath.row])
+    locationViewModel.saveSelectedLocation(locationViewModel.locations.value[indexPath.row])
+
     dismiss(animated: true)
   }
 }

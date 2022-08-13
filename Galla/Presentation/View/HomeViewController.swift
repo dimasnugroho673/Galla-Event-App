@@ -14,7 +14,7 @@ protocol HomeViewControllerProtocol: AnyObject {
 
 class HomeViewController: UIViewController {
 
-  let eventViewModel: EventViewModel = EventViewModel(eventService: Injection().provideHome())
+  let eventViewModel: EventViewModel = EventViewModel(eventService: Injection().provideHome(), locationService: Injection().provideSearch())
 
   lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)
@@ -75,7 +75,7 @@ class HomeViewController: UIViewController {
     let label = UILabel()
 
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "Bandung, ID"
+    label.text = "-"
     label.font = UIFont(name: "Poppins-SemiBold", size: 20)
     label.textColor = UIColor(named: "color-black")
 
@@ -188,10 +188,7 @@ class HomeViewController: UIViewController {
 
     eventViewModel.fetchPopularEvent(location: "", isFinished: false)
     eventViewModel.fetchUpcomingEvent(location: "")
-
-    eventViewModel.upcomingEvents.bind { _ in
-      self.collectionView.reloadData()
-    }
+    eventViewModel.getSelectedLocation()
   }
 
   private func configureUI() {
@@ -254,7 +251,13 @@ class HomeViewController: UIViewController {
   }
 
   private func configureBinding() {
+    eventViewModel.upcomingEvents.bind { _ in
+      self.collectionView.reloadData()
+    }
 
+    eventViewModel.selectedLocation.bind { location in
+      self.locationLabel.text = "\(location.name), ID"
+    }
   }
 
   @objc func handleTextInputChange() {

@@ -46,5 +46,9 @@ class LocationViewModel {
     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: task)
 
   }
+
+  func saveSelectedLocation(_ data: LocationResult) {
+    locationService.saveSelectedLocation(data)
+  }
   
 }

@@ -8,6 +8,7 @@
 class EventViewModel {
 
   private let eventService: EventService
+  private let locationService: LocationService
 
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
@@ -16,9 +17,11 @@ class EventViewModel {
   var popularEvents: Observable<[Event]> = Observable([Event]())
   var detailEvent: Observable<DetailEvent> = Observable(DetailEvent(uid: "", name: "", description: "", dateStart: "", dateEnd: "", poster: "", ticketPrice: "", quota: 0, quotaRemaining: 0, createdAt: "", updatedAt: "", location: Location(uid: "", country: "", venue: "", fullAddress: "", latitude: "", longitude: "", province: Region(id: 0, name: ""), regency: Region(id: 0, name: "")), viewer: 0, organizer: Organizer(uid: "", name: "", organizerDescription: "", image: "", isVerified: false, organizerSector: "", createdAt: "", updatedAt: "")))
   var joinEventStatus: Observable<Bool> = Observable(false)
+  var selectedLocation: Observable<LocationResult> = Observable(LocationResult(type: "", id: 0, name: ""))
 
-  init(eventService: EventService) {
+  init(eventService: EventService, locationService: LocationService) {
     self.eventService = eventService
+    self.locationService = locationService
   }
 
   func locationEventCustom(location: String, country: String) -> String {
@@ -71,6 +74,12 @@ class EventViewModel {
       self.joinEventStatus.value = result.status
       self.isLoading.value = false
     }
+  }
+
+  func getSelectedLocation() {
+    let savedLocation = locationService.getSelectedLocation()
+
+    self.selectedLocation.value = savedLocation
   }
 }
 
