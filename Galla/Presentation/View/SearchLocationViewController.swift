@@ -206,7 +206,7 @@ extension SearchLocationViewController: UITableViewDataSource {
     let data = locationViewModel.locations.value[indexPath.row]
 
     cell.textLabel?.text = data.name
-    cell.textLabel?.font = UIFont(name: "Poppins-Regular", size: 14)
+    cell.textLabel?.font = UIFont(name: "Poppins-SemiBold", size: 14)
 
     return cell
   }
