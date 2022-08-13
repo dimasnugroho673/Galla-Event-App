@@ -13,7 +13,7 @@ class LocationService: LocationUseCase {
     self.locationRepository = locationRepository
   }
   
-  func search(_ keyword: String, completion: @escaping (Result<BaseResponse<LocationResult>, ResponseError>) -> ()) {
+  func search(_ keyword: String, completion: @escaping (Result<BaseResponse<[LocationResult]>, ResponseError>) -> ()) {
     return locationRepository.search(keyword) { result in
       switch result {
       case .success(let data):

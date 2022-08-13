@@ -8,7 +8,7 @@
 import Foundation
 
 final class LocationRemoteDataSource: LocationRemoteDataSourceProtocol {
-  func search(_ keyword: String, completion: @escaping (Result<BaseResponse<LocationResult>, ResponseError>) -> ()) {
+  func search(_ keyword: String, completion: @escaping (Result<BaseResponse<[LocationResult]>, ResponseError>) -> ()) {
     guard let url = URL(string: "\(Constants.API_ENDPOINT)/locations?keyword=\(keyword)") else { return }
 
     let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -19,7 +19,7 @@ final class LocationRemoteDataSource: LocationRemoteDataSourceProtocol {
 
       if let data = data {
         do {
-          let result = try JSONDecoder().decode(BaseResponse<LocationResult>.self, from: data)
+          let result = try JSONDecoder().decode(BaseResponse<[LocationResult]>.self, from: data)
 
           DispatchQueue.main.async {
             completion(.success(result))

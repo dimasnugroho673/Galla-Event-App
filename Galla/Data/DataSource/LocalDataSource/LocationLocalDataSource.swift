@@ -20,7 +20,7 @@ final class LocationLocalDataSource: LocationLocalDataSourceProtocol {
 
         location = decode
       } else {
-        location = LocationResult(type: "", id: "", name: "")
+        location = LocationResult(type: "", id: 0, name: "")
       }
 
     } catch {

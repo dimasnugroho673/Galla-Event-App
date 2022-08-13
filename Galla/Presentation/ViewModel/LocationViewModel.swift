@@ -20,16 +20,10 @@ class LocationViewModel {
     self.locationService = locationService
   }
 
-  var locations: Observable<[LocationResult]> = Observable([
-    LocationResult(type: "province", id: "11", name: "Aceh"),
-    LocationResult(type: "regency", id: "1101", name: "Aceh Selatan"),
-    LocationResult(type: "regency", id: "1102", name: "Aceh Tenggara"),
-    LocationResult(type: "regency", id: "1103", name: "Aceh Timur"),
-    LocationResult(type: "regency", id: "1104", name: "Aceh Tengah"),
-  ])
+  var locations: Observable<[LocationResult]> = Observable([LocationResult]())
 
   func attemptSearch(_ keyword: String) {
-    guard keyword != "" else { return }
+    let keyword = keyword.replacingOccurrences(of: " ", with: "+")
 
     self.searchTask?.cancel()
 
@@ -39,6 +33,7 @@ class LocationViewModel {
           switch result {
           case .success(let data):
             print(data)
+            self?.locations.value = data.data
           case .failure(let error):
             self?.errorMessage.value = error.errorDescription ?? ""
           }

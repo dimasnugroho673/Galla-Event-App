@@ -6,5 +6,7 @@
 //
 
 struct LocationResult: Codable {
-  let type, id, name: String
+  let type: String
+  let id: Int
+  let name: String
 }

@@ -70,6 +70,7 @@ class SearchLocationViewController: UIViewController {
 
     tf.placeholder = "City, State, or Country"
     tf.textColor = UIColor.systemGray
+    tf.autocorrectionType = .no
 
     tf.addTarget(self, action: #selector(handleTextInputChange(_:)), for: .editingChanged)
 
@@ -102,6 +103,7 @@ class SearchLocationViewController: UIViewController {
     super.viewDidLoad()
 
     configureUI()
+    configureBinding()
   }
 
   private func configureUI() {
@@ -117,7 +119,7 @@ class SearchLocationViewController: UIViewController {
     view.addSubview(emptyDataLabel)
     view.addSubview(locationTableView)
 
-    emptyDataLabel.isHidden = true
+    locationTableView.isHidden = true
 
     NSLayoutConstraint.activate([
       navbarView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -145,7 +147,17 @@ class SearchLocationViewController: UIViewController {
     ])
   }
 
-  func configureBinding() {}
+  func configureBinding() {
+    locationViewModel.locations.bind { result in
+      if !result.isEmpty {
+        self.locationTableView.isHidden = false
+        self.emptyDataLabel.isHidden = true
+        self.locationTableView.reloadData()
+      } else {
+        self.emptyDataLabel.isHidden = false
+      }
+    }
+  }
 
   @objc func handleCancelTap() {
     dismiss(animated: true)

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LocationUseCase {
-  func search(_ keyword: String, completion: @escaping(Result<BaseResponse<LocationResult>, ResponseError>) -> ())
+  func search(_ keyword: String, completion: @escaping(Result<BaseResponse<[LocationResult]>, ResponseError>) -> ())
   func getSelectedLocation() -> LocationResult
   func saveSelectedLocation(_ data: LocationResult)
 }

@@ -6,5 +6,5 @@
 //
 
 protocol LocationRemoteDataSourceProtocol {
-  func search(_ keyword: String, completion: @escaping(Result<BaseResponse<LocationResult>, ResponseError>) -> ())
+  func search(_ keyword: String, completion: @escaping(Result<BaseResponse<[LocationResult]>, ResponseError>) -> ())
 }

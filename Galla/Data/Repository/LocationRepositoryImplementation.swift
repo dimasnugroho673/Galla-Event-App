@@ -15,7 +15,7 @@ class LocationRepositoryImplementation: LocationRepository {
     self.localDataSource = localDataSource
   }
 
-  func search(_ keyword: String, completion: @escaping (Result<BaseResponse<LocationResult>, ResponseError>) -> ()) {
+  func search(_ keyword: String, completion: @escaping (Result<BaseResponse<[LocationResult]>, ResponseError>) -> ()) {
     return remoteDataSource.search(keyword) { result in
       switch result {
       case .success(let data):
