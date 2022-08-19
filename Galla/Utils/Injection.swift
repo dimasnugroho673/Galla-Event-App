@@ -38,4 +38,12 @@ class Injection {
 
     return LocationService(locationRepository: repository)
   }
+
+  func provideTicket() -> TicketService {
+    let remoteDataSource = TicketRemoteDataSource()
+    let localDataSource = TicketLocalDataSource()
+    let repository = TicketRepositoryImplementation(remoteDataSource: remoteDataSource, localDataSource: localDataSource)
+
+    return TicketService(repository: repository)
+  }
 }
