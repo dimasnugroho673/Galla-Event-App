@@ -114,3 +114,20 @@ enum ImageTypeTextFieldEnum {
       }
   }
 }
+
+enum TicketCanceledEnum {
+  case all
+  case canceled
+  case notCanceled
+
+  var cancelTicketType: Bool? {
+    switch self {
+    case .all:
+      return nil
+    case .canceled:
+      return true
+    case .notCanceled:
+      return false
+    }
+  }
+}

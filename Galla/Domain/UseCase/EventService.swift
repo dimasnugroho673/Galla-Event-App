@@ -60,4 +60,33 @@ class EventService: EventUseCase {
     }
   }
 
+  func fetchFavoriteEvent(completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+    return eventRepository.fetchFavoriteEvent { result in
+      switch result {
+        case .success(let data):
+          return completion(.success(data))
+        case .failure(let error):
+          return completion(.failure(error))
+      }
+    }
+  }
+
+  func checkFavorite(uid: String, completion: @escaping (BaseResponse<Bool>) -> ()) {
+    return eventRepository.checkFavorite(uid: uid) { result in
+      completion(result)
+    }
+  }
+
+  func addFavorite(uid: String, completion: @escaping (BaseResponse<String>) -> ()) {
+    return eventRepository.addFavorite(uid: uid) { result in
+      completion(result)
+    }
+  }
+
+  func removeFavorite(uid: String, completion: @escaping (BaseResponse<String>) -> ()) {
+    return eventRepository.removeFavorite(uid: uid) { result in
+      completion(result)
+    }
+  }
+
 }

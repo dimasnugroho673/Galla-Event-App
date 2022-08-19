@@ -16,6 +16,7 @@ class EventViewModel {
   var upcomingEvents: Observable<[Event]> = Observable([Event]())
   var popularEvents: Observable<[Event]> = Observable([Event]())
   var detailEvent: Observable<DetailEvent> = Observable(DetailEvent(uid: "", name: "", description: "", dateStart: "", dateEnd: "", poster: "", ticketPrice: "", quota: 0, quotaRemaining: 0, createdAt: "", updatedAt: "", location: Location(uid: "", country: "", venue: "", fullAddress: "", latitude: "", longitude: "", province: Region(id: 0, name: ""), regency: Region(id: 0, name: "")), viewer: 0, organizer: Organizer(uid: "", name: "", organizerDescription: "", image: "", isVerified: false, organizerSector: "", createdAt: "", updatedAt: "")))
+  var isFavorite: Observable<Bool> = Observable(false)
   var joinEventStatus: Observable<Bool> = Observable(false)
   var selectedLocation: Observable<LocationResult> = Observable(LocationResult(type: "", id: 0, name: ""))
 
@@ -80,6 +81,12 @@ class EventViewModel {
     let savedLocation = locationService.getSelectedLocation()
 
     self.selectedLocation.value = savedLocation
+  }
+
+  func checkFavorite(uid: String) {
+    eventService.checkFavorite(uid: uid) { result in
+      self.isFavorite.value = result.data
+    }
   }
 }
 

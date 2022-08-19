@@ -21,8 +21,8 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
       }
 
       if let data = data {
-        print("DEBUG: url: \(url)")
-        print("DEBUG: \(String(data: data, encoding: .utf8))")
+//        print("DEBUG: url: \(url)")
+//        print("DEBUG: \(String(data: data, encoding: .utf8))")
 
         do {
 
@@ -130,7 +130,7 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
         do {
           let result = try JSONDecoder().decode(BaseResponse<String>.self, from: data)
 
-          print("DEBUG: \(result)")
+//          print("DEBUG: \(result)")
           DispatchQueue.main.async {
             completion(result)
           }
@@ -145,5 +145,136 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
 
     task.resume()
 
+  }
+
+  func fetchFavoriteEvent(completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/events/favorite") else { return }
+
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+    request.httpMethod = "GET"
+
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+      if let error = error {
+        print("DEBUG: Error while fetch Favorite Event: \(error.localizedDescription)")
+        return
+      }
+
+      if let data = data {
+        do {
+          let result = try JSONDecoder().decode(BaseResponse<[Event]>.self, from: data)
+
+          DispatchQueue.main.async {
+            completion(.success(result))
+          }
+
+          return
+        } catch {
+          DispatchQueue.main.async {
+            completion(.failure(ResponseError.errorFetchingData))
+          }
+          print("DEBUG: Error while decode Favorite Event: \(error.localizedDescription)")
+        }
+      }
+    }
+
+    task.resume()
+  }
+
+  func checkFavorite(uid: String, completion: @escaping (BaseResponse<Bool>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/event/\(uid)/favorite") else { return }
+
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+    request.httpMethod = "GET"
+
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+      if let error = error {
+        print("DEBUG: Error while fetch Favorite Event: \(error.localizedDescription)")
+        return
+      }
+
+      if let data = data {
+        do {
+          let result = try JSONDecoder().decode(BaseResponse<Bool>.self, from: data)
+
+          DispatchQueue.main.async {
+            completion(result)
+          }
+
+          return
+        } catch {
+          print("DEBUG: Error while decode Favorite Event: \(error.localizedDescription)")
+        }
+      }
+    }
+
+    task.resume()
+  }
+
+  func addFavorite(uid: String, completion: @escaping (BaseResponse<String>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/event/\(uid)/favorite") else { return }
+
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+    request.httpMethod = "POST"
+
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+      if let error = error {
+        print("DEBUG: Error while fetch Favorite Event: \(error.localizedDescription)")
+        return
+      }
+
+      if let data = data {
+        do {
+          let result = try JSONDecoder().decode(BaseResponse<String>.self, from: data)
+
+          DispatchQueue.main.async {
+            completion(result)
+          }
+
+          return
+        } catch {
+          print("DEBUG: Error while decode Favorite Event: \(error.localizedDescription)")
+        }
+      }
+    }
+
+    task.resume()
+  }
+
+  func removeFavorite(uid: String, completion: @escaping (BaseResponse<String>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/event/\(uid)/favorite") else { return }
+
+    var request = URLRequest(url: url)
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+    request.httpMethod = "POST"
+
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+      if let error = error {
+        print("DEBUG: Error while fetch Favorite Event: \(error.localizedDescription)")
+        return
+      }
+
+      if let data = data {
+        do {
+          let result = try JSONDecoder().decode(BaseResponse<String>.self, from: data)
+
+          DispatchQueue.main.async {
+            completion(result)
+          }
+
+          return
+        } catch {
+          print("DEBUG: Error while decode Favorite Event: \(error.localizedDescription)")
+        }
+      }
+    }
+
+    task.resume()
   }
 }

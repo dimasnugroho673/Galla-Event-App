@@ -518,10 +518,19 @@ class DetailEventViewController: UIViewController {
         self.removeSpinner()
       }
     }
+
+    eventViewModel.isFavorite.bind { isFavorite in
+      if isFavorite {
+        self.favoriteImage.setImage(UIImage(systemName: "heart.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.light)), for: .normal)
+      } else {
+        self.favoriteImage.setImage(UIImage(systemName: "heart")?.withTintColor(.systemGray3, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.light)), for: .normal)
+      }
+    }
   }
 
   func fetchDetail() {
     eventViewModel.fetchDetailEvent(uid: self.uid)
+    eventViewModel.checkFavorite(uid: self.uid)
   }
 
   @objc func handleBackButtonNav() {

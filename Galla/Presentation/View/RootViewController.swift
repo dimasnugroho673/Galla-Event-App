@@ -60,7 +60,7 @@ class RootViewController: UITabBarController {
   private func configureTabBar() {
       let home = templateTabBar(with: "Home", image: UIImage(named: "icon-home"), selectedImage: UIImage(named: "icon-home-active"), viewController: HomeViewController())
       let explore = templateTabBar(with: "Explore", image: UIImage(named: "icon-search"), selectedImage: UIImage(named: "icon-search-active"), viewController: EmptyViewController())
-      let favorite = templateTabBar(with: "Favorite", image: UIImage(named: "icon-favorite"), selectedImage: UIImage(named: "icon-favorite-active"), viewController: EmptyViewController())
+      let favorite = templateTabBar(with: "Favorite", image: UIImage(named: "icon-favorite"), selectedImage: UIImage(named: "icon-favorite-active"), viewController: FavoriteViewController())
       let ticket = templateTabBar(with: "Ticket", image: UIImage(named: "icon-ticket"), selectedImage: UIImage(named: "icon-ticket-active"), viewController: TicketViewController())
       let profile = templateTabBar(with: "Profile", image: UIImage(named: "icon-people"), selectedImage: UIImage(named: "icon-people-active"), viewController: EmptyViewController())
 

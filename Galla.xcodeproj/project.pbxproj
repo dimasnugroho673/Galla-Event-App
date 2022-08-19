@@ -59,6 +59,20 @@
 		40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA995286945EB00E3346B /* UpcomingEventCell.swift */; };
 		40ABA99A28695C9900E3346B /* TitleHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */; };
 		40ABA99C2869F48300E3346B /* PopularEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA99B2869F48300E3346B /* PopularEventCell.swift */; };
+		40ABCD2E28AA8B3900E067AF /* TicketRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD2D28AA8B3900E067AF /* TicketRemoteDataSourceProtocol.swift */; };
+		40ABCD3028AA8BBD00E067AF /* TicketLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD2F28AA8BBD00E067AF /* TicketLocalDataSourceProtocol.swift */; };
+		40ABCD3228AA8DD500E067AF /* TicketRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD3128AA8DD500E067AF /* TicketRemoteDataSource.swift */; };
+		40ABCD3428AA92E100E067AF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD3328AA92E100E067AF /* Ticket.swift */; };
+		40ABCD3628AA93A000E067AF /* TicketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD3528AA93A000E067AF /* TicketRepository.swift */; };
+		40ABCD3828AA93CF00E067AF /* TicketRepositoryImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD3728AA93CF00E067AF /* TicketRepositoryImplementation.swift */; };
+		40ABCD3A28AA94BC00E067AF /* TicketUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD3928AA94BC00E067AF /* TicketUseCase.swift */; };
+		40ABCD3C28AA94DB00E067AF /* TicketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD3B28AA94DB00E067AF /* TicketService.swift */; };
+		40ABCD3E28AA953400E067AF /* TicketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD3D28AA953400E067AF /* TicketViewModel.swift */; };
+		40ABCD4028AA9C8300E067AF /* TicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD3F28AA9C8300E067AF /* TicketView.swift */; };
+		40ABCD4428AAA70900E067AF /* TicketLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD4328AAA70900E067AF /* TicketLocalDataSource.swift */; };
+		40ABCD4628AAAA4300E067AF /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD4528AAAA4300E067AF /* TicketTableViewCell.swift */; };
+		40ABCD4828AF72D600E067AF /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD4728AF72D600E067AF /* FavoriteViewModel.swift */; };
+		40ABCD4A28AF735600E067AF /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD4928AF735600E067AF /* FavoriteViewController.swift */; };
 		40B18A2C28659BF700F7DE74 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2B28659BF700F7DE74 /* BaseResponse.swift */; };
 		40B18A2F28659E6A00F7DE74 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2E28659E6A00F7DE74 /* User.swift */; };
 		40F2D602286AB90C00F57DAC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D601286AB90C00F57DAC /* Event.swift */; };
@@ -138,6 +152,20 @@
 		40ABA995286945EB00E3346B /* UpcomingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 		40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		40ABA99B2869F48300E3346B /* PopularEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularEventCell.swift; sourceTree = "<group>"; };
+		40ABCD2D28AA8B3900E067AF /* TicketRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
+		40ABCD2F28AA8BBD00E067AF /* TicketLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		40ABCD3128AA8DD500E067AF /* TicketRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRemoteDataSource.swift; sourceTree = "<group>"; };
+		40ABCD3328AA92E100E067AF /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		40ABCD3528AA93A000E067AF /* TicketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRepository.swift; sourceTree = "<group>"; };
+		40ABCD3728AA93CF00E067AF /* TicketRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRepositoryImplementation.swift; sourceTree = "<group>"; };
+		40ABCD3928AA94BC00E067AF /* TicketUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketUseCase.swift; sourceTree = "<group>"; };
+		40ABCD3B28AA94DB00E067AF /* TicketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketService.swift; sourceTree = "<group>"; };
+		40ABCD3D28AA953400E067AF /* TicketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewModel.swift; sourceTree = "<group>"; };
+		40ABCD3F28AA9C8300E067AF /* TicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketView.swift; sourceTree = "<group>"; };
+		40ABCD4328AAA70900E067AF /* TicketLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketLocalDataSource.swift; sourceTree = "<group>"; };
+		40ABCD4528AAAA4300E067AF /* TicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
+		40ABCD4728AF72D600E067AF /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		40ABCD4928AF735600E067AF /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		40B18A2B28659BF700F7DE74 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		40B18A2E28659E6A00F7DE74 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		40F2D601286AB90C00F57DAC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -183,6 +211,7 @@
 				400E6BF5287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift */,
 				400E6BF7287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift */,
 				4089E04828A60D6D00E54182 /* LocationRemoteDataSourceProtocol.swift */,
+				40ABCD2D28AA8B3900E067AF /* TicketRemoteDataSourceProtocol.swift */,
 			);
 			path = RemoteDataSourceProtocol;
 			sourceTree = "<group>";
@@ -192,6 +221,7 @@
 			children = (
 				400E6BFA287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift */,
 				4089E03228A3A33800E54182 /* LocationLocalDataSourceProtocol.swift */,
+				40ABCD2F28AA8BBD00E067AF /* TicketLocalDataSourceProtocol.swift */,
 			);
 			path = LocalDataSourceProtocol;
 			sourceTree = "<group>";
@@ -251,6 +281,7 @@
 				40F2D61F286C91DA00F57DAC /* TicketViewController.swift */,
 				40F2D664286EE38C00F57DAC /* MapEventViewController.swift */,
 				4089E02C28A386B200E54182 /* SearchLocationViewController.swift */,
+				40ABCD4928AF735600E067AF /* FavoriteViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,6 +312,8 @@
 				405C35B42863407E006A859F /* UserViewModel.swift */,
 				40F2D603286AB9C100F57DAC /* EventViewModel.swift */,
 				4089E02E28A3996E00E54182 /* LocationViewModel.swift */,
+				40ABCD3D28AA953400E067AF /* TicketViewModel.swift */,
+				40ABCD4728AF72D600E067AF /* FavoriteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -309,6 +342,8 @@
 				40ABA995286945EB00E3346B /* UpcomingEventCell.swift */,
 				40ABA99B2869F48300E3346B /* PopularEventCell.swift */,
 				40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */,
+				40ABCD3F28AA9C8300E067AF /* TicketView.swift */,
+				40ABCD4528AAAA4300E067AF /* TicketTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -357,6 +392,7 @@
 				40B18A2E28659E6A00F7DE74 /* User.swift */,
 				40F2D601286AB90C00F57DAC /* Event.swift */,
 				4089E03028A3998C00E54182 /* Location.swift */,
+				40ABCD3328AA92E100E067AF /* Ticket.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,6 +403,7 @@
 				407C9D802865A2FC00F3CB27 /* UserRepository.swift */,
 				40F2D605286AB9F900F57DAC /* EventRepository.swift */,
 				4089E04228A60B3B00E54182 /* LocationRepository.swift */,
+				40ABCD3528AA93A000E067AF /* TicketRepository.swift */,
 			);
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
@@ -380,6 +417,8 @@
 				40F2D609286ABBA900F57DAC /* EventService.swift */,
 				4089E03D28A60A0B00E54182 /* LocationUseCase.swift */,
 				4089E04028A60B1700E54182 /* LocationService.swift */,
+				40ABCD3928AA94BC00E067AF /* TicketUseCase.swift */,
+				40ABCD3B28AA94DB00E067AF /* TicketService.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -390,6 +429,7 @@
 				40F2D60B286ABBC900F57DAC /* EventRepositoryImplementation.swift */,
 				407C9D842865A4FE00F3CB27 /* UserRepositoryImplementation.swift */,
 				4089E04428A60C6100E54182 /* LocationRepositoryImplementation.swift */,
+				40ABCD3728AA93CF00E067AF /* TicketRepositoryImplementation.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -410,6 +450,7 @@
 			children = (
 				407C9D942866CACF00F3CB27 /* UserLocalDataSource.swift */,
 				4089E03428A3A3AC00E54182 /* LocationLocalDataSource.swift */,
+				40ABCD4328AAA70900E067AF /* TicketLocalDataSource.swift */,
 			);
 			path = LocalDataSource;
 			sourceTree = "<group>";
@@ -420,6 +461,7 @@
 				407C9D882865A5A000F3CB27 /* UserRemoteDataSource.swift */,
 				40F2D60D286ABBEA00F57DAC /* EventRemoteDataSource.swift */,
 				4089E04A28A60DEB00E54182 /* LocationRemoteDataSource.swift */,
+				40ABCD3128AA8DD500E067AF /* TicketRemoteDataSource.swift */,
 			);
 			path = RemoteDataSource;
 			sourceTree = "<group>";
@@ -563,15 +605,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40ABCD4028AA9C8300E067AF /* TicketView.swift in Sources */,
 				400E6BF6287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift in Sources */,
 				4089E03E28A60A0B00E54182 /* LocationUseCase.swift in Sources */,
 				405C35C4286405AE006A859F /* Observable.swift in Sources */,
+				40ABCD4428AAA70900E067AF /* TicketLocalDataSource.swift in Sources */,
 				405C35B228634027006A859F /* LoginViewController.swift in Sources */,
+				40ABCD3228AA8DD500E067AF /* TicketRemoteDataSource.swift in Sources */,
+				40ABCD3A28AA94BC00E067AF /* TicketUseCase.swift in Sources */,
 				40F2D60A286ABBA900F57DAC /* EventService.swift in Sources */,
 				40F2D604286AB9C100F57DAC /* EventViewModel.swift in Sources */,
+				40ABCD3428AA92E100E067AF /* Ticket.swift in Sources */,
 				407C9D812865A2FC00F3CB27 /* UserRepository.swift in Sources */,
 				405C35BF2863600C006A859F /* CTAButton.swift in Sources */,
 				4089E03528A3A3AC00E54182 /* LocationLocalDataSource.swift in Sources */,
+				40ABCD3828AA93CF00E067AF /* TicketRepositoryImplementation.swift in Sources */,
 				40F2D602286AB90C00F57DAC /* Event.swift in Sources */,
 				405C35BA2863518F006A859F /* Extensions.swift in Sources */,
 				407C9D8F2865C81B00F3CB27 /* Injection.swift in Sources */,
@@ -581,7 +629,12 @@
 				400E6BF8287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift in Sources */,
 				40ABA99C2869F48300E3346B /* PopularEventCell.swift in Sources */,
 				407C9D7C2865A05900F3CB27 /* UserUseCase.swift in Sources */,
+				40ABCD4A28AF735600E067AF /* FavoriteViewController.swift in Sources */,
+				40ABCD3028AA8BBD00E067AF /* TicketLocalDataSourceProtocol.swift in Sources */,
 				40ABA99A28695C9900E3346B /* TitleHeaderCollectionReusableView.swift in Sources */,
+				40ABCD2E28AA8B3900E067AF /* TicketRemoteDataSourceProtocol.swift in Sources */,
+				40ABCD4828AF72D600E067AF /* FavoriteViewModel.swift in Sources */,
+				40ABCD3628AA93A000E067AF /* TicketRepository.swift in Sources */,
 				407C9D8D2865C5E000F3CB27 /* UserService.swift in Sources */,
 				40F2D620286C91DA00F57DAC /* TicketViewController.swift in Sources */,
 				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,
@@ -591,10 +644,13 @@
 				405C358E2862F953006A859F /* AppDelegate.swift in Sources */,
 				405C35B52863407E006A859F /* UserViewModel.swift in Sources */,
 				40F2D606286AB9F900F57DAC /* EventRepository.swift in Sources */,
+				40ABCD3C28AA94DB00E067AF /* TicketService.swift in Sources */,
+				40ABCD3E28AA953400E067AF /* TicketViewModel.swift in Sources */,
 				407C9D7F2865A1EC00F3CB27 /* Error.swift in Sources */,
 				407C9D8B2865AA3200F3CB27 /* Constants.swift in Sources */,
 				407C9D952866CACF00F3CB27 /* UserLocalDataSource.swift in Sources */,
 				4089E02F28A3996F00E54182 /* LocationViewModel.swift in Sources */,
+				40ABCD4628AAAA4300E067AF /* TicketTableViewCell.swift in Sources */,
 				40B18A2F28659E6A00F7DE74 /* User.swift in Sources */,
 				40F2D61E286C696800F57DAC /* PreviewUIView.swift in Sources */,
 				4089E02D28A386B200E54182 /* SearchLocationViewController.swift in Sources */,
