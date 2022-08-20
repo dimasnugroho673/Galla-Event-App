@@ -42,7 +42,7 @@ extension UITextField {
 
 extension UITextField {
   func setLeftImage(imageString: String, imageType: ImageTypeTextFieldEnum) {
-//    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+    //    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
     let imageViewContainer = UIView()
     imageViewContainer.translatesAutoresizingMaskIntoConstraints = false
 
@@ -70,7 +70,7 @@ extension UITextField {
   }
 
   func setDeleteImage(imageString: String, imageType: ImageTypeTextFieldEnum) {
-//    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+    //    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
     let imageViewContainer = UIView()
     imageViewContainer.translatesAutoresizingMaskIntoConstraints = false
 
@@ -101,17 +101,45 @@ extension UITextField {
   }
 }
 
+extension UIView {
+  func viewToImage(view: UIView) -> UIImage? {
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
+    defer { UIGraphicsEndImageContext() }
+    view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+    return UIGraphicsGetImageFromCurrentImageContext()
+  }
+}
+
+extension UIImage {
+  func saveToPhotoLibrary(_ completionTarget: Any?, _ completionSelector: Selector?) {
+    DispatchQueue.global(qos: .userInitiated).async {
+      UIImageWriteToSavedPhotosAlbum(self, completionTarget, completionSelector, nil)
+    }
+  }
+}
+
+extension String {
+  func locationEventCustom(location: String, country: String) -> String {
+    var locationNew = location
+    locationNew = locationNew.replacingOccurrences(of: "KOTA ", with: "")
+    locationNew = locationNew.replacingOccurrences(of: "KAB. ", with: "")
+    locationNew = locationNew.capitalized
+
+    return "\(locationNew), \(country.uppercased())"
+  }
+}
+
 enum ImageTypeTextFieldEnum {
   case systemName
   case named
 
   var imageType: String? {
     switch self {
-      case .named:
-        return "named"
-      case .systemName:
-        return "systemName"
-      }
+    case .named:
+      return "named"
+    case .systemName:
+      return "systemName"
+    }
   }
 }
 

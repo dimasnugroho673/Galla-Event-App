@@ -138,11 +138,16 @@ class TicketViewController: UIViewController {
 
 extension TicketViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 550
+    return 400
 //    return UITableView.automaticDimension
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    let cell = ticketTableView.dequeueReusableCell(withIdentifier: TickerTableViewCell.identifier, for: indexPath) as! TickerTableViewCell
+//    cell.backgroundColor = UIColor(named: "color-background")
+//
+//    UIImageWriteToSavedPhotosAlbum(cell.viewToImage(view: cell) ?? UIImage(), self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+
     return print("DEBUG: Ticket selected: \(indexPath.row)")
   }
 }
@@ -155,10 +160,11 @@ extension TicketViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = ticketTableView.dequeueReusableCell(withIdentifier: TickerTableViewCell.identifier, for: indexPath) as! TickerTableViewCell
     cell.width = self.view.frame.width
+    cell.ticket = ticketViewModel.tickets.value[indexPath.row]
 
 //    cell.textLabel?.text = ticketViewModel.tickets.value[indexPath.row].name
 //    cell.addSubview(ticketView)
-    cell.label.text = ticketViewModel.tickets.value[indexPath.row].name
+//    cell.label.text = ticketViewModel.tickets.value[indexPath.row].name
 
     return cell
   }

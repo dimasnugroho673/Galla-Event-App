@@ -73,6 +73,7 @@
 		40ABCD4628AAAA4300E067AF /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD4528AAAA4300E067AF /* TicketTableViewCell.swift */; };
 		40ABCD4828AF72D600E067AF /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD4728AF72D600E067AF /* FavoriteViewModel.swift */; };
 		40ABCD4A28AF735600E067AF /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABCD4928AF735600E067AF /* FavoriteViewController.swift */; };
+		40ABCD4C28B12D0600E067AF /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40ABCD4B28B12D0600E067AF /* Poppins-ExtraBold.ttf */; };
 		40B18A2C28659BF700F7DE74 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2B28659BF700F7DE74 /* BaseResponse.swift */; };
 		40B18A2F28659E6A00F7DE74 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2E28659E6A00F7DE74 /* User.swift */; };
 		40F2D602286AB90C00F57DAC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D601286AB90C00F57DAC /* Event.swift */; };
@@ -166,6 +167,7 @@
 		40ABCD4528AAAA4300E067AF /* TicketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		40ABCD4728AF72D600E067AF /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		40ABCD4928AF735600E067AF /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		40ABCD4B28B12D0600E067AF /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		40B18A2B28659BF700F7DE74 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		40B18A2E28659E6A00F7DE74 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		40F2D601286AB90C00F57DAC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		405C35A8286307F9006A859F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				40ABCD4B28B12D0600E067AF /* Poppins-ExtraBold.ttf */,
 				405C35AA28630820006A859F /* Poppins-Bold.ttf */,
 				405C35AC28630820006A859F /* Poppins-Medium.ttf */,
 				405C35AB28630820006A859F /* Poppins-Regular.ttf */,
@@ -585,6 +588,7 @@
 				405C35AD28630820006A859F /* Poppins-SemiBold.ttf in Resources */,
 				405C359A2862F955006A859F /* LaunchScreen.storyboard in Resources */,
 				405C35972862F955006A859F /* Assets.xcassets in Resources */,
+				40ABCD4C28B12D0600E067AF /* Poppins-ExtraBold.ttf in Resources */,
 				405C35B028630820006A859F /* Poppins-Medium.ttf in Resources */,
 				405C35AE28630820006A859F /* Poppins-Bold.ttf in Resources */,
 				405C35AF28630820006A859F /* Poppins-Regular.ttf in Resources */,

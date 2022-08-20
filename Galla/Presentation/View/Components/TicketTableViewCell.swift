@@ -12,8 +12,9 @@ class TickerTableViewCell: UITableViewCell {
   static let identifier: String = "TicketCell"
 
   var width: CGFloat?
+  var ticket: Ticket?
 
-  lazy var ticketView: TicketView = TicketView(width: self.width ?? 0.0)
+  lazy var ticketView: TicketView = TicketView(width: self.width ?? 0.0, ticket: self.ticket!)
 
   lazy var label: UILabel = {
     let label = UILabel()
@@ -77,10 +78,11 @@ class TickerTableViewCell: UITableViewCell {
 //    print("DEBUG: WIDTH: \(self.width)")
   }
 
-  init(width: CGFloat) {
+  init(width: CGFloat, ticket: Ticket) {
     super.init(style: .default, reuseIdentifier: "TicketCell")
 
     self.width = width
+    self.ticket = ticket
   }
 
   override func layoutSubviews() {
