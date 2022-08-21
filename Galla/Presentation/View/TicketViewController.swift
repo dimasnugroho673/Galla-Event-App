@@ -57,10 +57,6 @@ class TicketViewController: UIViewController {
     button.heightAnchor.constraint(equalToConstant: 22).isActive = true
     button.widthAnchor.constraint(equalToConstant: 22).isActive = true
 
-//    button.addTarget(self, action: #selector(handleBackButtonNav), for: .touchUpInside)
-
-//    button.isHidden = true
-
     return button
   }()
 

@@ -38,10 +38,6 @@ class FavoriteViewController: UIViewController {
     button.heightAnchor.constraint(equalToConstant: 22).isActive = true
     button.widthAnchor.constraint(equalToConstant: 22).isActive = true
 
-//    button.addTarget(self, action: #selector(handleBackButtonNav), for: .touchUpInside)
-
-//    button.isHidden = true
-
     return button
   }()
 
@@ -96,11 +92,19 @@ class FavoriteViewController: UIViewController {
     navBarStack.distribution = .equalSpacing
 
 //    navBarView.addSubview(navBarStack)
+    navBarView.addSubview(titleNavBar)
+    navBarView.addSubview(notifButtonNavBar)
 
     NSLayoutConstraint.activate([
       navBarView.topAnchor.constraint(equalTo: view.topAnchor),
       navBarView.leftAnchor.constraint(equalTo: view.leftAnchor),
       navBarView.rightAnchor.constraint(equalTo: view.rightAnchor),
+
+      titleNavBar.centerXAnchor.constraint(equalTo: navBarView.centerXAnchor),
+      titleNavBar.bottomAnchor.constraint(equalTo: navBarView.bottomAnchor, constant: -15),
+
+      notifButtonNavBar.rightAnchor.constraint(equalTo: navBarView.rightAnchor, constant: -15),
+      notifButtonNavBar.bottomAnchor.constraint(equalTo: navBarView.bottomAnchor, constant: -15),
 
       favoriteCollectionView.topAnchor.constraint(equalTo: navBarView.bottomAnchor),
       favoriteCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
