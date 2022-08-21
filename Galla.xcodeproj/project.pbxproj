@@ -29,6 +29,8 @@
 		405C35BF2863600C006A859F /* CTAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35BE2863600C006A859F /* CTAButton.swift */; };
 		405C35C22863660F006A859F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35C12863660F006A859F /* RegisterViewController.swift */; };
 		405C35C4286405AE006A859F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35C3286405AD006A859F /* Observable.swift */; };
+		4076BE5B28B286D700833570 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4076BE5A28B286D700833570 /* SearchEventViewController.swift */; };
+		4076BE5D28B2947F00833570 /* SearchEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4076BE5C28B2947F00833570 /* SearchEventViewModel.swift */; };
 		407C9D7C2865A05900F3CB27 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D7B2865A05900F3CB27 /* UserUseCase.swift */; };
 		407C9D7F2865A1EC00F3CB27 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D7E2865A1EC00F3CB27 /* Error.swift */; };
 		407C9D812865A2FC00F3CB27 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407C9D802865A2FC00F3CB27 /* UserRepository.swift */; };
@@ -126,6 +128,8 @@
 		405C35BE2863600C006A859F /* CTAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTAButton.swift; sourceTree = "<group>"; };
 		405C35C12863660F006A859F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		405C35C3286405AD006A859F /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		4076BE5A28B286D700833570 /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
+		4076BE5C28B2947F00833570 /* SearchEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewModel.swift; sourceTree = "<group>"; };
 		407C9D7B2865A05900F3CB27 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		407C9D7E2865A1EC00F3CB27 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		407C9D802865A2FC00F3CB27 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 				40F2D664286EE38C00F57DAC /* MapEventViewController.swift */,
 				4089E02C28A386B200E54182 /* SearchLocationViewController.swift */,
 				40ABCD4928AF735600E067AF /* FavoriteViewController.swift */,
+				4076BE5A28B286D700833570 /* SearchEventViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				4089E02E28A3996E00E54182 /* LocationViewModel.swift */,
 				40ABCD3D28AA953400E067AF /* TicketViewModel.swift */,
 				40ABCD4728AF72D600E067AF /* FavoriteViewModel.swift */,
+				4076BE5C28B2947F00833570 /* SearchEventViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -630,6 +636,7 @@
 				407C9D91286605B500F3CB27 /* CustomResponseHandler.swift in Sources */,
 				40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */,
 				40F2D61C286C694C00F57DAC /* PreviewViewController.swift in Sources */,
+				4076BE5B28B286D700833570 /* SearchEventViewController.swift in Sources */,
 				400E6BF8287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift in Sources */,
 				40ABA99C2869F48300E3346B /* PopularEventCell.swift in Sources */,
 				407C9D7C2865A05900F3CB27 /* UserUseCase.swift in Sources */,
@@ -641,6 +648,7 @@
 				40ABCD3628AA93A000E067AF /* TicketRepository.swift in Sources */,
 				407C9D8D2865C5E000F3CB27 /* UserService.swift in Sources */,
 				40F2D620286C91DA00F57DAC /* TicketViewController.swift in Sources */,
+				4076BE5D28B2947F00833570 /* SearchEventViewModel.swift in Sources */,
 				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,
 				4089E04128A60B1700E54182 /* LocationService.swift in Sources */,
 				4089E04928A60D6E00E54182 /* LocationRemoteDataSourceProtocol.swift in Sources */,

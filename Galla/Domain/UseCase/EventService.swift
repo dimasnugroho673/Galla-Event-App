@@ -15,6 +15,20 @@ class EventService: EventUseCase {
     self.eventRepository = eventRepository
   }
 
+  func search(keyword: String, location: String?, locationType: String?, isFinished: Bool?, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+    let newLoc = location?.replacingOccurrences(of: " ", with: "+")
+    let newKeyword = keyword.replacingOccurrences(of: " ", with: "+")
+
+    return eventRepository.search(keyword: newKeyword, location: newLoc, locationType: locationType, isFinished: isFinished) { result in
+      switch result {
+        case .success(let data):
+          return completion(.success(data))
+        case .failure(let error):
+          return completion(.failure(error))
+      }
+    }
+  }
+
   func fetchPopularEvent(location: String, isFinished: Bool, locationType: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
 
     let newLoc = location.replacingOccurrences(of: " ", with: "+")

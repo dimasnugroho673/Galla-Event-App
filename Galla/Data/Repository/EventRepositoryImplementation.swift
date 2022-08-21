@@ -13,6 +13,17 @@ class EventRepositoryImplementation: EventRepository {
     self.remoteDataSource = remoteDataSource
   }
 
+  func search(keyword: String, location: String?, locationType: String?, isFinished: Bool?, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+    return remoteDataSource.search(keyword: keyword, location: location, locationType: locationType, isFinished: isFinished) { result in
+      switch result {
+        case .success(let data):
+          return completion(.success(data))
+        case .failure(let error):
+          return completion(.failure(error))
+      }
+    }
+  }
+
   func fetchPopularEvent(location: String, isFinished: Bool, locationType: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
     return remoteDataSource.fetchPopularEvent(location: location, isFinished: isFinished, locationType: locationType) { result in
       switch result {

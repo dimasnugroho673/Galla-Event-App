@@ -11,6 +11,39 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
 
   private let userToken: String = UserDefaults.standard.string(forKey: "UserToken") ?? ""
 
+  func search(keyword: String, location: String?, locationType: String?, isFinished: Bool?, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/events?keyword=\(keyword)") else { return }
+
+    let task = URLSession.shared.dataTask(with: url) { data, response, error in
+      if let error = error {
+        print("DEBUG: Error while fetch Search Event: \(error.localizedDescription)")
+        return
+      }
+
+      if let data = data {
+        do {
+
+          let result = try JSONDecoder().decode(BaseResponse<[Event]>.self, from: data)
+
+          DispatchQueue.main.async {
+            completion(.success(result))
+          }
+
+          return
+
+        } catch {
+          DispatchQueue.main.async {
+            completion(.failure(ResponseError.errorFetchingData))
+          }
+          print("DEBUG: Error while decode Search Event: \(error.localizedDescription)")
+        }
+      }
+
+    }
+
+    task.resume()
+  }
+
   func fetchPopularEvent(location: String, isFinished: Bool, locationType: String, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ()) {
     guard let url = URL(string: "\(Constants.API_ENDPOINT)/events/popular?location=\(location)&is_finished=\(isFinished)&location_type=\(locationType)") else { return }
 

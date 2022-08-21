@@ -6,6 +6,7 @@
 //
 
 protocol EventUseCase {
+  func search(keyword: String, location: String?, locationType: String?, isFinished: Bool?, completion: @escaping (Result<BaseResponse<[Event]>, ResponseError>) -> ())
   func fetchPopularEvent(location: String, isFinished: Bool, locationType: String, completion: @escaping(Result<BaseResponse<[Event]>, ResponseError>) -> ())
   func fetchUpcomingEvent(location: String, locationType: String, completion: @escaping(Result<BaseResponse<[Event]>, ResponseError>) -> ())
   func fetchDetailEvent(uid: String, completion: @escaping(Result<BaseResponse<DetailEvent>, ResponseError>) -> ())

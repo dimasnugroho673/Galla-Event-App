@@ -10,11 +10,11 @@ import UIKit
 let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
 
 extension UIViewController {
-  func showSpinner() {
-    spinner.style = .large
-    spinner.color = .white
+  func showSpinner(style: UIActivityIndicatorView.Style = .large, color: UIColor = .white, backgroundColor: UIColor = .black) {
+    spinner.style = style
+    spinner.color = color
     spinner.center = view.center
-    spinner.backgroundColor = .black
+    spinner.backgroundColor = backgroundColor
     spinner.layer.cornerRadius = 12
     spinner.hidesWhenStopped = true
     spinner.startAnimating()

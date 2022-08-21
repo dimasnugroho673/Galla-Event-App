@@ -43,34 +43,6 @@ class HomeViewController: UIViewController {
     return label
   }()
 
-//  lazy var myLocationHeader: UIView = {
-//    let view = UIView()
-//    view.translatesAutoresizingMaskIntoConstraints = false
-//
-//    let label = UILabel()
-//    label.translatesAutoresizingMaskIntoConstraints = false
-//    label.text = "Bandung, ID"
-//    label.font = UIFont(name: "Poppins-SemiBold", size: 20)
-//    label.textColor = UIColor(named: "color-black")
-//
-//    let image = UIImageView()
-//    let config = UIImage.SymbolWeight.bold
-//    image.translatesAutoresizingMaskIntoConstraints = false
-//    image.image = UIImage(systemName: "chevron.down", withConfiguration: UIImage.SymbolConfiguration.init(weight: config))
-//    image.tintColor = UIColor(named: "color-black")
-//
-//    view.addSubview(label)
-//    view.addSubview(image)
-//
-//    image.centerYAnchor.constraint(equalTo: label.centerYAnchor, constant: 0).isActive = true
-//    image.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 5).isActive = true
-//
-//    view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleLocationHeaderTap)))
-//    view.isUserInteractionEnabled = true
-//
-//    return view
-//  }()
-
   var locationLabel: UILabel = {
     let label = UILabel()
 
@@ -88,10 +60,6 @@ class HomeViewController: UIViewController {
     btn.translatesAutoresizingMaskIntoConstraints = false
 
     let label = locationLabel
-//    label.translatesAutoresizingMaskIntoConstraints = false
-//    label.text = "Bandung, ID"
-//    label.font = UIFont(name: "Poppins-SemiBold", size: 20)
-//    label.textColor = UIColor(named: "color-black")
 
     let image = UIImageView()
     let config = UIImage.SymbolWeight.bold
@@ -153,6 +121,9 @@ class HomeViewController: UIViewController {
     tf.heightAnchor.constraint(equalToConstant: 54).isActive = true
     tf.layer.cornerRadius = 12
     tf.font = UIFont(name: "Poppins-Regular", size: 14)
+    tf.returnKeyType = .search
+    tf.delegate = self
+    tf.autocorrectionType = .no
 
     return tf
   }()
@@ -280,6 +251,20 @@ class HomeViewController: UIViewController {
     let vc = SearchLocationViewController()
     vc.delegate = self
     navigationController?.present(vc, animated: true)
+  }
+}
+
+extension HomeViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+
+    let vc = SearchEventViewController(keyword: textField.text ?? "")
+    vc.hidesBottomBarWhenPushed = true
+
+    textField.text = ""
+    navigationController?.pushViewController(vc, animated: true)
+
+    return true
   }
 }
 

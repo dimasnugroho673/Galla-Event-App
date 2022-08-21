@@ -29,12 +29,12 @@ class Utilities {
     return alert
   }
 
-  func showSpinner(containerView: UIView, isAnimating: Bool) -> UIActivityIndicatorView {
+  func showSpinner(containerView: UIView, isAnimating: Bool, backgroundColor: UIColor = .black) -> UIActivityIndicatorView {
     let spinner = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
     spinner.style = .large
     spinner.color = .white
     spinner.center = containerView.center
-    spinner.backgroundColor = .black
+    spinner.backgroundColor = backgroundColor
     spinner.layer.cornerRadius = 12
     //    spinner.hidesWhenStopped = true
     
