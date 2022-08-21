@@ -38,7 +38,7 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
           DispatchQueue.main.async {
             completion(.failure(ResponseError.errorFetchingData))
           }
-          print("DEBUG: Error while fetch Popular Event: \(error.localizedDescription)")
+          print("DEBUG: Error while decode Popular Event: \(error.localizedDescription)")
         }
       }
 
@@ -70,7 +70,7 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
           DispatchQueue.main.async {
             completion(.failure(ResponseError.errorFetchingData))
           }
-          print("DEBUG: Error while fetch Upcoming Event: \(error.localizedDescription)")
+          print("DEBUG: Error while decode Upcoming Event: \(error.localizedDescription)")
         }
       }
 
@@ -103,7 +103,7 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
           DispatchQueue.main.async {
             completion(.failure(ResponseError.errorFetchingData))
           }
-          print("DEBUG: Error while fetch Upcoming Event: \(error.localizedDescription)")
+          print("DEBUG: Error while decode Detail Event: \(error.localizedDescription)")
         }
       }
 
@@ -138,7 +138,7 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
           return
 
         } catch {
-          print("DEBUG: Error while Join Event: \(error.localizedDescription)")
+          print("DEBUG: Error while decode Join Event: \(error.localizedDescription)")
         }
       }
     }

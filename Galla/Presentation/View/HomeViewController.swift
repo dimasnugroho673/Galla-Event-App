@@ -257,8 +257,10 @@ class HomeViewController: UIViewController {
     eventViewModel.selectedLocation.bind { location in
       self.locationLabel.text = "\(location.name), ID"
 
-      self.eventViewModel.fetchPopularEvent(location: location.name, isFinished: false, locationType: location.type)
-      self.eventViewModel.fetchUpcomingEvent(location: location.name, locationType: location.type)
+      if !location.type.isEmpty {
+        self.eventViewModel.fetchPopularEvent(location: location.name, isFinished: false, locationType: location.type)
+        self.eventViewModel.fetchUpcomingEvent(location: location.name, locationType: location.type)
+      }
     }
 
     eventViewModel.upcomingEvents.bind { _ in
