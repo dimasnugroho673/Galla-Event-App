@@ -11,6 +11,7 @@ struct Ticket: Codable {
   let ticketPrice: String
   let createdAt, updatedAt: String
   let transactionCode: String
+  let isCanceled: Bool
   let location: Location
 
   enum CodingKeys: String, CodingKey {
@@ -21,6 +22,7 @@ struct Ticket: Codable {
     case createdAt = "created_at"
     case updatedAt = "updated_at"
     case transactionCode = "transaction_code"
+    case isCanceled = "is_canceled"
     case location
   }
 }

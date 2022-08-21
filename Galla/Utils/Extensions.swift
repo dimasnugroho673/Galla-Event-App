@@ -127,6 +127,17 @@ extension String {
 
     return "\(locationNew), \(country.uppercased())"
   }
+
+  func toSecond(dateFormat: String = "yyyy-MM-dd HH:mm:ss", timeZone: String? = nil) -> TimeInterval? {
+     // building the formatter
+     let formatter = DateFormatter()
+     formatter.dateFormat = dateFormat
+     if let timeZone = timeZone { formatter.timeZone = TimeZone(identifier: timeZone) }
+
+     // extracting the epoch
+     let date = formatter.date(from: self)
+     return date?.timeIntervalSince1970
+   }
 }
 
 enum ImageTypeTextFieldEnum {
