@@ -12,7 +12,9 @@ final class TicketRemoteDataSource: TicketRemoteDataSourceProtocol {
   private let userToken: String = UserDefaults.standard.string(forKey: "UserToken") ?? ""
 
   func getAll(isCanceled: Bool?, completion: @escaping (Result<BaseResponse<[Ticket]>, ResponseError>) -> ()) {
-    guard let url = URL(string: "\(Constants.API_ENDPOINT)/user/ticket?is_canceled=\(isCanceled!)") else { return }
+    let newIsCanceled = isCanceled == nil ? "" : "\(isCanceled)"
+
+    guard let url = URL(string: "\(Constants.API_ENDPOINT)/user/ticket?is_canceled=\(newIsCanceled)") else { return }
 
     var request = URLRequest(url: url)
     request.httpMethod = "GET"
