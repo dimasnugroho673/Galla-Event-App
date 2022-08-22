@@ -179,17 +179,6 @@ class DetailEventViewController: UIViewController {
     return label
   }()
 
-  //  lazy var viewLocationButton: UIButton = {
-  //    let button = UIButton(type: .system)
-  //    button.setTitle("View Location", for: .normal)
-  //    button.titleLabel?.textColor = .red
-  //    button.addTarget(self, action: #selector(handleViewLocationTap), for: .touchUpInside)
-  //
-  //    return button
-  //  }()
-
-  //  lazy var viewLocationButton: CTAButton = CTAButton(title: "View Location")
-
   lazy var viewLocationView: UIView = {
     let uv = UIView()
     uv.translatesAutoresizingMaskIntoConstraints = false
@@ -204,7 +193,7 @@ class DetailEventViewController: UIViewController {
 
     let mapImage = UIImageView()
     mapImage.translatesAutoresizingMaskIntoConstraints = false
-    mapImage.image = UIImage(systemName: "mappin.circle.fill")
+    mapImage.image = UIImage(systemName: "map.circle.fill")
     mapImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
     mapImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
     mapImage.contentMode = .scaleAspectFill

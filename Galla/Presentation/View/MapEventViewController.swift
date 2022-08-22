@@ -33,13 +33,29 @@ class MapEventViewController: UIViewController {
     button.clipsToBounds = true
     button.layer.shadowColor = UIColor.black.cgColor
     button.layer.shadowOpacity = 1
-    button.layer.shadowRadius = 10
+    button.layer.shadowRadius = 13
     button.layer.shadowOffset = CGSize(width: 10, height: 10)
 
     button.addTarget(self, action: #selector(handleBackButtonNav), for: .touchUpInside)
 
     return button
   }()
+
+  lazy var bottomStickyView: UIView = {
+    let view = UIView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.backgroundColor = .white
+    view.heightAnchor.constraint(equalToConstant: 130).isActive = true
+    view.widthAnchor.constraint(equalToConstant: self.view.frame.width).isActive = true
+    view.layer.shadowColor = UIColor(hexString: "EFEFEF").cgColor
+    view.layer.shadowOpacity = 1
+    view.layer.shadowRadius = 30
+    view.layer.shadowOffset = CGSize(width: 10, height: 10)
+
+    return view
+  }()
+
+  lazy var openInMap: UIButton = CTAButton(title: "Open In Maps")
 
   init(event: DetailEvent) {
     self.event = event
@@ -65,6 +81,10 @@ class MapEventViewController: UIViewController {
   private func configureUI() {
     view.addSubview(mapView)
     mapView.addSubview(backButtonNavBar)
+    mapView.addSubview(bottomStickyView)
+    bottomStickyView.addSubview(openInMap)
+    openInMap.backgroundColor = .systemBlue
+    openInMap.addTarget(self, action: #selector(askToOpenMap), for: .touchUpInside)
 
     mapView.setRegion(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true)
 
@@ -76,6 +96,14 @@ class MapEventViewController: UIViewController {
 
       backButtonNavBar.topAnchor.constraint(equalTo: mapView.topAnchor, constant: 50),
       backButtonNavBar.leftAnchor.constraint(equalTo: mapView.leftAnchor, constant: 15),
+
+      bottomStickyView.bottomAnchor.constraint(equalTo: mapView.bottomAnchor),
+      bottomStickyView.leftAnchor.constraint(equalTo: mapView.leftAnchor),
+      bottomStickyView.rightAnchor.constraint(equalTo: mapView.rightAnchor),
+
+      openInMap.leftAnchor.constraint(equalTo: bottomStickyView.leftAnchor, constant: 15),
+      openInMap.rightAnchor.constraint(equalTo: bottomStickyView.rightAnchor, constant: -15),
+      openInMap.topAnchor.constraint(equalTo: bottomStickyView.topAnchor, constant: 15)
     ])
   }
 
@@ -90,6 +118,10 @@ class MapEventViewController: UIViewController {
 
   @objc func handleBackButtonNav() {
     navigationController?.popViewController(animated: true)
+  }
+
+  @objc func askToOpenMap() {
+    OpenMapDirections.present(in: self, sourceView: openInMap, coordinate: coordinate)
   }
 }
 
