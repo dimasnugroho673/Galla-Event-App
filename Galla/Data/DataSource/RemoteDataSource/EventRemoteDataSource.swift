@@ -285,7 +285,7 @@ final class EventRemoteDataSource: EventRemoteDataSourceProtocol {
     var request = URLRequest(url: url)
     request.setValue("application/json", forHTTPHeaderField: "Accept")
     request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
-    request.httpMethod = "POST"
+    request.httpMethod = "DELETE"
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
       if let error = error {

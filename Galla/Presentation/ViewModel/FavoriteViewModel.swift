@@ -18,11 +18,14 @@ class FavoriteViewModel {
     self.eventService = eventService
   }
 
-  func fetchFavorite() {
+  func fetchFavorite(refresh: Bool = false) {
+    isLoading.value = refresh ? false : true
+
     eventService.fetchFavoriteEvent { result in
       switch result {
       case .success(let data):
         self.favorites.value = data.data
+        self.isLoading.value = false
       case .failure(let error):
         self.errorMessage.value = error.errorDescription ?? ""
       }

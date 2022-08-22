@@ -58,13 +58,13 @@ class RootViewController: UITabBarController {
   }
 
   private func configureTabBar() {
-      let home = templateTabBar(with: "Home", image: UIImage(named: "icon-home"), selectedImage: UIImage(named: "icon-home-active"), viewController: HomeViewController())
-      let explore = templateTabBar(with: "Explore", image: UIImage(named: "icon-search"), selectedImage: UIImage(named: "icon-search-active"), viewController: EmptyViewController())
-      let favorite = templateTabBar(with: "Favorite", image: UIImage(named: "icon-favorite"), selectedImage: UIImage(named: "icon-favorite-active"), viewController: FavoriteViewController())
-      let ticket = templateTabBar(with: "Ticket", image: UIImage(named: "icon-ticket"), selectedImage: UIImage(named: "icon-ticket-active"), viewController: TicketViewController())
-      let profile = templateTabBar(with: "Profile", image: UIImage(named: "icon-people"), selectedImage: UIImage(named: "icon-people-active"), viewController: EmptyViewController())
+      let home = templateTabBar(with: "Home", image: UIImage(named: "icon-home"), selectedImage: UIImage(named: "icon-home-active")?.withRenderingMode(.alwaysOriginal), viewController: HomeViewController())
+//      let explore = templateTabBar(with: "Explore", image: UIImage(named: "icon-search"), selectedImage: UIImage(named: "icon-search-active"), viewController: EmptyViewController())
+      let favorite = templateTabBar(with: "Favorite", image: UIImage(named: "icon-favorite"), selectedImage: UIImage(named: "icon-favorite-active")?.withRenderingMode(.alwaysOriginal), viewController: FavoriteViewController())
+      let ticket = templateTabBar(with: "Ticket", image: UIImage(named: "icon-ticket"), selectedImage: UIImage(named: "icon-ticket-active")?.withRenderingMode(.alwaysOriginal), viewController: TicketViewController())
+    let profile = templateTabBar(with: "Profile", image: UIImage(named: "icon-people"), selectedImage: UIImage(named: "icon-people-active")?.withRenderingMode(.alwaysOriginal), viewController: EmptyViewController())
 
-      setViewControllers([home, explore, favorite, ticket, profile], animated: false)
+      setViewControllers([home, favorite, ticket, profile], animated: false)
   }
 
   private func templateTabBar(with title: String, image: UIImage?, selectedImage: UIImage?, viewController: UIViewController) -> UINavigationController {

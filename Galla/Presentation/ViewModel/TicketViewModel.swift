@@ -21,7 +21,9 @@ class TicketViewModel {
     self.ticketService = ticketService
   }
 
-  func getAll(isCanceled: Bool?) {
+  func getAll(refresh: Bool = false, isCanceled: Bool?) {
+    isLoading.value = refresh ? false : true
+
     return ticketService.getAll(isCanceled: isCanceled) { result in
       switch result {
       case .success(let data):
@@ -37,6 +39,7 @@ class TicketViewModel {
           }
         }
 
+        self.isLoading.value = false
       case .failure(let error):
         self.errorMessage.value = error.errorDescription ?? ""
       }

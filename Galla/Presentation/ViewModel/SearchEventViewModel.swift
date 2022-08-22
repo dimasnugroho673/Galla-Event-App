@@ -18,14 +18,14 @@ class SearchEventViewModel {
     self.eventService = eventService
   }
 
-  func searchEvent(keyword: String) {
-    self.isLoading.value = true
+  func searchEvent(refresh: Bool = false, keyword: String) {
+    isLoading.value = refresh ? false : true
 
     eventService.search(keyword: keyword, location: nil, locationType: nil, isFinished: nil) { result in
       switch result {
       case .success(let data):
         self.resultEvents.value = data.data
-        self.isLoading.value.toggle()
+        self.isLoading.value = false
       case .failure(let error):
         self.errorMessage.value = error.errorDescription ?? ""
       }

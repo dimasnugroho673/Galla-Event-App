@@ -88,5 +88,19 @@ class EventViewModel {
       self.isFavorite.value = result.data
     }
   }
+
+  func addFavorite(uid: String) {
+    eventService.addFavorite(uid: uid) { result in
+      print("DEBUG: \(result)")
+      self.isFavorite.value = true
+    }
+  }
+
+  func removeFavorite(uid: String) {
+    eventService.removeFavorite(uid: uid) { result in
+      print("DEBUG: \(result)")
+      self.isFavorite.value = false
+    }
+  }
 }
 

@@ -138,6 +138,8 @@ class TicketViewController: UIViewController {
     return view
   }()
 
+  lazy var refreshControl: UIRefreshControl = UIRefreshControl()
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -176,6 +178,10 @@ class TicketViewController: UIViewController {
     segmentedBarView.addSubview(segmentedStack)
     segmentedBarView.addSubview(activeSegmentIndicator)
 
+    refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+    ticketTableView.alwaysBounceVertical = true
+    ticketTableView.refreshControl = refreshControl
+
     NSLayoutConstraint.activate([
       navBarView.topAnchor.constraint(equalTo: view.topAnchor),
       navBarView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -213,6 +219,19 @@ class TicketViewController: UIViewController {
   private func configureBinding() {
     ticketViewModel.tickets.bind { _ in
       self.ticketTableView.reloadData()
+      self.refreshControl.endRefreshing()
+    }
+
+    ticketViewModel.isLoading.bind { isLoading in
+      if isLoading {
+        self.showSpinner(style: .medium, color: .black, backgroundColor: .clear)
+      } else {
+        self.removeSpinner()
+      }
+
+      DispatchQueue.main.async {
+        self.ticketTableView.reloadData()
+      }
     }
   }
 
@@ -248,6 +267,10 @@ class TicketViewController: UIViewController {
     }
 
     ticketViewModel.filter(type: segmentActive)
+  }
+
+  @objc func didPullToRefresh(_ sender: Any) {
+    ticketViewModel.getAll(refresh: true, isCanceled: nil)
   }
 }
 

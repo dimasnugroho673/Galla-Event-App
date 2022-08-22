@@ -70,6 +70,8 @@ class FavoriteViewController: UIViewController {
     return cv
   }()
 
+  lazy var refreshControl: UIRefreshControl = UIRefreshControl()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -91,9 +93,13 @@ class FavoriteViewController: UIViewController {
     navBarStack.alignment = .center
     navBarStack.distribution = .equalSpacing
 
-//    navBarView.addSubview(navBarStack)
+    //    navBarView.addSubview(navBarStack)
     navBarView.addSubview(titleNavBar)
     navBarView.addSubview(notifButtonNavBar)
+
+    refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+    favoriteCollectionView.alwaysBounceVertical = true
+    favoriteCollectionView.refreshControl = refreshControl
 
     NSLayoutConstraint.activate([
       navBarView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -116,7 +122,24 @@ class FavoriteViewController: UIViewController {
   private func configureBinding() {
     favoriteViewModel.favorites.bind { events in
       self.favoriteCollectionView.reloadData()
+      self.refreshControl.endRefreshing()
     }
+
+    favoriteViewModel.isLoading.bind { isLoading in
+      if isLoading {
+        self.showSpinner(style: .medium, color: .black, backgroundColor: .clear)
+      } else {
+        self.removeSpinner()
+      }
+
+      DispatchQueue.main.async {
+        self.favoriteCollectionView.reloadData()
+      }
+    }
+  }
+
+  @objc func didPullToRefresh(_ sender: Any) {
+    favoriteViewModel.fetchFavorite(refresh: true)
   }
 }
 

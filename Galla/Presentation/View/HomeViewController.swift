@@ -73,8 +73,6 @@ class HomeViewController: UIViewController {
     image.centerYAnchor.constraint(equalTo: label.centerYAnchor, constant: 0).isActive = true
     image.leftAnchor.constraint(equalTo: label.rightAnchor, constant: 5).isActive = true
 
-    btn.widthAnchor.constraint(equalToConstant: 150).isActive = true
-
     btn.addTarget(self, action: #selector(handleLocationHeaderTap), for: .touchUpInside)
 
     return btn

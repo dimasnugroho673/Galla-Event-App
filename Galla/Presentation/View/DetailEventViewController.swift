@@ -497,11 +497,25 @@ class DetailEventViewController: UIViewController {
 
   func configureBinding() {
     eventViewModel.detailEvent.bind { detail in
-      self.descriptionLabel.text = detail.description
-      self.organizerImage.sd_setImage(with: URL(string: detail.organizer.image))
-      self.organizerNameLabel.text = detail.organizer.name
-      self.organizerVerifiedImage.isHidden = !detail.organizer.isVerified
-      self.organizerSectorLabel.text = detail.organizer.organizerSector
+      if detail.uid == "" {
+        self.joinButton.backgroundColor = .systemGray6
+        self.joinButton.isEnabled = false
+
+        self.viewLocationView.isHidden = true
+        self.organizerBgView.isHidden = true
+      } else {
+        self.joinButton.backgroundColor = UIColor(named: "color-primary")
+        self.joinButton.isEnabled = true
+
+        self.descriptionLabel.text = detail.description
+        self.organizerImage.sd_setImage(with: URL(string: detail.organizer.image))
+        self.organizerNameLabel.text = detail.organizer.name
+        self.organizerVerifiedImage.isHidden = !detail.organizer.isVerified
+        self.organizerSectorLabel.text = detail.organizer.organizerSector
+
+        self.viewLocationView.isHidden = false
+        self.organizerBgView.isHidden = false
+      }
     }
 
     eventViewModel.joinEventStatus.bind { status in
@@ -547,7 +561,12 @@ class DetailEventViewController: UIViewController {
   }
 
   @objc func handleFavoriteButtonTap() {
-    favoriteImage.setImage(UIImage(systemName: "heart.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.light)), for: .normal)
+    if eventViewModel.isFavorite.value {
+      eventViewModel.removeFavorite(uid: self.uid)
+    } else {
+      eventViewModel.addFavorite(uid: self.uid)
+    }
+//    favoriteImage.setImage(UIImage(systemName: "heart.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.light)), for: .normal)
   }
 
 }
