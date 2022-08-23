@@ -79,7 +79,7 @@ class JoinedViewController: UIViewController {
   }
 
   @objc func handleCTAButtonTapped() {
-    tabBarController?.selectedIndex = 3
+    tabBarController?.selectedIndex = 2
     navigationController?.popToRootViewController(animated: true)
   }
 }

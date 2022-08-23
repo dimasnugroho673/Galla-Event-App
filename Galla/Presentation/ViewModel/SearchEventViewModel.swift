@@ -11,6 +11,7 @@ class SearchEventViewModel {
 
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
+  var joinEventStatus: Observable<Bool> = Observable(false)
 
   var resultEvents: Observable<[Event]> = Observable([Event]())
 
@@ -29,6 +30,13 @@ class SearchEventViewModel {
       case .failure(let error):
         self.errorMessage.value = error.errorDescription ?? ""
       }
+    }
+  }
+
+  func attemptJoinEvent(uid: String) {
+    eventService.joinEvent(uid: uid) { result in
+      self.joinEventStatus.value = result.status
+      print("DEBUG: Joined status: \(result.data)")
     }
   }
 }

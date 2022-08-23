@@ -239,6 +239,16 @@ class HomeViewController: UIViewController {
     eventViewModel.popularEvents.bind { _ in
       self.collectionView.reloadSections(IndexSet.init(integer: 1))
     }
+
+    eventViewModel.joinEventStatus.bind { status in
+      if status {
+        let nextVC = JoinedViewController()
+        nextVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(nextVC, animated: true)
+      } else {
+//        self.present(Utilities().showAlert(title: "Failed join event", message: "You has been joined this event"), animated: true)
+      }
+    }
   }
 
   @objc func handleTextInputChange() {
@@ -296,6 +306,12 @@ extension HomeViewController: UICollectionViewDelegate {
   }
 }
 
+extension HomeViewController: UpcomingEventCellDelegate {
+  func joinEvent(uid: String) {
+    eventViewModel.attemptJoinEvent(uid: uid)
+  }
+}
+
 extension HomeViewController: UICollectionViewDataSource {
 
   // jumlah section
@@ -342,6 +358,8 @@ extension HomeViewController: UICollectionViewDataSource {
       let data = eventViewModel.upcomingEvents.value[indexPath.row]
 
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingEventCell.identifier, for: indexPath) as! UpcomingEventCell
+      cell.delegate = self
+      cell.event = data
       cell.eventNameLabel.text = data.name
       cell.locationLabel.text = eventViewModel.locationEventCustom(location: data.location.regency.name, country: data.location.country)
       cell.posterImageView.sd_setImage(with: URL(string: data.poster)!, placeholderImage: UIImage(named: "dummy-poster"))

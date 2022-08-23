@@ -5,36 +5,6 @@
 //  Created by Dimas Putro on 22/06/22.
 //
 
-import Foundation
-
-//public enum URLError: Error {
-//
-//  case invalidResponse
-//  case addressUnreachable(URL)
-//
-//  public var errorDescription: String? {
-//    switch self {
-//    case .invalidResponse: return "The server responded with garbage."
-//    case .addressUnreachable(let url): return "\(url.absoluteString) is unreachable."
-//    }
-//  }
-//
-//}
-
-//enum AttempLoginStatus: Error {
-//  case emailPasswordNil
-//  case credentialsCannotEmpty
-//
-//  var errorDescription: String? {
-//    switch self {
-//      case .credentialsCannotEmpty:
-//        return "Email or password wrong"
-//      case .emailPasswordNil:
-//        return "Email and Password cannot empty"
-//      }
-//  }
-//}
-
 class UserViewModel {
 
   private let userService: UserService

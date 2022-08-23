@@ -129,15 +129,109 @@ extension String {
   }
 
   func toSecond(dateFormat: String = "yyyy-MM-dd HH:mm:ss", timeZone: String? = nil) -> TimeInterval? {
-     // building the formatter
-     let formatter = DateFormatter()
-     formatter.dateFormat = dateFormat
-     if let timeZone = timeZone { formatter.timeZone = TimeZone(identifier: timeZone) }
+    // building the formatter
+    let formatter = DateFormatter()
+    formatter.dateFormat = dateFormat
+    if let timeZone = timeZone { formatter.timeZone = TimeZone(identifier: timeZone) }
 
-     // extracting the epoch
-     let date = formatter.date(from: self)
-     return date?.timeIntervalSince1970
-   }
+    // extracting the epoch
+    let date = formatter.date(from: self)
+    return date?.timeIntervalSince1970
+  }
+}
+
+extension NSTextAttachment {
+  func setLeftImage(color: UIColor = UIColor(named: "color-background")!, text: String, imageString: String, imageType: ImageTypeTextFieldEnum, offsetX: CGFloat = 0.0, offsetY: CGFloat = 0.0) -> NSMutableAttributedString {
+    // Create Attachment
+    let imageAttachment = NSTextAttachment()
+
+    if imageType == .named {
+      imageAttachment.image = UIImage(named: imageString)
+
+      // Set bound to reposition
+      let offsetY = offsetY == 0.0 ? -7.0 : offsetY
+      imageAttachment.bounds = CGRect(x: 0, y: offsetY, width: imageAttachment.image!.size.width, height: imageAttachment.image!.size.height)
+    } else {
+      imageAttachment.image = UIImage(systemName: imageString)?.withTintColor(color)
+
+      // Set bound to reposition
+      let offsetY = offsetY == 0.0 ? -5.0 : offsetY
+      imageAttachment.bounds = CGRect(x: 0, y: offsetY, width: imageAttachment.image!.size.width, height: imageAttachment.image!.size.height)
+    }
+
+    // Create string with attachment
+    let attachmentString = NSAttributedString(attachment: imageAttachment)
+    // Initialize mutable string
+    let completeText = NSMutableAttributedString(string: "")
+    // Add image to mutable string
+    completeText.append(attachmentString)
+    // Add your text to mutable string
+    let textAfterIcon = NSAttributedString(string: "  " + text, attributes: [.foregroundColor: color])
+    completeText.append(textAfterIcon)
+
+    return completeText
+  }
+}
+
+extension UILabel {
+  func colorString(text: String, coloredText: String, changeTextTo: String?, color: UIColor? = .red, textStyle: UIFont = UIFont(name: "Poppins", size: 12)!) {
+
+    let attributedString = NSMutableAttributedString(string: text)
+    let range = (text as NSString).range(of: coloredText)
+    attributedString.setAttributes([NSAttributedString.Key.foregroundColor: color!, NSAttributedString.Key.font: textStyle],
+                                   range: range)
+
+    if changeTextTo != "" {
+      // Replace replaceable content in mutableAttributedString with new content
+      let totalRange = NSRange(location: 0, length: attributedString.string.count)
+      _ = attributedString.mutableString.replaceOccurrences(of: coloredText, with: changeTextTo!, options: [], range: totalRange)
+    }
+
+    self.attributedText = attributedString
+  }
+
+  func colorAttributeString(text: NSAttributedString, coloredText: String, changeTextTo: String?, color: UIColor? = .red, textStyle: UIFont = UIFont(name: "Poppins", size: 12)!) {
+
+    let attributedString = NSMutableAttributedString(attributedString: text)
+    let range = (text.string as NSString).range(of: coloredText)
+    attributedString.setAttributes([NSAttributedString.Key.foregroundColor: color!, NSAttributedString.Key.font: textStyle],
+                                   range: range)
+
+    if changeTextTo != "" {
+      // Replace replaceable content in mutableAttributedString with new content
+      let totalRange = NSRange(location: 0, length: attributedString.string.count)
+      _ = attributedString.mutableString.replaceOccurrences(of: coloredText, with: changeTextTo!, options: [], range: totalRange)
+    }
+
+    self.attributedText = attributedString
+  }
+
+//  func colorWords(string: String, coloredTexts: [String], changeTextsTo: [String?], colors: [UIColor?] = [.red], textStyles: [UIFont] = [UIFont(name: "Poppins", size: 12)!]) {
+//
+//    var index: Int = 0
+//
+//    var tmp: NSAttributedString = NSAttributedString(string: string)
+//
+//    while index < coloredTexts.count {
+//
+//      let attributedString = NSMutableAttributedString(string: string)
+//      let range = (string as NSString).range(of: coloredTexts[index])
+//      attributedString.setAttributes([NSAttributedString.Key.foregroundColor: colors[index]!, NSAttributedString.Key.font: textStyles[index]], range: range)
+//
+//      if changeTextsTo[index] != "" {
+//        attributedString.mutableString.replaceOccurrences(of: coloredTexts[index], with: changeTextsTo[index]!, options: [], range: range)
+//      }
+//
+////      self.attributedText = attributedString
+//      tmp = attributedString
+//
+//      index = index + 1
+//    }
+//
+//    self.attributedText = tmp
+//
+//
+//  }
 }
 
 enum ImageTypeTextFieldEnum {

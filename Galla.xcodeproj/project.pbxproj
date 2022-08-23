@@ -10,6 +10,7 @@
 		400E6BF6287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E6BF5287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift */; };
 		400E6BF8287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E6BF7287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift */; };
 		400E6BFB287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E6BFA287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift */; };
+		4017AA7728B48B1100A25BCD /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4017AA7628B48B1100A25BCD /* ProfileViewModel.swift */; };
 		405C358E2862F953006A859F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C358D2862F953006A859F /* AppDelegate.swift */; };
 		405C35902862F953006A859F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C358F2862F953006A859F /* SceneDelegate.swift */; };
 		405C35922862F953006A859F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405C35912862F953006A859F /* RootViewController.swift */; };
@@ -79,6 +80,7 @@
 		40B18A2C28659BF700F7DE74 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2B28659BF700F7DE74 /* BaseResponse.swift */; };
 		40B18A2F28659E6A00F7DE74 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B18A2E28659E6A00F7DE74 /* User.swift */; };
 		40F2796228B3C23A0010E4A3 /* OpenMapDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2796128B3C23A0010E4A3 /* OpenMapDirections.swift */; };
+		40F2796428B3DA3C0010E4A3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2796328B3DA3C0010E4A3 /* ProfileViewController.swift */; };
 		40F2D602286AB90C00F57DAC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D601286AB90C00F57DAC /* Event.swift */; };
 		40F2D604286AB9C100F57DAC /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D603286AB9C100F57DAC /* EventViewModel.swift */; };
 		40F2D606286AB9F900F57DAC /* EventRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2D605286AB9F900F57DAC /* EventRepository.swift */; };
@@ -108,6 +110,7 @@
 		400E6BF5287E85F9006C2AFF /* UserRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
 		400E6BF7287E864C006C2AFF /* EventRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
 		400E6BFA287E86B7006C2AFF /* UserLocalDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalDataSourceProtocol.swift; sourceTree = "<group>"; };
+		4017AA7628B48B1100A25BCD /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		405C358A2862F953006A859F /* Galla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Galla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		405C358D2862F953006A859F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		405C358F2862F953006A859F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		40B18A2B28659BF700F7DE74 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		40B18A2E28659E6A00F7DE74 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		40F2796128B3C23A0010E4A3 /* OpenMapDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMapDirections.swift; sourceTree = "<group>"; };
+		40F2796328B3DA3C0010E4A3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		40F2D601286AB90C00F57DAC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		40F2D603286AB9C100F57DAC /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		40F2D605286AB9F900F57DAC /* EventRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRepository.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 				4089E02C28A386B200E54182 /* SearchLocationViewController.swift */,
 				40ABCD4928AF735600E067AF /* FavoriteViewController.swift */,
 				4076BE5A28B286D700833570 /* SearchEventViewController.swift */,
+				40F2796328B3DA3C0010E4A3 /* ProfileViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				40ABCD3D28AA953400E067AF /* TicketViewModel.swift */,
 				40ABCD4728AF72D600E067AF /* FavoriteViewModel.swift */,
 				4076BE5C28B2947F00833570 /* SearchEventViewModel.swift */,
+				4017AA7628B48B1100A25BCD /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -652,10 +658,12 @@
 				407C9D8D2865C5E000F3CB27 /* UserService.swift in Sources */,
 				40F2D620286C91DA00F57DAC /* TicketViewController.swift in Sources */,
 				4076BE5D28B2947F00833570 /* SearchEventViewModel.swift in Sources */,
+				40F2796428B3DA3C0010E4A3 /* ProfileViewController.swift in Sources */,
 				405C35C22863660F006A859F /* RegisterViewController.swift in Sources */,
 				4089E04128A60B1700E54182 /* LocationService.swift in Sources */,
 				4089E04928A60D6E00E54182 /* LocationRemoteDataSourceProtocol.swift in Sources */,
 				405C35922862F953006A859F /* RootViewController.swift in Sources */,
+				4017AA7728B48B1100A25BCD /* ProfileViewModel.swift in Sources */,
 				405C358E2862F953006A859F /* AppDelegate.swift in Sources */,
 				405C35B52863407E006A859F /* UserViewModel.swift in Sources */,
 				40F2D606286AB9F900F57DAC /* EventRepository.swift in Sources */,

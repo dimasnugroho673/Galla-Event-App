@@ -55,14 +55,21 @@ class UserRepositoryImplementation: UserRepository {
   }
 
   func fetchUserData(with metaCredential: MetaCredential, completion: @escaping (Result<BaseResponse<User>, ResponseError>) -> ()) {
-    let fromLocal = localDataSource.getUserData()
-
-    if !fromLocal.uid.isEmpty {
-      completion(.success(BaseResponse.init(status: true, data: fromLocal, meta: nil)))
-    }
+//    let fromLocal = localDataSource.getUserData()
+//
+//    if !fromLocal.uid.isEmpty {
+//      completion(.success(BaseResponse.init(status: true, data: fromLocal, meta: nil)))
+//    }
 
     /// getting data from remote
-
+    remoteDataSource.fetchUserData(withMetaCredential: metaCredential) { result in
+      switch result {
+      case .success(let data):
+        completion(.success(data))
+      case .failure(let error) :
+        completion(.failure(error))
+      }
+    }
   }
 
   func saveUserData(with data: User) {

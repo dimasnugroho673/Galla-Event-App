@@ -62,7 +62,6 @@ class EventViewModel {
       switch result {
       case .success(let data):
         self.detailEvent.value = data.data
-        print("DETAIL...\(String(describing:  self.detailEvent.value))")
       case .failure(let error):
         self.errorMessage.value = error.errorDescription ?? ""
       }
@@ -73,6 +72,7 @@ class EventViewModel {
     isLoading.value = true
     eventService.joinEvent(uid: uid) { result in
       self.joinEventStatus.value = result.status
+      print("DEBUG: Joined status: \(result.data)")
       self.isLoading.value = false
     }
   }

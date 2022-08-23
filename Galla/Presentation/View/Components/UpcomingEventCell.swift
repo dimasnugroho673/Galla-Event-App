@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol UpcomingEventCellDelegate: AnyObject {
+  func joinEvent(uid: String)
+}
+
 class UpcomingEventCell: UICollectionViewCell {
 
   static let identifier = "UpcomingEventCell"
+
+  var event: Event?
+  weak var delegate: UpcomingEventCellDelegate?
 
   lazy var posterImageView: UIImageView = {
     let iv = UIImageView()
@@ -98,6 +105,10 @@ class UpcomingEventCell: UICollectionViewCell {
     configureUI()
   }
 
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   private func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = .white
@@ -128,6 +139,7 @@ class UpcomingEventCell: UICollectionViewCell {
     addSubview(locationStack)
     addSubview(joinButton)
     joinButton.titleLabel?.font = UIFont(name: "Poppins-Regular", size: 14)
+    joinButton.addTarget(self, action: #selector(handleJoinEvent), for: .touchUpInside)
 
     NSLayoutConstraint.activate([
       widthAnchor.constraint(equalToConstant: 200),
@@ -159,7 +171,8 @@ class UpcomingEventCell: UICollectionViewCell {
     ])
   }
 
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+  @objc func handleJoinEvent() {
+    delegate?.joinEvent(uid: event?.uid ?? "")
   }
+
 }
