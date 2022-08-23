@@ -78,7 +78,12 @@ class EventViewModel {
   }
 
   func getSelectedLocation() {
-    let savedLocation = locationService.getSelectedLocation()
+    var savedLocation = locationService.getSelectedLocation()
+
+    // force call function after first action cannot getting location
+    if savedLocation.name == "" {
+      savedLocation = locationService.getSelectedLocation()
+    }
 
     self.selectedLocation.value = savedLocation
   }
