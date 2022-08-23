@@ -8,14 +8,17 @@
 class ProfileViewModel {
 
   private let userService: UserService
+  private var locationService: LocationService
 
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
 
   var user: Observable<User> = Observable(User(uid: "", name: "", email: "", joined: ""))
+  var selectedLocation: Observable<LocationResult> = Observable(LocationResult(type: "", id: 0, name: ""))
 
-  init(userService: UserService) {
+  init(userService: UserService, locationService: LocationService) {
     self.userService = userService
+    self.locationService = locationService
   }
 
   func fetchUserData(refresh: Bool = false) {
@@ -31,6 +34,8 @@ class ProfileViewModel {
         self.errorMessage.value = error.errorDescription ?? ""
       }
     }
+
+    selectedLocation.value = locationService.getSelectedLocation()
   }
 
 }

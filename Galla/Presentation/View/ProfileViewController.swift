@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-  private let profileViewModel: ProfileViewModel = ProfileViewModel(userService: Injection().provideAuth())
+  private let profileViewModel: ProfileViewModel = ProfileViewModel(userService: Injection().provideAuth(), locationService: Injection().provideSearch())
 
   private lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)
@@ -245,7 +245,7 @@ class ProfileViewController: UIViewController {
     profileViewModel.user.bind({ user in
       self.fullnameLabel.text = user.name
 
-      let location = NSTextAttachment().setLeftImage(color: UIColor(hexString: "7D7D7D"), text: "Kepulauan Riau, ID", imageString: "icon-location-line-gray", imageType: .named)
+      let location = NSTextAttachment().setLeftImage(color: UIColor(hexString: "7D7D7D"), text: "\(self.profileViewModel.selectedLocation.value.name)", imageString: "icon-location-line-gray", imageType: .named)
       let joined = NSTextAttachment().setLeftImage(color: UIColor(hexString: "7D7D7D"), text: "Joined \(user.joined)", imageString: "icon-calendar-line", imageType: .named, offsetY: -4.0)
 
       self.locationLabel.attributedText = location
