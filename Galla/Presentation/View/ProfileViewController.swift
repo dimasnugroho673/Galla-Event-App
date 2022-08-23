@@ -192,8 +192,7 @@ class ProfileViewController: UIViewController {
     whiteBackgroundView.addSubview(locationAndJoinedStack)
     whiteBackgroundView.addSubview(joinedCanceledEventLabel)
 
-    joinedCanceledEventLabel.colorAttributeString(text: joinedCanceledEventLabel.attributedText!, coloredText: "[count.joinedEvent]", changeTextTo: "0", color: .black, textStyle:  UIFont(name: "Poppins-ExtraBold", size: 12)!)
-    joinedCanceledEventLabel.colorAttributeString(text: joinedCanceledEventLabel.attributedText!, coloredText: "[count.canceledEvent]", changeTextTo: "0", color: .black, textStyle:  UIFont(name: "Poppins-ExtraBold", size: 12)!)
+    joinedCanceledEventLabel.textColor = .clear
 
     NSLayoutConstraint.activate([
       scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
@@ -251,8 +250,12 @@ class ProfileViewController: UIViewController {
       self.locationLabel.attributedText = location
       self.joinedAccountLabel.attributedText = joined
 
-      self.joinedCanceledEventLabel.colorAttributeString(text: self.joinedCanceledEventLabel.attributedText!, coloredText: "[count.joinedEvent]", changeTextTo: "12", color: .black, textStyle:  UIFont(name: "Poppins-ExtraBold", size: 12)!)
-      self.joinedCanceledEventLabel.colorAttributeString(text: self.joinedCanceledEventLabel.attributedText!, coloredText: "[count.canceledEvent]", changeTextTo: "0", color: .black, textStyle:  UIFont(name: "Poppins-ExtraBold", size: 12)!)
+      if user.uid != "" {
+        self.joinedCanceledEventLabel.textColor = UIColor(hexString: "7D7D7D")
+
+        self.joinedCanceledEventLabel.colorAttributeString(text: self.joinedCanceledEventLabel.attributedText!, coloredText: "[count.joinedEvent]", changeTextTo: "\(user.eventJoined)", color: .black, textStyle:  UIFont(name: "Poppins-ExtraBold", size: 12)!)
+        self.joinedCanceledEventLabel.colorAttributeString(text: self.joinedCanceledEventLabel.attributedText!, coloredText: "[count.canceledEvent]", changeTextTo: "\(user.eventCanceled)", color: .black, textStyle:  UIFont(name: "Poppins-ExtraBold", size: 12)!)
+      }
 
       self.refreshControl.endRefreshing()
     })

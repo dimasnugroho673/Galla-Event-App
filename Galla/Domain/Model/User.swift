@@ -19,6 +19,14 @@ struct User: Codable {
   let name: String
   let email: String
   let joined: String
+  let eventJoined: Int
+  let eventCanceled: Int
+
+  enum CodingKeys: String, CodingKey {
+    case uid, name, email, joined
+    case eventJoined = "event_joined"
+    case eventCanceled = "event_canceled"
+  }
 }
 
 struct MetaCredential: Codable {

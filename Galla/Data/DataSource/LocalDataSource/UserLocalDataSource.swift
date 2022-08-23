@@ -23,7 +23,7 @@ final class UserLocalDataSource: UserLocalDataSourceProtocol {
   //        completion(decode)
   //      }
       } else {
-        user = User(uid: "", name: "", email: "", joined: "")
+        user = User(uid: "", name: "", email: "", joined: "", eventJoined: 0, eventCanceled: 0)
       }
     } catch {
       print("DEBUG: Error while retrive user data: persistent data not configure")
