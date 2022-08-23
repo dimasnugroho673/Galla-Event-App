@@ -164,7 +164,7 @@ class ProfileViewController: UIViewController {
 
   private func configureUI() {
     navigationController?.navigationBar.isHidden = true
-    navigationController?.navigationBar.barStyle = .default
+    navigationController?.navigationBar.barStyle = .black
     view.backgroundColor = UIColor(named: "color-background")
 
     view.addSubview(scrollView)
