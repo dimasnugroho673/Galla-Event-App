@@ -50,6 +50,17 @@ class ProfileViewController: UIViewController {
     return button
   }()
 
+  lazy var settingsButtonNavBar: UIButton = {
+    let button = UIButton(type: .system)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(UIImage(systemName: "gearshape")?.withTintColor(UIColor.white, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.semibold)), for: .normal)
+    button.heightAnchor.constraint(equalToConstant: 22).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 22).isActive = true
+    button.addTarget(self, action: #selector(handleSettingsButtonTap), for: .touchUpInside)
+
+    return button
+  }()
+
   private lazy var whiteBackgroundView: UIView = {
     let sv = UIView()
     sv.translatesAutoresizingMaskIntoConstraints = false
@@ -171,7 +182,7 @@ class ProfileViewController: UIViewController {
     scrollView.addSubview(containerView)
     scrollView.contentInsetAdjustmentBehavior = .never
     containerView.addSubview(coverBackgroundImage)
-    coverBackgroundImage.addSubview(notifButtonNavBar)
+//    coverBackgroundImage.addSubview(notifButtonNavBar)
     containerView.addSubview(whiteBackgroundView)
     whiteBackgroundView.addSubview(profileImageView)
     whiteBackgroundView.addSubview(editProfileButton)
@@ -194,6 +205,13 @@ class ProfileViewController: UIViewController {
 
     joinedCanceledEventLabel.textColor = .clear
 
+    let barStack = UIStackView(arrangedSubviews: [notifButtonNavBar, settingsButtonNavBar])
+    barStack.translatesAutoresizingMaskIntoConstraints = false
+    barStack.axis = .horizontal
+    barStack.spacing = 10
+
+    coverBackgroundImage.addSubview(barStack)
+
     NSLayoutConstraint.activate([
       scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
       scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
@@ -210,8 +228,8 @@ class ProfileViewController: UIViewController {
       coverBackgroundImage.leftAnchor.constraint(equalTo: containerView.leftAnchor),
       coverBackgroundImage.rightAnchor.constraint(equalTo: containerView.rightAnchor),
 
-      notifButtonNavBar.rightAnchor.constraint(equalTo: coverBackgroundImage.rightAnchor, constant: -15),
-      notifButtonNavBar.topAnchor.constraint(equalTo: coverBackgroundImage.topAnchor, constant: 55),
+      barStack.rightAnchor.constraint(equalTo: coverBackgroundImage.rightAnchor, constant: -15),
+      barStack.topAnchor.constraint(equalTo: coverBackgroundImage.topAnchor, constant: 55),
 
       whiteBackgroundView.topAnchor.constraint(equalTo: coverBackgroundImage.bottomAnchor),
       whiteBackgroundView.leftAnchor.constraint(equalTo: coverBackgroundImage.leftAnchor),
@@ -264,5 +282,11 @@ class ProfileViewController: UIViewController {
 
   @objc func didPullToRefresh(_ sender: Any) {
     profileViewModel.fetchUserData(refresh: true)
+  }
+
+  @objc func handleSettingsButtonTap() {
+    let vc = SettingsViewController()
+    vc.hidesBottomBarWhenPushed = true
+    navigationController?.pushViewController(vc, animated: true)
   }
 }

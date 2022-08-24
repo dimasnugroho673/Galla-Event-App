@@ -30,7 +30,7 @@ class TicketViewController: UIViewController {
     return tv
   }()
 
-  lazy var navBarView: UIView = {
+  private lazy var navBarView: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.backgroundColor = .white
@@ -40,7 +40,7 @@ class TicketViewController: UIViewController {
     return view
   }()
 
-  lazy var titleNavBar: UILabel = {
+  private lazy var titleNavBar: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = "Tickets"

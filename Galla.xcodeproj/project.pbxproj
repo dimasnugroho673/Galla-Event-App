@@ -59,6 +59,8 @@
 		4089E04928A60D6E00E54182 /* LocationRemoteDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E04828A60D6D00E54182 /* LocationRemoteDataSourceProtocol.swift */; };
 		4089E04B28A60DEB00E54182 /* LocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4089E04A28A60DEB00E54182 /* LocationRemoteDataSource.swift */; };
 		4090E87B287FDB010028CE75 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4090E87A287FDB010028CE75 /* SDWebImage */; };
+		4091318528B5D0070039B502 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4091318428B5D0070039B502 /* SettingsViewController.swift */; };
+		4091318728B5D08A0039B502 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4091318628B5D08A0039B502 /* SettingsViewModel.swift */; };
 		40ABA996286945EB00E3346B /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA995286945EB00E3346B /* UpcomingEventCell.swift */; };
 		40ABA99A28695C9900E3346B /* TitleHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */; };
 		40ABA99C2869F48300E3346B /* PopularEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40ABA99B2869F48300E3346B /* PopularEventCell.swift */; };
@@ -158,6 +160,8 @@
 		4089E04428A60C6100E54182 /* LocationRepositoryImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryImplementation.swift; sourceTree = "<group>"; };
 		4089E04828A60D6D00E54182 /* LocationRemoteDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDataSourceProtocol.swift; sourceTree = "<group>"; };
 		4089E04A28A60DEB00E54182 /* LocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDataSource.swift; sourceTree = "<group>"; };
+		4091318428B5D0070039B502 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4091318628B5D08A0039B502 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		40ABA995286945EB00E3346B /* UpcomingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 		40ABA99928695C9900E3346B /* TitleHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		40ABA99B2869F48300E3346B /* PopularEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularEventCell.swift; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 				40ABCD4928AF735600E067AF /* FavoriteViewController.swift */,
 				4076BE5A28B286D700833570 /* SearchEventViewController.swift */,
 				40F2796328B3DA3C0010E4A3 /* ProfileViewController.swift */,
+				4091318428B5D0070039B502 /* SettingsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				40ABCD4728AF72D600E067AF /* FavoriteViewModel.swift */,
 				4076BE5C28B2947F00833570 /* SearchEventViewModel.swift */,
 				4017AA7628B48B1100A25BCD /* ProfileViewModel.swift */,
+				4091318628B5D08A0039B502 /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -665,8 +671,10 @@
 				405C35922862F953006A859F /* RootViewController.swift in Sources */,
 				4017AA7728B48B1100A25BCD /* ProfileViewModel.swift in Sources */,
 				405C358E2862F953006A859F /* AppDelegate.swift in Sources */,
+				4091318728B5D08A0039B502 /* SettingsViewModel.swift in Sources */,
 				405C35B52863407E006A859F /* UserViewModel.swift in Sources */,
 				40F2D606286AB9F900F57DAC /* EventRepository.swift in Sources */,
+				4091318528B5D0070039B502 /* SettingsViewController.swift in Sources */,
 				40ABCD3C28AA94DB00E067AF /* TicketService.swift in Sources */,
 				40ABCD3E28AA953400E067AF /* TicketViewModel.swift in Sources */,
 				407C9D7F2865A1EC00F3CB27 /* Error.swift in Sources */,

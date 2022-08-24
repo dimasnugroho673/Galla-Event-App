@@ -113,6 +113,9 @@ final class UserRemoteDataSource: UserRemoteDataSourceProtocol {
   }
 
   func logout(completion: @escaping (Result<Bool, ResponseError>) -> ()) {
+    UserDefaults.standard.removeObject(forKey: "LocalUserData")
+    UserDefaults.standard.removeObject(forKey: "UserToken")
+
     completion(.success(true))
   }
 

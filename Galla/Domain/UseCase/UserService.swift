@@ -73,7 +73,7 @@ class UserService: UserUseCase {
     }
   }
 
-  func logout(completion: @escaping (Result<Bool, ResponseError>) -> ()) {
+  func logout(with metaCredential: MetaCredential, completion: @escaping (Result<Bool, ResponseError>) -> ()) {
     return userRepository.logout { result in
       switch result {
       case .success(let data):

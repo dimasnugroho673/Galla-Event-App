@@ -11,6 +11,6 @@ class Constants {
   static let API_ENDPOINT = "https://galla-backend.herokuapp.com/api"
 
   static func getToken() -> String {
-    return UserDefaults.standard.string(forKey: "UserToken")!
+    return UserDefaults.standard.string(forKey: "UserToken") ?? ""
   }
 }
