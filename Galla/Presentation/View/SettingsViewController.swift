@@ -113,7 +113,7 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 20
+    return 10
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -121,15 +121,28 @@ extension SettingsViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    settingsViewModel.logout()
+    let data = settingsViewModel.settingsData[indexPath.section].data[indexPath.row]
+
+    if data.identifier == "process.logout" {
+      let actionSheet = UIAlertController(title: "Want to logout?", message: "We not save your account session", preferredStyle: .actionSheet)
+      let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
+        self.settingsViewModel.logout()
+      }
+      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+      actionSheet.addAction(logoutAction)
+      actionSheet.addAction(cancelAction)
+
+      self.present(actionSheet, animated: true)
+    }
   }
 
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
+    let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 10))
     view.backgroundColor = UIColor(named: "color-background")
 
-    let lbl = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 20))
-    lbl.font = UIFont.systemFont(ofSize: 20)
+    let lbl = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 10))
+    lbl.font = UIFont.systemFont(ofSize: 13)
     lbl.text = settingsViewModel.settingsData[section].sectionName
     view.addSubview(lbl)
     return view
