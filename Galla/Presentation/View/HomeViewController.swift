@@ -241,12 +241,12 @@ class HomeViewController: UIViewController {
     }
 
     eventViewModel.joinEventStatus.bind { status in
-      if status {
+      if status == true {
         let nextVC = JoinedViewController()
         nextVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
-      } else {
-//        self.present(Utilities().showAlert(title: "Failed join event", message: "You has been joined this event"), animated: true)
+      } else if status == false {
+        self.present(Utilities().showAlert(title: "Failed join event", message: "You has been joined this event"), animated: true)
       }
     }
   }
