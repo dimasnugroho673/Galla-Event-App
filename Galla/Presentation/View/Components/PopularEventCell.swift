@@ -107,7 +107,7 @@ class PopularEventCell: UICollectionViewCell {
 
       dateLabel.topAnchor.constraint(equalTo: eventNameLabel.bottomAnchor, constant: 2),
       dateLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-      eventNameLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
+      dateLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
     ])
   }
 

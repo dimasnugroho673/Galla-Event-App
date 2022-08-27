@@ -414,7 +414,7 @@ extension HomeViewController {
       let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
       layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
 
-      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .absolute(290), heightDimension: .absolute(228))
+      let layoutGroupSize = NSCollectionLayoutSize(widthDimension: .absolute(290), heightDimension: .absolute(262))
 
       let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: layoutGroupSize, subitems: [layoutItem])
 
