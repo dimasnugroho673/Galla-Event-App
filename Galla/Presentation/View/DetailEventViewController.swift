@@ -86,6 +86,7 @@ class DetailEventViewController: UIViewController {
     button.setImage(UIImage(systemName: "square.and.arrow.up")?.withTintColor(UIColor(named: "color-black")!, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.semibold)), for: .normal)
     button.heightAnchor.constraint(equalToConstant: 22).isActive = true
     button.widthAnchor.constraint(equalToConstant: 22).isActive = true
+    button.addTarget(self, action: #selector(handleShareButton), for: .touchUpInside)
 
     return button
   }()
@@ -109,6 +110,10 @@ class DetailEventViewController: UIViewController {
     view.layer.cornerRadius = 8
     view.heightAnchor.constraint(equalToConstant: 35).isActive = true
     view.widthAnchor.constraint(equalToConstant: 60).isActive = true
+    view.layer.shadowColor = UIColor.black.cgColor
+    view.layer.shadowOpacity = 1
+    view.layer.shadowRadius = 10
+    view.layer.shadowOffset = CGSize(width: 0, height: 0)
 
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -558,6 +563,14 @@ class DetailEventViewController: UIViewController {
       eventViewModel.addFavorite(uid: self.uid)
     }
 //    favoriteImage.setImage(UIImage(systemName: "heart.fill")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal).withConfiguration(UIImage.SymbolConfiguration.init(weight: UIImage.SymbolWeight.light)), for: .normal)
+  }
+
+  @objc func handleShareButton() {
+    guard let url = URL(string: "https://gallaevent.com/event/\(uid)") else { return }
+
+    let shareVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+
+    present(shareVC, animated: true)
   }
 
 }
