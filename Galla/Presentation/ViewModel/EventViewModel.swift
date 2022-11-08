@@ -7,8 +7,8 @@
 
 class EventViewModel {
 
-  private let eventService: EventService
-  private let locationService: LocationService
+  private let eventUseCase: EventUseCase
+  private let locationUseCase: LocationUseCase
 
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
@@ -20,9 +20,9 @@ class EventViewModel {
   var joinEventStatus: Observable<Bool?> = Observable(nil)
   var selectedLocation: Observable<LocationResult> = Observable(LocationResult(type: "", id: 0, name: ""))
 
-  init(eventService: EventService, locationService: LocationService) {
-    self.eventService = eventService
-    self.locationService = locationService
+  init(eventUseCase: EventUseCase, locationUseCase: LocationUseCase) {
+    self.eventUseCase = eventUseCase
+    self.locationUseCase = locationUseCase
   }
 
   func locationEventCustom(location: String, country: String) -> String {
@@ -35,7 +35,7 @@ class EventViewModel {
   }
 
   func fetchUpcomingEvent(location: String, locationType: String) {
-    eventService.fetchUpcomingEvent(location: location, locationType: locationType) { result in
+    eventUseCase.fetchUpcomingEvent(location: location, locationType: locationType) { result in
       switch result {
       case .success(let data):
         self.upcomingEvents.value = data.data
@@ -46,7 +46,7 @@ class EventViewModel {
   }
 
   func fetchPopularEvent(location: String, isFinished: Bool, locationType: String) {
-    eventService.fetchPopularEvent(location: location, isFinished: false, locationType: locationType) { result in
+    eventUseCase.fetchPopularEvent(location: location, isFinished: false, locationType: locationType) { result in
       switch result {
       case .success(let data):
         self.popularEvents.value = data.data
@@ -58,7 +58,7 @@ class EventViewModel {
   }
 
   func fetchDetailEvent(uid: String) {
-    eventService.fetchDetailEvent(uid: uid) { result in
+    eventUseCase.fetchDetailEvent(uid: uid) { result in
       switch result {
       case .success(let data):
         self.detailEvent.value = data.data
@@ -70,7 +70,7 @@ class EventViewModel {
 
   func attemptJoinEvent(uid: String) {
     isLoading.value = true
-    eventService.joinEvent(uid: uid) { result in
+    eventUseCase.joinEvent(uid: uid) { result in
       self.joinEventStatus.value = result.status
       print("DEBUG: Joined status: \(result.data)")
       self.isLoading.value = false
@@ -78,31 +78,31 @@ class EventViewModel {
   }
 
   func getSelectedLocation() {
-    var savedLocation = locationService.getSelectedLocation()
+    var savedLocation = locationUseCase.getSelectedLocation()
 
     // force call function after first action cannot getting location
     if savedLocation.name == "" {
-      savedLocation = locationService.getSelectedLocation()
+      savedLocation = locationUseCase.getSelectedLocation()
     }
 
     self.selectedLocation.value = savedLocation
   }
 
   func checkFavorite(uid: String) {
-    eventService.checkFavorite(uid: uid) { result in
+    eventUseCase.checkFavorite(uid: uid) { result in
       self.isFavorite.value = result.data
     }
   }
 
   func addFavorite(uid: String) {
-    eventService.addFavorite(uid: uid) { result in
+    eventUseCase.addFavorite(uid: uid) { result in
       print("DEBUG: \(result)")
       self.isFavorite.value = true
     }
   }
 
   func removeFavorite(uid: String) {
-    eventService.removeFavorite(uid: uid) { result in
+    eventUseCase.removeFavorite(uid: uid) { result in
       print("DEBUG: \(result)")
       self.isFavorite.value = false
     }

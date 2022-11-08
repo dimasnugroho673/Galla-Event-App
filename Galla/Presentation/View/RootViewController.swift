@@ -9,7 +9,7 @@ import UIKit
 
 class RootViewController: UITabBarController {
   
-  let authViewModel: UserViewModel = UserViewModel(userService: Injection().provideAuth())
+  let authViewModel: UserViewModel = UserViewModel(userUseCase: Injection().provideAuth())
   
   fileprivate lazy var defaultTabBarHeight = { tabBar.frame.size.height }()
   

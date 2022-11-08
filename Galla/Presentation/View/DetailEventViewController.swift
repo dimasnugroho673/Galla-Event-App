@@ -10,7 +10,7 @@ import SDWebImage
 
 class DetailEventViewController: UIViewController {
 
-  private let eventViewModel: EventViewModel = EventViewModel(eventService: Injection().provideDetail(), locationService: Injection().provideSearch())
+  private let eventViewModel: EventViewModel = EventViewModel(eventUseCase: Injection().provideDetail(), locationUseCase: Injection().provideSearch())
 
   private let uid: String
   private let data: Event

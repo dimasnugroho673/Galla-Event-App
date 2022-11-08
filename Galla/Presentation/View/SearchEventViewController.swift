@@ -9,7 +9,7 @@ import UIKit
 
 class SearchEventViewController: UIViewController {
 
-  private let searchEventViewModel :SearchEventViewModel = SearchEventViewModel(eventService: Injection().provideHome())
+  private let searchEventViewModel :SearchEventViewModel = SearchEventViewModel(eventUseCase: Injection().provideHome())
 
   private var keyword: String
 

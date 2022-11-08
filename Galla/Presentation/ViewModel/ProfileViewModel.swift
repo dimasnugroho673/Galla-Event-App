@@ -7,8 +7,8 @@
 
 class ProfileViewModel {
 
-  private let userService: UserService
-  private var locationService: LocationService
+  private let userUseCase: UserUseCase
+  private var locationUseCase: LocationUseCase
 
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
@@ -16,15 +16,15 @@ class ProfileViewModel {
   var user: Observable<User> = Observable(User(uid: "", name: "", email: "", joined: "", eventJoined: 0, eventCanceled: 0))
   var selectedLocation: Observable<LocationResult> = Observable(LocationResult(type: "", id: 0, name: ""))
 
-  init(userService: UserService, locationService: LocationService) {
-    self.userService = userService
-    self.locationService = locationService
+  init(userUseCase: UserUseCase, locationUseCase: LocationUseCase) {
+    self.userUseCase = userUseCase
+    self.locationUseCase = locationUseCase
   }
 
   func fetchUserData(refresh: Bool = false) {
     isLoading.value = refresh ? false : true
 
-    userService.fetchUserData(with: MetaCredential(token: Constants.getToken())) { result in
+    userUseCase.fetchUserData(with: MetaCredential(token: Constants.getToken())) { result in
       switch result {
       case .success(let data):
         self.user.value = data.data
@@ -34,7 +34,7 @@ class ProfileViewModel {
       }
     }
 
-    selectedLocation.value = locationService.getSelectedLocation()
+    selectedLocation.value = locationUseCase.getSelectedLocation()
   }
 
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsViewModel {
 
-  private let userService: UserService
+  private let userUseCase: UserUseCase
 
   var logoutStatus: Observable<Bool?> = Observable(nil)
 
@@ -19,12 +19,12 @@ class SettingsViewModel {
     ])
   ]
 
-  init(userService: UserService) {
-    self.userService = userService
+  init(userUseCase: UserUseCase) {
+    self.userUseCase = userUseCase
   }
 
   func logout() {
-    userService.logout(with: MetaCredential(token: Constants.getToken())) { result in
+    userUseCase.logout(with: MetaCredential(token: Constants.getToken())) { result in
       switch result {
       case .success(let status):
         self.logoutStatus.value = status

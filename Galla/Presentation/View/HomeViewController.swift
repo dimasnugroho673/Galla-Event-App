@@ -14,7 +14,7 @@ protocol HomeViewControllerProtocol: AnyObject {
 
 class HomeViewController: UIViewController {
 
-  let eventViewModel: EventViewModel = EventViewModel(eventService: Injection().provideHome(), locationService: Injection().provideSearch())
+  let eventViewModel: EventViewModel = EventViewModel(eventUseCase: Injection().provideHome(), locationUseCase: Injection().provideSearch())
 
   lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)

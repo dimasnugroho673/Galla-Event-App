@@ -9,7 +9,7 @@ import Foundation
 
 class TicketViewModel {
 
-  private let ticketService: TicketService
+  private let ticketUseCase: TicketUseCase
 
   var tickets: Observable<[Ticket]> = Observable([Ticket]())
   private var unfilteredTickets: [Ticket] = [Ticket]()
@@ -17,14 +17,14 @@ class TicketViewModel {
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
 
-  init(ticketService: TicketService) {
-    self.ticketService = ticketService
+  init(ticketUseCase: TicketUseCase) {
+    self.ticketUseCase = ticketUseCase
   }
 
   func getAll(refresh: Bool = false, isCanceled: Bool?) {
     isLoading.value = refresh ? false : true
 
-    return ticketService.getAll(isCanceled: isCanceled) { result in
+    return ticketUseCase.getAll(isCanceled: isCanceled) { result in
       switch result {
       case .success(let data):
         self.unfilteredTickets = data.data

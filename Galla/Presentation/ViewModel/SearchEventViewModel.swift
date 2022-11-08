@@ -7,7 +7,7 @@
 
 class SearchEventViewModel {
 
-  private let eventService: EventService
+  private let eventUseCase: EventUseCase
 
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
@@ -15,14 +15,14 @@ class SearchEventViewModel {
 
   var resultEvents: Observable<[Event]> = Observable([Event]())
 
-  init(eventService: EventService) {
-    self.eventService = eventService
+  init(eventUseCase: EventUseCase) {
+    self.eventUseCase = eventUseCase
   }
 
   func searchEvent(refresh: Bool = false, keyword: String) {
     isLoading.value = refresh ? false : true
 
-    eventService.search(keyword: keyword, location: nil, locationType: nil, isFinished: nil) { result in
+    eventUseCase.search(keyword: keyword, location: nil, locationType: nil, isFinished: nil) { result in
       switch result {
       case .success(let data):
         self.resultEvents.value = data.data
@@ -34,7 +34,7 @@ class SearchEventViewModel {
   }
 
   func attemptJoinEvent(uid: String) {
-    eventService.joinEvent(uid: uid) { result in
+    eventUseCase.joinEvent(uid: uid) { result in
       self.joinEventStatus.value = result.status
       print("DEBUG: Joined status: \(result.data)")
     }

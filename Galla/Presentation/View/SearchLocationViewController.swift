@@ -10,7 +10,7 @@ import RxSwift
 
 class SearchLocationViewController: UIViewController {
 
-  let locationViewModel: LocationViewModel = LocationViewModel(locationService: Injection().provideSearch())
+  let locationViewModel: LocationViewModel = LocationViewModel(locationUseCase: Injection().provideSearch())
 
   weak var delegate: HomeViewControllerProtocol?
 

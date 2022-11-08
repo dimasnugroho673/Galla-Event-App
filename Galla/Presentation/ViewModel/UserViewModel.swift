@@ -7,7 +7,7 @@
 
 class UserViewModel {
 
-  private let userService: UserService
+  private let userUseCase: UserUseCase
 
   var isLoading: Observable<Bool> = Observable(false)
   var isLoggedIn: Observable<Bool> = Observable(false)
@@ -16,12 +16,12 @@ class UserViewModel {
 
   var user: Observable<User>?
 
-  init(userService: UserService) {
-    self.userService = userService
+  init(userUseCase: UserUseCase) {
+    self.userUseCase = userUseCase
   }
 
   func isLogin() {
-    if userService.currentUser().uid != "" {
+    if userUseCase.currentUser().uid != "" {
       isLoggedIn.value = true
     }
   }
@@ -29,7 +29,7 @@ class UserViewModel {
   func attemptLogin(email: String, password: String) {
     isLoading.value = true
 
-    userService.login(email: email, password: password) { result in
+    userUseCase.login(email: email, password: password) { result in
       
       self.isLoading.value = false
 
@@ -46,7 +46,7 @@ class UserViewModel {
   func attemptRegister(credentials: AuthCredential) {
     isLoading.value = true
 
-    userService.register(with: credentials) { result in
+    userUseCase.register(with: credentials) { result in
       self.isLoading.value = false
 
       switch result {

@@ -9,15 +9,15 @@ import Dispatch
 
 class LocationViewModel {
 
-  private var locationService: LocationService
+  private var locationUseCase: LocationUseCase
 
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
 
   var searchTask: DispatchWorkItem?
 
-  init(locationService: LocationService) {
-    self.locationService = locationService
+  init(locationUseCase: LocationUseCase) {
+    self.locationUseCase = locationUseCase
   }
 
   var locations: Observable<[LocationResult]> = Observable([LocationResult]())
@@ -29,7 +29,7 @@ class LocationViewModel {
 
     let task = DispatchWorkItem { [weak self] in
       DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-        self?.locationService.search(keyword) { result in
+        self?.locationUseCase.search(keyword) { result in
           switch result {
           case .success(let data):
             print(data)
@@ -48,7 +48,7 @@ class LocationViewModel {
   }
 
   func saveSelectedLocation(_ data: LocationResult) {
-    locationService.saveSelectedLocation(data)
+    locationUseCase.saveSelectedLocation(data)
   }
   
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-  private let profileViewModel: ProfileViewModel = ProfileViewModel(userService: Injection().provideAuth(), locationService: Injection().provideSearch())
+  private let profileViewModel: ProfileViewModel = ProfileViewModel(userUseCase: Injection().provideAuth(), locationUseCase: Injection().provideSearch())
 
   private lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)

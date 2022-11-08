@@ -9,7 +9,7 @@ import UIKit
 
 class FavoriteViewController: UIViewController {
 
-  private let favoriteViewModel: FavoriteViewModel = FavoriteViewModel(eventService: Injection().provideHome())
+  private let favoriteViewModel: FavoriteViewModel = FavoriteViewModel(eventUseCase: Injection().provideHome())
   
   lazy var navBarView: UIView = {
     let view = UIView()

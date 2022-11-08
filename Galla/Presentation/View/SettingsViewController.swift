@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-  let settingsViewModel: SettingsViewModel = SettingsViewModel(userService: Injection().provideAuth())
+  let settingsViewModel: SettingsViewModel = SettingsViewModel(userUseCase: Injection().provideAuth())
 
   private lazy var navBarView: UIView = {
     let view = UIView()

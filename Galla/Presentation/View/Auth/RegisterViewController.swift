@@ -9,7 +9,7 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
-  let userViewModel: UserViewModel = UserViewModel(userService: Injection().provideAuth())
+  let userViewModel: UserViewModel = UserViewModel(userUseCase: Injection().provideAuth())
 
   lazy var scrollView: UIScrollView = {
     let sv = UIScrollView(frame: .zero)

@@ -7,21 +7,21 @@
 
 class FavoriteViewModel {
 
-  private var eventService: EventService
+  private var eventUseCase: EventUseCase
 
   var isLoading: Observable<Bool> = Observable(false)
   var errorMessage: Observable<String> = Observable("")
 
   var favorites: Observable<[Event]> = Observable([Event]())
 
-  init(eventService: EventService) {
-    self.eventService = eventService
+  init(eventUseCase: EventUseCase) {
+    self.eventUseCase = eventUseCase
   }
 
   func fetchFavorite(refresh: Bool = false) {
     isLoading.value = refresh ? false : true
 
-    eventService.fetchFavoriteEvent { result in
+    eventUseCase.fetchFavoriteEvent { result in
       switch result {
       case .success(let data):
         self.favorites.value = data.data

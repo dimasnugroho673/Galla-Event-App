@@ -13,7 +13,7 @@ class CustomTapGestureRecognizer: UITapGestureRecognizer {
 
 class TicketViewController: UIViewController {
 
-  private let ticketViewModel: TicketViewModel = TicketViewModel(ticketService: Injection().provideTicket())
+  private let ticketViewModel: TicketViewModel = TicketViewModel(ticketUseCase: Injection().provideTicket())
 
   var segmentActive: String = "Ongoing"
 
